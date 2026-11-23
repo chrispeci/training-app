@@ -2154,6 +2154,13 @@
  },
  "appointments": [
   {
+   "date": "2026-11-25",
+   "time": "3:50 pm",
+   "what": "Dentist, fillings",
+   "note": "Clearly Dental Dapto.",
+   "area": "dental"
+  },
+  {
    "date": "2026-11-26",
    "time": "5:00 pm",
    "what": "Osteo, Beau Edwards",
@@ -2216,6 +2223,20 @@
    "note": "If going ahead.",
    "area": "knee",
    "headline": true
+  },
+  {
+   "date": "2027-01-13",
+   "time": "2:00 pm",
+   "what": "Dentist, fillings",
+   "note": "Ask about retainer study models and an orthodontist quote.",
+   "area": "dental"
+  },
+  {
+   "date": "2027-05-20",
+   "time": "2:00 pm",
+   "what": "Dentist, check-up and clean",
+   "note": "",
+   "area": "dental"
   }
  ],
  "trends": {
