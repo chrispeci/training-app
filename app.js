@@ -82,7 +82,22 @@ const protein = () => settings().protein || P.food.protein.current;
 const painClass = v => v == null ? '' : v >= 6 ? 'red' : v >= 3 ? 'amber' : '';
 
 /* ---------- UI state ---------- */
-const S = { view: 'today', date: today(), stack: [], sheet: null, rest: null };
+const S = { view: 'today', date: today(), stack: [], sheet: null, rest: null, mealOpen: {}, lastTop: null };
+
+/* Remember which dropdowns are open, so re-drawing the screen never closes them. */
+const OPEN = new Set();
+function dkey(d) {
+  const top = S.stack[S.stack.length - 1];
+  const scope = d.closest('#overlay') ? 'ov:' + (top ? top.type : '') : d.closest('#sheet') ? 'sheet' : 'view:' + S.view;
+  const sum = d.querySelector('summary');
+  return scope + ':' + (sum && sum.childNodes[0] ? sum.childNodes[0].textContent.trim() : '');
+}
+document.addEventListener('toggle', e => {
+  const d = e.target;
+  if (!d || d.tagName !== 'DETAILS' || !d.isConnected) return;
+  if (d.open) OPEN.add(dkey(d)); else OPEN.delete(dkey(d));
+}, true);
+function restoreOpen() { document.querySelectorAll('details').forEach(d => { if (OPEN.has(dkey(d))) d.open = true; }); }
 
 function toast(msg) {
   const t = $('#toast'); t.textContent = msg; t.classList.add('on');
@@ -102,14 +117,19 @@ function render() {
   $('#view').innerHTML = S.view === 'food' ? viewFood() : S.view === 'body' ? viewBody() : viewToday();
   const top = S.stack[S.stack.length - 1];
   const ov = $('#overlay');
+  const prevScroll = ov.scrollTop;
   if (top) {
     ov.innerHTML = `<div class="ov-body">${top.type === 'howto' ? viewHowTo(top.ex) : viewSession()}</div>`;
     ov.classList.add('on'); document.body.classList.add('ov-open');
+    restoreOpen(); // before restoring the scroll, so the page is its full height again
     if (top.scroll != null) { ov.scrollTop = top.scroll; top.scroll = null; }
+    else if (top === S.lastTop) ov.scrollTop = prevScroll;
   } else { ov.classList.remove('on'); ov.innerHTML = ''; document.body.classList.remove('ov-open'); }
   const sh = $('#sheet');
-  if (S.sheet) { sh.innerHTML = `<div class="scrim" data-act="back"></div><div class="panel"><div class="grab"></div>${viewSheet()}</div>`; sh.classList.add('on'); }
+  if (S.sheet && !(top && top.fromSheet)) { sh.innerHTML = `<div class="scrim" data-act="back"></div><div class="panel"><div class="grab"></div><button class="back" data-act="back" aria-label="Close" style="float:right;margin-left:10px">×</button>${viewSheet()}</div>`; sh.classList.add('on'); }
   else { sh.classList.remove('on'); sh.innerHTML = ''; }
+  S.lastTop = top || null;
+  restoreOpen();
   paintRest();
 }
 
@@ -173,8 +193,8 @@ function viewDay(k, d) {
   if (c.backPain >= 6) html += `<div class="alert warn">Back pain ${c.backPain}/10. Go by the back rules in the session's Guidelines.</div>`;
 
   const rows = plan.timeline.map(t => {
-    const tick = (key, label, sub, act) => `<div class="tl ${done[key] ? 'done' : ''}"><div class="t">${esc(t.time)}</div>
-      <div class="grow" ${act || ''}><div class="name">${label}</div>${sub ? `<div class="sub">${sub}</div>` : ''}</div>
+    const tick = (key, label, sub, act, extra) => `<div class="tl ${done[key] ? 'done' : ''}"><div class="t">${esc(t.time)}</div>
+      <div class="grow" ${act || ''}><div class="name">${label}</div>${sub ? `<div class="sub">${sub}</div>` : ''}${extra || ''}</div>
       <button class="tick ${done[key] ? 'on' : ''}" data-act="tick" data-k="${key}" aria-label="Done"></button></div>`;
     switch (t.kind) {
       case 'water': return tick('water', 'Water on waking', `${P.food.water.onWakingMl} ml`);
@@ -191,7 +211,10 @@ function viewDay(k, d) {
       case 'meal': {
         const m = (plan.fastDay ? P.food.meals.fast : P.food.meals.normal)[t.meal];
         const mk = 'meal_' + t.meal;
-        return tick(mk, esc(m.name), 'Tap for portions', 'data-act="tab" data-v="food"');
+        const open = !!S.mealOpen[k + ':' + t.meal];
+        const items = m.items || m[protein()] || [];
+        const list = open ? `<div class="meal"><div class="items">${items.map(([n, a]) => `<div class="it"><span>${esc(n)}</span><span>${esc(a)}</span></div>`).join('')}</div></div>` : '';
+        return tick(mk, esc(m.name), open ? 'Tap to hide portions' : 'Tap for portions', `data-act="meal" data-m="${t.meal}"`, list);
       }
       case 'plyo':
         if (stop || !plyoDue(k)) return '';
@@ -526,7 +549,10 @@ function pushOverlay(entry) {
 }
 function openSheet(sheet) { S.sheet = sheet; history.pushState({ s: 1 }, ''); render(); }
 window.addEventListener('popstate', () => {
-  if (S.sheet) S.sheet = null; else if (S.stack.length) S.stack.pop();
+  const top = S.stack[S.stack.length - 1];
+  if (top && top.fromSheet) S.stack.pop();
+  else if (S.sheet) S.sheet = null;
+  else if (S.stack.length) S.stack.pop();
   render();
 });
 const back = () => history.back();
@@ -559,7 +585,8 @@ const ACT = {
   cancelEdit() { upd(S.date, d => { delete d.editCheck; }); render(); },
   tick(t) { upd(S.date, d => { d.done = d.done || {}; d.done[t.dataset.k] = !d.done[t.dataset.k]; }); render(); },
   openSession() { pushOverlay({ type: 'session' }); },
-  howto(t) { if (S.sheet) { S.sheet = null; history.replaceState({}, ''); } pushOverlay({ type: 'howto', ex: t.dataset.ex }); },
+  howto(t) { pushOverlay({ type: 'howto', ex: t.dataset.ex, fromSheet: !!S.sheet }); },
+  meal(t) { const key = S.date + ':' + t.dataset.m; S.mealOpen[key] = !S.mealOpen[key]; render(); },
   video() { S.stack[S.stack.length - 1].video = true; const ov = $('#overlay'); S.stack[S.stack.length - 1].scroll = ov.scrollTop; render(); },
   sheet(t) { openSheet({ type: t.dataset.s, b: t.dataset.b }); },
   pickSession(t) {
