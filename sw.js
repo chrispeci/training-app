@@ -1,6 +1,6 @@
 // Offline cache. Serves the saved copy straight away and refreshes it in the background,
 // so a program update shows up the second time the app is opened.
-const CACHE = 'training-v1';
+const CACHE = 'training-v2';
 const CORE = ['./', 'index.html', 'app.css', 'app.js', 'manifest.webmanifest',
   'data/program.json', 'data/howto.json', 'icons/icon.svg', 'icons/icon-192.png'];
 

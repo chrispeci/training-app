@@ -2,10 +2,15 @@
  "meta": {
   "file": "claude/app-data.json",
   "purpose": "Everything the training app shows, as plain data. The app reads this file; nothing in here is code. To change the program, Claude edits this file and republishes.",
+  "basedOn": [
+   "claude/program.md v1.4",
+   "claude/meal-plan.md v2",
+   "claude/health-admin.md (23 Nov 2026)",
+   "baseline.md (23 Nov 2026)"
+  ],
   "dataVersion": 3,
   "updated": "2026-11-23",
-  "status": "Matches program.md v1.4, including the home and gym versions. How-to steps, demo photos and videos for every exercise are in claude/app-howto.json, keyed by the same exercise ids. Gym kit confirmed 23 Nov: dip station, dumbbells over 20 kg, incline bench, leg curl machine.",
-  "note": "Public copy: personal details and appointments removed. Appointments are entered on the phone."
+  "status": "Matches program.md v1.4, including the home and gym versions. How-to steps, demo photos and videos for every exercise are in claude/app-howto.json, keyed by the same exercise ids. Gym kit confirmed 23 Nov: dip station, dumbbells over 20 kg, incline bench, leg curl machine."
  },
  "block": {
   "number": 1,
@@ -1245,7 +1250,7 @@
   "plyo": {
    "name": "Physio plyos",
    "minutes": 10,
-   "source": "Physio, 23 Nov 2026",
+   "source": "Bryce Dreghorn, 23 Nov 2026",
    "frequency": "daily",
    "frequencyOptions": [
     "daily",
@@ -1287,10 +1292,10 @@
    },
    "c": {
     "session": "Continuous jog 8–10 min",
-    "moveOn": "Check the next step with your physio (3 Dec)."
+    "moveOn": "Check the next step with Bryce (3 Dec)."
    }
   },
-  "nextMorningRule": "Joint swelling or pain up: plyos to every 2nd day and repeat the previous run stage. Still up after 48 h: stop and tell your physio."
+  "nextMorningRule": "Joint swelling or pain up: plyos to every 2nd day and repeat the previous run stage. Still up after 48 h: stop and tell Bryce."
  },
  "exercises": {
   "bandPullApart": {
@@ -2115,7 +2120,7 @@
     "swells noticeably",
     "keeps getting pain behind the knee"
    ],
-   "note": "Stops lower-body work, plyos and running. A split-second catch that frees straight away isn't a stop: write it in notes for your physio."
+   "note": "Stops lower-body work, plyos and running. A split-second catch that frees straight away isn't a stop: write it in notes for Bryce."
   },
   "kneeRules": {
    "title": "Knee rules",
@@ -2125,7 +2130,7 @@
     "No twisting on a bent knee: step to turn",
     "Don't force it straight",
     "No cracking it on purpose, no manipulation",
-    "On hold: pickleball, sparring, rugged hikes, rail ballast shifts"
+    "On hold: pickleball, sparring, rugged hikes, MCR ballast shifts"
    ]
   },
   "back": {
@@ -2147,6 +2152,65 @@
    ]
   }
  },
+ "appointments": [
+  {
+   "date": "2026-11-26",
+   "time": "5:00 pm",
+   "what": "Osteo, Beau Edwards",
+   "note": "Back and hips only. No knee manipulation.",
+   "area": "back"
+  },
+  {
+   "date": "2026-12-02",
+   "time": "4:00 pm",
+   "what": "MRI, right knee",
+   "note": "PRP Wollongong",
+   "area": "knee"
+  },
+  {
+   "date": "2026-12-02",
+   "time": "5:00 pm",
+   "what": "A/Prof Sundaraj, telehealth",
+   "note": "Second opinion",
+   "area": "knee"
+  },
+  {
+   "date": "2026-12-03",
+   "time": "4:00 pm",
+   "what": "Physio, Bryce",
+   "note": "Ask: run frequency, lifting the 90° cap, nerve screen for the tingling, the 23 Nov catch.",
+   "area": "knee"
+  },
+  {
+   "date": "2026-12-05",
+   "time": "6:30 am",
+   "what": "Block 1 retest",
+   "note": "Strength, mobility, tape. Film it.",
+   "area": "training"
+  },
+  {
+   "date": "2026-12-07",
+   "time": "12:15 pm",
+   "what": "Dr Punjabi consult",
+   "note": "Public vs private decided here.",
+   "area": "knee"
+  },
+  {
+   "date": "2026-12-08",
+   "time": "",
+   "what": "InBody scan (Tue 8 or Wed 9)",
+   "note": "To book. Mid-afternoon, after lunch, no training first.",
+   "area": "training"
+  },
+  {
+   "date": "2026-12-10",
+   "time": "",
+   "what": "Surgery",
+   "note": "If going ahead.",
+   "area": "knee",
+   "headline": true
+  }
+ ],
  "trends": {
   "days": 14,
   "show": [

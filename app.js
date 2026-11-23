@@ -361,10 +361,10 @@ function viewBody() {
   let html = `<div class="top"><h1>Body</h1></div>
     <button class="btn" data-act="sheet" data-s="export">Copy week for Claude</button><div style="height:14px"></div>`;
   html += `<details><summary>Next up ${next ? `<span class="chip acc" style="margin-left:4px">${esc(next.label)}</span>` : ''}</summary><div class="dd">
-    ${appts.length ? appts.map(a => `<div class="ex"><div class="grow"><div class="name">${esc(a.what)}</div><div class="sub">${esc(a.label)}${a.time ? ' · ' + esc(a.time) : ''}</div></div></div>`).join('') : '<p class="note">Nothing yet.</p>'}
-    <div class="lbl" style="margin-top:12px">Edit · one per line: date | time | what</div>
+    ${appts.length ? appts.map(a => `<div class="ex"><div class="grow"><div class="name">${esc(a.what)}</div><div class="sub">${esc(a.label)}${a.time ? ' · ' + esc(a.time) : ''}${a.note ? '<br>' + esc(a.note) : ''}</div></div></div>`).join('') : '<p class="note">Nothing yet.</p>'}
+    <div class="lbl" style="margin-top:12px">Add your own · one per line: date | time | what</div>
     <textarea class="field" data-in="appts" placeholder="2026-12-03 | 4:00 pm | Physio">${esc(settings().appts || '')}</textarea>
-    <p class="note">Stays on this phone only.</p></div></details>`;
+    </div></details>`;
   const list = items => `<ul class="plain">${items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`;
   html += `<details class="stop"><summary>Stop and get seen if</summary><div class="dd" style="color:var(--text)">${list(g.kneeStop.items)}<p class="note">${esc(g.kneeStop.note)}</p></div></details>`;
   html += `<details><summary>Knee rules</summary><div class="dd">${list(g.kneeRules.items)}</div></details>`;
@@ -387,8 +387,10 @@ function viewBody() {
 
 function upcomingAppts() {
   const t = today();
-  return (settings().appts || '').split('\n').map(l => l.split('|').map(x => x.trim())).filter(p => /^\d{4}-\d{2}-\d{2}$/.test(p[0]))
-    .map(([date, time, what]) => ({ date, time, what: what || '', label: short(date) })).filter(a => a.date >= t).sort((a, b) => a.date.localeCompare(b.date));
+  const fromData = (P.appointments || []).map(a => ({ date: a.date, time: a.time || '', what: a.what, note: a.note || '' }));
+  const extra = (settings().appts || '').split('\n').map(l => l.split('|').map(x => x.trim())).filter(p => /^\d{4}-\d{2}-\d{2}$/.test(p[0]))
+    .map(([date, time, what]) => ({ date, time: time || '', what: what || '' }));
+  return fromData.concat(extra).map(a => ({ ...a, label: short(a.date) })).filter(a => a.date >= t).sort((a, b) => a.date.localeCompare(b.date));
 }
 
 function trends() {
