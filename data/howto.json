@@ -1,0 +1,1740 @@
+{
+ "meta": {
+  "file": "claude/app-howto.json",
+  "purpose": "The How-to screen for every exercise in claude/app-data.json: steps, what to watch for, demo photos and a demo video. Keyed by the same exercise ids.",
+  "updated": "2026-11-23",
+  "photos": "From free-exercise-db (public domain, The Unlicense). Each set is two photos, <photoBase><photos>/0.jpg and /1.jpg, showing the two ends of the movement; the How-to screen shows them side by side above the steps. All 37 sets were checked by eye on 23 Nov. The build copies the photos into the app.",
+  "videos": "YouTube, played inside the How-to screen (needs internet). <videoBase><video.id>. Reviewed and accepted by Chris on 23 Nov (CrossFit muscle-up negative swapped out; Yellow Dude used where he has a proper tutorial). Closed: only change a video if Chris flags it.",
+  "steps": "Written for this program: its cues, the 90° knee cap and the back rules. Not copied from the photo set."
+ },
+ "photoBase": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/",
+ "videoBase": "https://www.youtube.com/watch?v=",
+ "exercises": {
+  "bandPullApart": {
+   "steps": [
+    [
+     "Set up",
+     "Stand tall and hold the band at chest height with straight arms, hands about shoulder-width."
+    ],
+    [
+     "Pull",
+     "Pull the band apart until it touches your chest, squeezing your shoulder blades together. Return slowly."
+    ]
+   ],
+   "watchFor": [
+    "Shrugging your shoulders up",
+    "Leaning back or flaring your ribs"
+   ],
+   "photos": "Band_Pull_Apart"
+  },
+  "bandDislocate": {
+   "steps": [
+    [
+     "Set up",
+     "Hold the band wide in front of your hips with straight arms."
+    ],
+    [
+     "Circle",
+     "Lift it up, over your head and down behind your back in one slow arc, then bring it back the same way. Widen your grip if you have to bend your elbows."
+    ]
+   ],
+   "watchFor": [
+    "Bending your elbows to get through",
+    "Arching your lower back as the band goes overhead"
+   ],
+   "video": {
+    "id": "riVxa9By-pM",
+    "title": "How To Do Band Dislocates / Pass-Throughs (Shoulder Mobility)",
+    "channel": "66 Days Fitness Coaching"
+   }
+  },
+  "scapPushUp": {
+   "steps": [
+    [
+     "Set up",
+     "Push-up position, arms locked, body in a straight line."
+    ],
+    [
+     "Move",
+     "Without bending your elbows, let your chest sink so your shoulder blades pinch together. Then push the floor away until your upper back rounds slightly."
+    ]
+   ],
+   "watchFor": [
+    "Bending your elbows",
+    "Hips sagging"
+   ],
+   "video": {
+    "id": "Ng-iiDUd_fs",
+    "title": "The Perfect Scapula Push-Up!",
+    "channel": "SaturnoMovement"
+   }
+  },
+  "wristPrep": {
+   "steps": [
+    [
+     "Fingers forward",
+     "On hands and knees, palms flat, fingers pointing forward. Rock your shoulders gently forward over your hands and back, about 10 times."
+    ],
+    [
+     "Fingers back",
+     "Turn your hands so your fingers point at your knees and rock back toward your heels, about 10 times."
+    ],
+    [
+     "Finish",
+     "A few gentle rocks on the backs of your hands, then wrist circles."
+    ]
+   ],
+   "watchFor": [
+    "Forcing into pain. This is a warm-up, not a stretch."
+   ],
+   "video": {
+    "id": "mSZWSQSSEjE",
+    "title": "Wrist Strength & Mobility Exercises",
+    "channel": "GMB Fitness"
+   }
+  },
+  "bandShoulderWork": {
+   "steps": [
+    [
+     "Do both",
+     "Band pull-aparts 2 × 15, then band dislocates 1 × 10. Each has its own how-to."
+    ]
+   ],
+   "watchFor": []
+  },
+  "hollowCheck": {
+   "steps": [
+    [
+     "Check",
+     "Lie on your back, press your lower back into the floor, lift your shoulders and legs a few centimetres and hold for 10 seconds. If your back stays flat, you're set for handstands."
+    ]
+   ],
+   "watchFor": [
+    "Lower back lifting off the floor"
+   ],
+   "video": {
+    "id": "HAfUt2Cco74",
+    "title": "HOLLOW BODY HOLD Progressions (Beginner to Advanced)",
+    "channel": "Zack Henderson"
+   }
+  },
+  "handstandChestToWall": {
+   "steps": [
+    [
+     "Walk up",
+     "Start in a push-up with your feet at the wall. Walk your feet up the wall and your hands in until your chest faces the wall."
+    ],
+    [
+     "Hold",
+     "Arms locked, push tall through your shoulders, ribs down, glutes squeezed, toes resting lightly on the wall. Look at the floor between your hands."
+    ],
+    [
+     "Come down",
+     "Walk your hands out and your feet down while you still have a few seconds left in you."
+    ]
+   ],
+   "watchFor": [
+    "Arching your back into a banana shape",
+    "Shoulders sinking toward your ears instead of pushing tall",
+    "Holding until your arms give out"
+   ],
+   "video": {
+    "id": "u-k3gj6Rlhw",
+    "title": "Most people learn handstands wrong",
+    "channel": "Yellow Dude",
+    "note": "Whole handstand progression. Chest-to-wall is one of the steps."
+   }
+  },
+  "cartwheelBail": {
+   "steps": [
+    [
+     "Set up",
+     "Walk your feet a short way up the wall so you're in a low, angled handstand."
+    ],
+    [
+     "Bail",
+     "Shift your weight onto one hand, turn your hips and step the opposite foot down to the side, like the end of a cartwheel. Land one foot at a time."
+    ],
+    [
+     "Both sides",
+     "Practise bailing to both sides until it's automatic."
+    ]
+   ],
+   "watchFor": [
+    "Dropping both feet at once",
+    "Landing with a twist on the right knee. Step down, don't pivot."
+   ],
+   "video": {
+    "id": "ZzEP7XvkDDk",
+    "title": "How to Bail Out of the Handstand with a Cartwheel or Pirouette",
+    "channel": "GMB Fitness"
+   }
+  },
+  "weightedPullUp": {
+   "steps": [
+    [
+     "Set up",
+     "Backpack on tight (dip belt or DB at the gym). Hang with straight arms, hands just wider than your shoulders."
+    ],
+    [
+     "Pull",
+     "Pull your shoulder blades down first, then drive your elbows to your ribs until your chin clears the bar."
+    ],
+    [
+     "Lower",
+     "Lower under control to straight arms. Step down onto a box or chair to finish."
+    ]
+   ],
+   "watchFor": [
+    "Kipping or swinging",
+    "Half reps. Start every rep from straight arms.",
+    "Dropping off the bar onto your knee"
+   ],
+   "photos": "Weighted_Pull_Ups"
+  },
+  "pikePushUp": {
+   "steps": [
+    [
+     "Set up",
+     "Hands and feet on the floor, hips high so your body makes an upside-down V. Hands shoulder-width."
+    ],
+    [
+     "Lower",
+     "Bend your elbows at about 45° and lower your head to the floor ahead of your hands, taking 2–3 seconds."
+    ],
+    [
+     "Press",
+     "Push back up to the start, finishing with your head between your arms."
+    ]
+   ],
+   "watchFor": [
+    "Elbows flaring straight out to the sides",
+    "Head landing between your hands instead of ahead of them",
+    "Hips dropping so it turns into a normal push-up"
+   ],
+   "video": {
+    "id": "0tCJWswccwA",
+    "title": "It looks like a push-up. Your hips disagree.",
+    "channel": "Yellow Dude"
+   }
+  },
+  "diamondPushUp": {
+   "steps": [
+    [
+     "Set up",
+     "Push-up position with your hands close together under your chest, thumbs and index fingers nearly touching."
+    ],
+    [
+     "Lower",
+     "Lower your chest to your hands with your elbows brushing your ribs."
+    ],
+    [
+     "Press",
+     "Push up to locked arms with your body in one straight line."
+    ]
+   ],
+   "watchFor": [
+    "Hips sagging or piking up",
+    "Elbows flaring wide",
+    "Wrist pain. Move your hands a little further apart."
+   ],
+   "photos": "Push-Ups_-_Close_Triceps_Position"
+  },
+  "benchPress": {
+   "steps": [
+    [
+     "Set up",
+     "Lie with your eyes under the bar, feet flat, shoulder blades pulled back and down. Grip just wider than your shoulders."
+    ],
+    [
+     "Lower",
+     "Unrack, then lower the bar to your mid-chest with your elbows about 45° from your body."
+    ],
+    [
+     "Press",
+     "Press up and slightly back until your arms lock. Rack it only after the last rep is locked out."
+    ]
+   ],
+   "watchFor": [
+    "Bouncing the bar off your chest",
+    "Your bum lifting off the bench",
+    "Going heavy without a spotter or safety bars"
+   ],
+   "photos": "Barbell_Bench_Press_-_Medium_Grip"
+  },
+  "invertedRow": {
+   "steps": [
+    [
+     "Set up",
+     "Lie under the dip bar, grip it and hang with straight arms, heels on the floor, body straight."
+    ],
+    [
+     "Pull",
+     "Pull your chest to the bar, squeezing your shoulder blades together."
+    ],
+    [
+     "Lower",
+     "Lower slowly to straight arms. Bend your knees to make it easier or raise your feet to make it harder."
+    ]
+   ],
+   "watchFor": [
+    "Hips sagging",
+    "Shrugging, or leading with your chin"
+   ],
+   "photos": "Inverted_Row"
+  },
+  "neckIsometrics": {
+   "steps": [
+    [
+     "Front and back",
+     "Head level. Press your hand into your forehead and resist so your head doesn't move. Hold 10–15 seconds at about half effort. Repeat with your hand on the back of your head."
+    ],
+    [
+     "Sides",
+     "Do the same with your hand on the left side of your head, then the right."
+    ]
+   ],
+   "watchFor": [
+    "Pushing so hard your head moves",
+    "Holding your breath"
+   ],
+   "photos": "Isometric_Neck_Exercise_-_Front_And_Back"
+  },
+  "thoracicExtension": {
+   "steps": [
+    [
+     "Set up",
+     "Lie on your back with a rolled towel across your upper back, just below your shoulder blades. Knees bent, hands behind your head."
+    ],
+    [
+     "Extend",
+     "Let your upper back drape back over the towel and breathe out slowly. Keep your ribs down and your bum on the floor."
+    ],
+    [
+     "Move it",
+     "After 20–30 seconds, shift the towel a few centimetres higher and repeat."
+    ]
+   ],
+   "watchFor": [
+    "Arching from your lower back instead of your upper back",
+    "Chin poking forward"
+   ],
+   "video": {
+    "id": "ipMDqKrHmjA",
+    "title": "CM | Thoracic Extension - Foam Roller",
+    "channel": "Physio REHAB",
+    "note": "Shown on a foam roller. Your rolled towel works the same way."
+   }
+  },
+  "latStretch": {
+   "steps": [
+    [
+     "Set up",
+     "Kneel in front of a chair or the couch and put both elbows on it, hands together."
+    ],
+    [
+     "Stretch",
+     "Sink your chest toward the floor and sit your hips back until you feel it down the sides of your back and under your arms. Breathe slowly."
+    ]
+   ],
+   "watchFor": [
+    "Arching your lower back to get lower. Keep your ribs down."
+   ],
+   "video": {
+    "id": "5v9e1hPknvA",
+    "title": "How To Do A Kneeling Lat Stretch On A Bench",
+    "channel": "Gos Training Systems"
+   }
+  },
+  "couchStretch": {
+   "steps": [
+    [
+     "Set up",
+     "Kneel facing away from the couch or a wall with a pad under your back knee. Put that shin up the couch and step the other foot forward, flat on the floor."
+    ],
+    [
+     "Tuck",
+     "Squeeze the glute of the back leg, pull your ribs down and tuck your pelvis under."
+    ],
+    [
+     "Lift",
+     "Only then bring your torso upright, until the stretch hits the front of the hip and thigh. Hold and breathe."
+    ]
+   ],
+   "watchFor": [
+    "Arching your lower back to get upright",
+    "Pain or pressure in the back knee. Add padding, or slide the knee further from the couch."
+   ],
+   "video": {
+    "id": "6rek5CXRhDE",
+    "title": "Couch Stretch for Hip Flexors and Quads",
+    "channel": "Dynamic Physio Therapy"
+   }
+  },
+  "weightedDip": {
+   "steps": [
+    [
+     "Set up",
+     "Backpack on tight (dip belt or DB at the gym). Support yourself on the bars with locked arms and your shoulders pushed down away from your ears."
+    ],
+    [
+     "Lower",
+     "Lean slightly forward and bend your elbows until your shoulders are level with, or just below, your elbows."
+    ],
+    [
+     "Press",
+     "Push back up to locked arms."
+    ]
+   ],
+   "watchFor": [
+    "Shoulders shrugging up at the bottom",
+    "Dropping fast into the bottom",
+    "Pain at the front of the shoulder. Stop a little higher."
+   ],
+   "photos": "Parallel_Bar_Dip"
+  },
+  "falseGripHang": {
+   "steps": [
+    [
+     "Grip",
+     "Set your wrists over the top of the bar so the heel of each palm sits on it, wrists bent, thumbs wrapped around."
+    ],
+    [
+     "Hang",
+     "Hang with straight arms and keep that bent-wrist grip for the whole hold. Put a box under your feet to take some weight if the grip slips."
+    ]
+   ],
+   "watchFor": [
+    "Wrists sliding back into a normal hang",
+    "Inner-elbow or wrist pain. Cut the hold short."
+   ],
+   "video": {
+    "id": "CtAui84zEAU",
+    "title": "False Grip Progression | Build Strength for Muscle Ups",
+    "channel": "Carl Paoli",
+    "note": "The last step in the video moves to rings. You stay on the bar."
+   }
+  },
+  "muscleUpNegative": {
+   "steps": [
+    [
+     "Get on top",
+     "Get above the bar with locked arms: climb up via the dip bar at home, or step up from a box at the gym. Use a false grip."
+    ],
+    [
+     "Lower through",
+     "Over 5 seconds, lean your chest over the bar, let your elbows travel back, and roll from the dip into the top of a pull-up. Keep the bar close to your chest."
+    ],
+    [
+     "Finish",
+     "Lower to straight arms, then step down."
+    ]
+   ],
+   "watchFor": [
+    "One elbow coming over before the other (chicken wing)",
+    "Dropping through the middle instead of controlling it",
+    "Elbow ache the next morning. Cut the reps."
+   ],
+   "video": {
+    "id": "uaWyZPDnYn8",
+    "title": "Tutorial for Slow, Strict Bar Muscle up (No Kipping!)",
+    "channel": "Antranik Kizirian",
+    "note": "Strict, feet-supported version on a low bar. Same slow lowering through the transition as the negative."
+   }
+  },
+  "oneArmDbPress": {
+   "steps": [
+    [
+     "Set up",
+     "Stand with your feet hip-width, the DB at your shoulder and your elbow under your wrist. Brace your stomach and squeeze your glutes."
+    ],
+    [
+     "Press",
+     "Press straight up until your arm locks out beside your ear."
+    ],
+    [
+     "Lower",
+     "Lower slowly to your shoulder."
+    ]
+   ],
+   "watchFor": [
+    "Leaning back or sideways to get it up",
+    "Ribs flaring"
+   ],
+   "photos": "Dumbbell_One-Arm_Shoulder_Press"
+  },
+  "dbRow": {
+   "steps": [
+    [
+     "Set up",
+     "One hand and the same-side knee on a bench or the couch, back flat, the DB hanging straight down from the other hand."
+    ],
+    [
+     "Pull",
+     "Pull the DB to your hip, elbow close to your side."
+    ],
+    [
+     "Lower",
+     "Lower until your arm is straight, without letting your shoulder drop or your torso twist."
+    ]
+   ],
+   "watchFor": [
+    "Twisting your torso to heave it up",
+    "Your back rounding"
+   ],
+   "photos": "One-Arm_Dumbbell_Row"
+  },
+  "wristCurl": {
+   "steps": [
+    [
+     "Set up",
+     "Sit with your forearm resting on your thigh, palm up, wrist just past your knee, holding the plate or kettlebell."
+    ],
+    [
+     "Curl",
+     "Curl your wrist up, then lower over 2–3 seconds until your hand hangs down."
+    ]
+   ],
+   "watchFor": [
+    "Forearm lifting off your thigh",
+    "Pain above 3/10"
+   ],
+   "photos": "Seated_One-Arm_Dumbbell_Palms-Up_Wrist_Curl"
+  },
+  "kbPronationSupination": {
+   "steps": [
+    [
+     "Set up",
+     "Sit with your forearm resting on your thigh or a table, elbow bent to 90°, holding the kettlebell by its handle with your thumb up."
+    ],
+    [
+     "Rotate",
+     "Slowly turn your palm down, come back to thumb-up, then turn your palm up. Take about 2 seconds each way."
+    ]
+   ],
+   "watchFor": [
+    "Your elbow lifting or swinging to help",
+    "Letting the weight flop at either end"
+   ],
+   "video": {
+    "id": "FlPn3hLkMLA",
+    "title": "Resisted Forearm Pronation and Supination - Dumbbell",
+    "channel": "Onyx Physical Therapy and Wellness",
+    "note": "Shown with a dumbbell. Same movement with your kettlebell."
+   }
+  },
+  "bandFingerExtension": {
+   "steps": [
+    [
+     "Set up",
+     "Loop a rubber band around the outside of all five fingertips."
+    ],
+    [
+     "Open",
+     "Spread your fingers and thumb as wide as you can, hold for a second, and close slowly."
+    ]
+   ],
+   "watchFor": [
+    "Rushing. Slow reps work better."
+   ],
+   "video": {
+    "id": "rbV3rOvKUZM",
+    "title": "Banded Finger Extension",
+    "channel": "Zack Henderson"
+   }
+  },
+  "bike": {
+   "steps": [
+    [
+     "Ride",
+     "5 minutes at an easy pace, just enough to warm your legs up."
+    ]
+   ],
+   "watchFor": []
+  },
+  "quadrupedRockBack": {
+   "steps": [
+    [
+     "Set up",
+     "On hands and knees, back flat, knees a little wider than your hips."
+    ],
+    [
+     "Rock",
+     "Push your hips back toward your heels while keeping your back flat, then return."
+    ]
+   ],
+   "watchFor": [
+    "Your lower back rounding as you go back",
+    "Going deeper than is pain-free and click-free for the right knee"
+   ],
+   "video": {
+    "id": "GImwCsuBLyo",
+    "title": "Quadruped Rock Back - Hip Mobility Drill",
+    "channel": "Mike Reinold"
+   }
+  },
+  "deepSquatHold": {
+   "steps": [
+    [
+     "Set up",
+     "Hold a pole or door frame at chest height. Feet shoulder-width, toes turned out a little."
+    ],
+    [
+     "Sink",
+     "Sit down between your heels as deep as is comfortable, chest up, heels down, using the pole for balance."
+    ],
+    [
+     "Hold",
+     "Breathe and shift gently from side to side. Pull on the pole to stand up."
+    ]
+   ],
+   "watchFor": [
+    "Any pain or clicking in the right knee. Come up higher.",
+    "Heels lifting"
+   ],
+   "video": {
+    "id": "UqnCCmzMpdE",
+    "title": "Assisted Deep Squat",
+    "channel": "Fitness4ward"
+   }
+  },
+  "singleLegBalance": {
+   "steps": [
+    [
+     "Stand",
+     "Stand on one leg with a soft knee, hips level, eyes forward. Hold for 30 seconds."
+    ],
+    [
+     "Harder",
+     "Too easy? Turn your head from side to side, or close your eyes."
+    ]
+   ],
+   "watchFor": [
+    "Your hip dropping on the lifted side",
+    "The standing knee drifting inward"
+   ]
+  },
+  "boxPistol": {
+   "steps": [
+    [
+     "Set up",
+     "Stand on one leg in front of a knee-height box or chair, the other leg held out in front, arms forward."
+    ],
+    [
+     "Sit back",
+     "Lower slowly until you're sitting lightly on the box. Pause for 1 second without relaxing."
+    ],
+    [
+     "Stand",
+     "Drive through your whole foot and stand up without rocking."
+    ]
+   ],
+   "watchFor": [
+    "Knee collapsing inward",
+    "Dropping the last few centimetres onto the box",
+    "Using a lower box. It stays at knee height for now."
+   ],
+   "video": {
+    "id": "KCtVYpSJH4M",
+    "title": "How to: Pistol Squat to Box",
+    "channel": "SATS Nordic"
+   }
+  },
+  "legPress": {
+   "steps": [
+    [
+     "Set up",
+     "Hips and lower back flat on the pad. Feet flat on the platform, about shoulder-width. Set the safety stop so your knees can't bend past 90°."
+    ],
+    [
+     "Lower",
+     "Lower under control until your knees reach 90°. Knees track over your toes and your hips stay down on the pad."
+    ],
+    [
+     "Press",
+     "Push through your whole foot until your legs are almost straight. Don't snap your knees locked."
+    ]
+   ],
+   "watchFor": [
+    "Hips rolling up off the pad at the bottom (your lower back rounding)",
+    "Knees caving inward",
+    "Heels lifting off the platform"
+   ],
+   "photos": "Leg_Press"
+  },
+  "trapBarDeadlift": {
+   "steps": [
+    [
+     "Set up",
+     "Stand in the middle of the bar, feet hip-width. Push your hips back, bend your knees and grip the handles. Chest up, back flat, arms straight."
+    ],
+    [
+     "Lift",
+     "Take a breath, brace, and push the floor away. Stand tall and squeeze your glutes. Don't lean back at the top."
+    ],
+    [
+     "Lower",
+     "Hips back first, then bend your knees, and put the bar down under control. Reset your back before every rep."
+    ]
+   ],
+   "watchFor": [
+    "Lower back rounding. Use the high handles or raise the bar on plates.",
+    "Jerking the bar off the floor",
+    "Skipping the warm-up sets"
+   ],
+   "photos": "Trap_Bar_Deadlift",
+   "video": {
+    "id": "dfYIApfWS5o",
+    "title": "Trap Bar Deadlift (Exercise Library)",
+    "channel": "Horton Barbell"
+   }
+  },
+  "barbellRdl": {
+   "steps": [
+    [
+     "Set up",
+     "Stand holding the bar at your thighs, feet hip-width, knees soft."
+    ],
+    [
+     "Hinge",
+     "Push your hips straight back and slide the bar down your thighs with a flat back until you feel your hamstrings load, somewhere between knee and mid-shin."
+    ],
+    [
+     "Stand",
+     "Drive your hips forward to stand tall."
+    ]
+   ],
+   "watchFor": [
+    "Your back rounding at the bottom",
+    "The bar drifting away from your legs",
+    "Turning it into a squat"
+   ],
+   "photos": "Romanian_Deadlift"
+  },
+  "nordicCurl": {
+   "steps": [
+    [
+     "Set up",
+     "Kneel on a pad with your heels locked under a loaded bar (gym) or the couch (home). At the gym, loop a band from the rack around your chest."
+    ],
+    [
+     "Lower",
+     "Keep a straight line from knees to head with your hips locked. Lower yourself toward the floor as slowly as you can."
+    ],
+    [
+     "Return",
+     "Catch yourself with your hands and push back up to the start."
+    ]
+   ],
+   "watchFor": [
+    "Bending at the hips so your bum sticks out",
+    "Dropping fast through the last half",
+    "Cramp or sharp pain behind the knee. Stop the set."
+   ],
+   "photos": "Natural_Glute_Ham_Raise",
+   "video": {
+    "id": "F-AaE8mw_pY",
+    "title": "Master The Nordic Hamstring Curl to Improve Your Hamstring Strength",
+    "channel": "The Prehab Guys"
+   }
+  },
+  "backExtension": {
+   "steps": [
+    [
+     "Set up",
+     "Set the hip pad just below your hip bones so you can hinge freely. Ankles locked in, arms crossed on your chest."
+    ],
+    [
+     "Lower",
+     "Hinge forward at the hips with a flat back."
+    ],
+    [
+     "Lift",
+     "Come up until your body is one straight line, and stop there."
+    ]
+   ],
+   "watchFor": [
+    "Arching past straight at the top",
+    "Rounding your back on the way down",
+    "Swinging"
+   ],
+   "photos": "Hyperextensions_Back_Extensions"
+  },
+  "singleLegCalfRaise": {
+   "steps": [
+    [
+     "Set up",
+     "Stand on a step on the ball of one foot with your heel hanging off. Keep a hand on the wall for balance."
+    ],
+    [
+     "Raise",
+     "Rise as high as you can and pause for a second."
+    ],
+    [
+     "Lower",
+     "Lower slowly until your heel is below the step."
+    ]
+   ],
+   "watchFor": [
+    "Bouncing out of the bottom",
+    "Rolling onto the outside of your foot"
+   ],
+   "photos": "Standing_Dumbbell_Calf_Raise",
+   "photoNote": "The photo shows both legs with dumbbells. You do one leg at a time, bodyweight."
+  },
+  "copenhagenPlank": {
+   "steps": [
+    [
+     "Set up",
+     "Lie on your side with your elbow under your shoulder. Rest the inside of your top knee on a bench or the couch. The bottom leg hangs free underneath."
+    ],
+    [
+     "Lift",
+     "Lift your hips until your body is straight from shoulders to knee, and bring the bottom leg up to meet the bench."
+    ],
+    [
+     "Hold",
+     "Hold for 30 seconds, breathing normally."
+    ]
+   ],
+   "watchFor": [
+    "Hips sagging or rolling forward",
+    "Pain on the inside of the right knee. Stop, and make sure the support is under the knee, not the foot."
+   ],
+   "video": {
+    "id": "GSyjyAvhGt4",
+    "title": "Copenhagen Plank Short Lever",
+    "channel": "PSP Petawawa Military Fitness"
+   }
+  },
+  "ninetyNinety": {
+   "steps": [
+    [
+     "Set up",
+     "Sit on the floor with one leg bent 90° in front of you and the other bent 90° out to the side, both shins resting down."
+    ],
+    [
+     "Lean",
+     "Sit tall, then hinge your chest forward over the front shin with a flat back until you feel the outside of that hip."
+    ],
+    [
+     "Swap",
+     "Hold and breathe, then change sides by lifting and placing your legs. Don't twist through your knees."
+    ]
+   ],
+   "watchFor": [
+    "The right knee twisting or clicking. Prop that hip on a cushion or ease off.",
+    "Rounding your back to get lower"
+   ],
+   "video": {
+    "id": "t4Zz6-aG8Iw",
+    "title": "90 90 Hip Stretch (Best Hip Mobility Exercise!)",
+    "channel": "Jack Hanrahan Fitness"
+   }
+  },
+  "pigeon": {
+   "steps": [
+    [
+     "Set up",
+     "From hands and knees, bring one knee forward behind your wrist with the shin angled across your body. Slide the other leg straight back."
+    ],
+    [
+     "Square up",
+     "Keep your hips level and facing the floor. Put a cushion under the front hip if it doesn't reach the ground."
+    ],
+    [
+     "Fold",
+     "Walk your hands forward and lower your chest until you feel the outside of the front hip."
+    ]
+   ],
+   "watchFor": [
+    "Pressure or twisting in the front knee. Bring that heel closer to your hip, add a cushion, or do a figure-4 stretch on your back instead.",
+    "Hips rolling to one side"
+   ],
+   "video": {
+    "id": "a--6uTrsxac",
+    "title": "Pigeon Stretch | Deep Hip & Glute Release for Athletes",
+    "channel": "World Wide Athletics"
+   }
+  },
+  "hipFlexorStretch": {
+   "steps": [
+    [
+     "Set up",
+     "Half-kneel with a pad under your back knee, front foot flat, both knees at about 90°."
+    ],
+    [
+     "Tuck",
+     "Squeeze the glute of the back leg, pull your ribs down and tuck your pelvis under."
+    ],
+    [
+     "Shift",
+     "Keeping the tuck, ease your hips forward a few centimetres until you feel the front of the back hip."
+    ]
+   ],
+   "watchFor": [
+    "Arching your lower back as you move forward",
+    "Feeling it in your back instead of the front of the hip"
+   ],
+   "photos": "Kneeling_Hip_Flexor",
+   "video": {
+    "id": "FClOQXdM2Fs",
+    "title": "How to Stretch Both Your Hip Flexors (Tutorial)",
+    "channel": "The Prehab Guys"
+   }
+  },
+  "march": {
+   "steps": [
+    [
+     "March",
+     "March on the spot with high knees and swinging arms for the time shown."
+    ]
+   ],
+   "watchFor": []
+  },
+  "bodyweightSquat": {
+   "steps": [
+    [
+     "Set up",
+     "Feet shoulder-width, toes turned out slightly, arms out in front."
+    ],
+    [
+     "Lower",
+     "Sit down and back over 3 seconds until your thighs are parallel to the floor."
+    ],
+    [
+     "Stand",
+     "Stand up through your whole foot."
+    ]
+   ],
+   "watchFor": [
+    "Going below parallel",
+    "Knees caving in",
+    "Heels lifting"
+   ],
+   "photos": "Bodyweight_Squat",
+   "photoNote": "The photo may show a deeper squat. Yours stops at parallel."
+  },
+  "bandedKneeExtension": {
+   "steps": [
+    [
+     "Set up",
+     "Loop a band around a table leg or post at knee height and step one leg into it so it sits behind that knee. Step back until the band is tight."
+    ],
+    [
+     "Bend",
+     "Let the band pull that knee slightly bent, heel on the floor."
+    ],
+    [
+     "Straighten",
+     "Tighten your thigh to straighten the knee against the band and hold for 10 seconds. Do both legs."
+    ]
+   ],
+   "watchFor": [
+    "Forcing the right knee straight past a block",
+    "Leaning back instead of using your thigh"
+   ],
+   "video": {
+    "id": "Q6JjgU2aNj0",
+    "title": "TKEs (Terminal Knee Extensions) (Exercise Library)",
+    "channel": "Horton Barbell"
+   }
+  },
+  "bulgarianSplitSquat": {
+   "steps": [
+    [
+     "Set up",
+     "Stand a long step in front of the couch or a bench and rest the top of your back foot on it. Hold the DB at your chest (home) or one in each hand (gym). Put a pad where your back knee will land."
+    ],
+    [
+     "Lower",
+     "Drop straight down until your front thigh is parallel to the floor and your back knee touches the pad."
+    ],
+    [
+     "Stand",
+     "Drive up through your front foot. Lean your torso slightly forward and keep the front knee tracking over your toes."
+    ]
+   ],
+   "watchFor": [
+    "Front thigh going below parallel",
+    "Front knee caving inward",
+    "Pushing off the back foot"
+   ],
+   "photos": "Split_Squat_with_Dumbbells",
+   "video": {
+    "id": "-4LVK1crLSw",
+    "title": "The ULTIMATE Bulgarian Split Squat Tutorial",
+    "channel": "Squat University",
+    "note": "If the video goes deeper than parallel, your depth stop still applies."
+   }
+  },
+  "singleLegRdl": {
+   "steps": [
+    [
+     "Set up",
+     "Stand on one leg with a soft knee, holding the DB in the opposite hand."
+    ],
+    [
+     "Hinge",
+     "Push your hips back and let your free leg rise behind you as your chest lowers. Back flat, hips square to the floor. Go until you feel the hamstring of the standing leg."
+    ],
+    [
+     "Stand",
+     "Drive your hips forward to stand tall."
+    ]
+   ],
+   "watchFor": [
+    "Hips opening out to the side",
+    "Your back rounding to reach lower",
+    "The standing knee locking straight or bending a lot"
+   ],
+   "photos": "Kettlebell_One-Legged_Deadlift",
+   "photoNote": "The photo uses a kettlebell. Same movement with your dumbbell.",
+   "video": {
+    "id": "3ed_5PmwLMU",
+    "title": "Single Leg DB RDL (Exercise Library)",
+    "channel": "Horton Barbell"
+   }
+  },
+  "hipThrust": {
+   "steps": [
+    [
+     "Set up",
+     "Sit on the floor with your shoulder blades against the couch, feet flat and hip-width, the DB and plates resting in your hip crease."
+    ],
+    [
+     "Lift",
+     "Drive through your heels and lift your hips until you're level from shoulders to knees. Tuck your pelvis, squeeze your glutes for a second and keep your chin tucked."
+    ],
+    [
+     "Lower",
+     "Lower your hips under control."
+    ]
+   ],
+   "watchFor": [
+    "Arching your lower back at the top instead of tucking",
+    "Pushing through your toes",
+    "Feet too far away. You'll feel hamstrings, not glutes."
+   ],
+   "photos": "Barbell_Hip_Thrust",
+   "photoNote": "The photo shows the barbell version on a bench. At home it's the same movement on the couch with the DB and plates."
+  },
+  "sliderLegCurl": {
+   "steps": [
+    [
+     "Set up",
+     "Lie on your back on a smooth floor with your heels on a towel, legs straight, arms by your sides."
+    ],
+    [
+     "Bridge",
+     "Lift your hips into a bridge."
+    ],
+    [
+     "Curl",
+     "Keeping your hips up, drag your heels toward your bum, then slide them back out slowly."
+    ]
+   ],
+   "watchFor": [
+    "Hips dropping as your heels come in",
+    "Hamstrings cramping. Do only the slow slide out at first."
+   ],
+   "photos": "Platform_Hamstring_Slides",
+   "video": {
+    "id": "AlTI3igOaLw",
+    "title": "Exercise Tutorial: Hamstring Curl With Slider",
+    "channel": "Travis Tarrant"
+   }
+  },
+  "sidePlankHipAbduction": {
+   "steps": [
+    [
+     "Set up",
+     "Side plank on your elbow with a straight body. Put your knees down if you need it easier."
+    ],
+    [
+     "Lift",
+     "Raise your top leg about 30–40 cm with your toes pointing forward, and hold it there for the time shown."
+    ]
+   ],
+   "watchFor": [
+    "Hips sagging or rolling backward",
+    "The top leg drifting forward"
+   ],
+   "video": {
+    "id": "U243vJJ7XXs",
+    "title": "Side Plank Hip Abduction",
+    "channel": "Banff Sport Medicine Foundation"
+   }
+  },
+  "suitcaseCarry": {
+   "steps": [
+    [
+     "Pick up",
+     "Pick the DB up in one hand like a suitcase, using your legs, and stand tall."
+    ],
+    [
+     "Walk",
+     "Walk 30 metres without leaning toward or away from the weight. Shoulders level."
+    ],
+    [
+     "Swap",
+     "Put it down using your legs, swap hands and walk back."
+    ]
+   ],
+   "watchFor": [
+    "Leaning to the side",
+    "Bending over with a rounded back to pick it up or put it down"
+   ],
+   "photos": "Farmers_Walk",
+   "photoNote": "The photo shows a weight in each hand. You carry one, on one side."
+  },
+  "stepDown": {
+   "steps": [
+    [
+     "Set up",
+     "Stand on a 10 cm step on your working leg with the other foot hanging off the front edge."
+    ],
+    [
+     "Lower",
+     "Bend the standing knee slowly until the other heel lightly taps the floor. Don't put weight on it."
+    ],
+    [
+     "Stand",
+     "Straighten back up."
+    ]
+   ],
+   "watchFor": [
+    "Knee collapsing inward",
+    "Your hip dropping on the free side",
+    "Any catching or pain in the knee. Use a lower step."
+   ],
+   "video": {
+    "id": "BtQ_S-XRP74",
+    "title": "BULLETPROOF Your Knees With This Exercise!",
+    "channel": "Squat University",
+    "note": "They call it a touchdown squat and may use a higher box. Yours is 10 cm."
+   }
+  },
+  "lSitAdvancedTuck": {
+   "steps": [
+    [
+     "Support",
+     "On the dip bars, lock your arms and push your shoulders down away from your ears."
+    ],
+    [
+     "Tuck",
+     "Lift your knees to hip height with your shins level, hips slightly behind your hands, pelvis tucked."
+    ],
+    [
+     "Hold",
+     "Hold 10–15 seconds, rest, and repeat until you've totalled 60 seconds."
+    ]
+   ],
+   "watchFor": [
+    "Shoulders shrugging up",
+    "Knees dropping below hip height",
+    "Your lower back pulling. Bring your knees in tighter."
+   ],
+   "video": {
+    "id": "H_iZG5-L_KI",
+    "title": "L-SIT TUTORIAL | Step-by-Step Progressions to Master the Perfect L-Sit",
+    "channel": "Simonster Strength"
+   }
+  },
+  "lSitOneLeg": {
+   "steps": [
+    [
+     "Start",
+     "Get into your advanced tuck on the dip bars."
+    ],
+    [
+     "Extend",
+     "Straighten one leg out in front at hip height, knee locked, toes pointed. Keep the other knee tucked."
+    ],
+    [
+     "Hold",
+     "Hold 5–10 seconds, then swap legs."
+    ]
+   ],
+   "watchFor": [
+    "The straight leg dropping",
+    "Leaning back to counterbalance",
+    "Bent arms"
+   ],
+   "video": {
+    "id": "H_iZG5-L_KI",
+    "title": "L-SIT TUTORIAL | Step-by-Step Progressions to Master the Perfect L-Sit",
+    "channel": "Simonster Strength"
+   }
+  },
+  "elbowLeverGripHold": {
+   "steps": [
+    [
+     "Wrists first",
+     "Warm your wrists up well before this."
+    ],
+    [
+     "Set the grip",
+     "Stand at the dip bar and grip it. Bend your elbows and tuck them into your stomach at about belly-button height, with your hands under your elbows."
+    ],
+    [
+     "Lean",
+     "Breathe into your stomach, then lean forward so your elbows take some of your weight. Your feet stay on the floor. Hold 15–30 seconds."
+    ]
+   ],
+   "watchFor": [
+    "Wrist pain. This is the first drill to drop if it hurts.",
+    "Arching your lower back. Tuck your pelvis and squeeze your glutes.",
+    "Inner-elbow ache into the next morning. Cut the holds by a third to a half."
+   ],
+   "video": {
+    "id": "913o9RKJKd8",
+    "title": "Learn the Elbow Lever in 1 Day | Elbow Lever Tutorial",
+    "channel": "Vitality",
+    "note": "Shows the full elbow lever. You're only doing the first part: the grip and the lean, feet down."
+   }
+  },
+  "hollowHold": {
+   "steps": [
+    [
+     "Set up",
+     "Lie on your back and press your lower back into the floor."
+    ],
+    [
+     "Lift",
+     "Lift your shoulders and straight legs a few centimetres off the floor, arms by your sides or overhead."
+    ],
+    [
+     "Hold",
+     "Hold while breathing. If your lower back lifts, raise your legs higher or bend your knees."
+    ]
+   ],
+   "watchFor": [
+    "Lower back peeling off the floor",
+    "Chin jutting forward"
+   ],
+   "video": {
+    "id": "HAfUt2Cco74",
+    "title": "HOLLOW BODY HOLD Progressions (Beginner to Advanced)",
+    "channel": "Zack Henderson"
+   }
+  },
+  "pallofPress": {
+   "steps": [
+    [
+     "Set up",
+     "Tie a band to a post at chest height. Stand side-on to it, holding the band at your chest with both hands, feet shoulder-width. Step away until it's tight."
+    ],
+    [
+     "Press",
+     "Press your hands straight out in front of your chest and hold for 2 seconds without letting the band turn you."
+    ],
+    [
+     "Return",
+     "Bring your hands back to your chest. Do all your reps, then face the other way."
+    ]
+   ],
+   "watchFor": [
+    "Your torso twisting toward the anchor",
+    "Hips shifting sideways"
+   ],
+   "photos": "Pallof_Press",
+   "photoNote": "The photo uses a cable machine. Your band does the same job."
+  },
+  "hangingKneeRaise": {
+   "steps": [
+    [
+     "Hang",
+     "Hang from the bar with straight arms and your shoulders pulled down."
+    ],
+    [
+     "Raise",
+     "Tuck your pelvis under and bring your knees up toward your chest, curling your hips up at the top."
+    ],
+    [
+     "Lower",
+     "Lower your legs slowly without swinging. Step down from the bar."
+    ]
+   ],
+   "watchFor": [
+    "Swinging for momentum",
+    "Your lower back pulling at the bottom. Stop a little higher.",
+    "Lifting your knees without tucking your pelvis"
+   ],
+   "photos": "Hanging_Leg_Raise",
+   "photoNote": "The photo shows straight legs. You bend your knees."
+  },
+  "deadHangRepeaters": {
+   "steps": [
+    [
+     "Hang",
+     "Hang from the bar with straight arms for 7 seconds."
+    ],
+    [
+     "Rest",
+     "Step down, or take your weight on a box, for 3 seconds. That's one rep."
+    ],
+    [
+     "Repeat",
+     "Do 6 reps in a row for one set. Rest a couple of minutes, then do the second set."
+    ]
+   ],
+   "watchFor": [
+    "Dropping off the bar. Step down each time.",
+    "Shoulders jammed up by your ears. Keep them slightly pulled down."
+   ]
+  },
+  "hamstringStretch": {
+   "steps": [
+    [
+     "Set up",
+     "Lie on your back with one leg flat on the floor. Loop a band or towel over the other foot and raise that leg."
+    ],
+    [
+     "Stretch",
+     "Keep the raised knee straight and pull the leg toward you until you feel the back of your thigh. Hold for 60 seconds."
+    ]
+   ],
+   "watchFor": [
+    "Bending the knee to get further",
+    "Your lower back or hips lifting off the floor",
+    "Tingling down the leg. Ease off."
+   ],
+   "photos": "Hamstring_Stretch",
+   "video": {
+    "id": "Il1L75v6gq0",
+    "title": "Hamstring Stretch with a Strap, Supine",
+    "channel": "AskDoctorJo"
+   }
+  },
+  "fingertipHoldIncline": {
+   "steps": [
+    [
+     "Set up",
+     "Put your hands on the dip bar base or a bench so your body is at an incline, in a push-up position."
+    ],
+    [
+     "Fingertips",
+     "Come up onto all five fingertips of each hand, fingers spread and slightly curved, palms off the surface."
+    ],
+    [
+     "Hold",
+     "Hold 10–15 seconds and stop well before your fingers tire."
+    ]
+   ],
+   "watchFor": [
+    "Fingers bending backward at the last joint",
+    "Holding to fatigue",
+    "Using fewer than three fingers. Three is the limit, ever."
+   ],
+   "video": {
+    "id": "Sf1m-9Z5nMg",
+    "title": "How To Do Fingertip Push Ups | Fingertip Push Ups Progression",
+    "channel": "Sthx World",
+    "note": "Shows the whole push-up progression. You're only doing the incline hold."
+   }
+  },
+  "platePinch": {
+   "steps": [
+    [
+     "Set up",
+     "Put the two 5 kg plates together with the smooth sides out."
+    ],
+    [
+     "Pinch",
+     "Grip them between your fingers and thumb with one hand and stand tall, arm by your side."
+    ],
+    [
+     "Hold",
+     "Hold 20–30 seconds, then swap hands. Put them down; don't drop them."
+    ]
+   ],
+   "watchFor": [
+    "Resting the plates against your leg",
+    "Dropping them near your feet"
+   ],
+   "photos": "Plate_Pinch"
+  },
+  "bagRounds": {
+   "steps": [
+    [
+     "Rounds",
+     "5 rounds of 2 minutes at a moderate pace, with 1 minute of rest between."
+    ],
+    [
+     "Feet",
+     "Move by stepping in, out and sideways. When you turn a punch over, let your heel lift and the whole foot turn. Don't grind a planted foot."
+    ]
+   ],
+   "watchFor": [
+    "Pivoting on a planted right foot",
+    "Going all-out. This is skill work."
+   ]
+  },
+  "zone2Ride": {
+   "steps": [
+    [
+     "Set the bike",
+     "Saddle high enough that your knee is slightly bent at the bottom of the pedal stroke."
+    ],
+    [
+     "Ride",
+     "30–45 minutes at a pace where you can talk in full sentences. Stay seated and use an easy gear on hills."
+    ],
+    [
+     "After",
+     "Do the couch stretch when you get off."
+    ]
+   ],
+   "watchFor": [
+    "Standing sprints or grinding a big gear",
+    "Rough trails"
+   ]
+  },
+  "marchCatCamel": {
+   "steps": [
+    [
+     "Walk",
+     "Walk or march for 2–3 minutes first."
+    ],
+    [
+     "Cat",
+     "On hands and knees, gently round your whole spine up toward the ceiling and let your head drop."
+    ],
+    [
+     "Camel",
+     "Then let your belly sink and your chest lift into a gentle arch. Flow slowly between the two for 6–8 reps."
+    ]
+   ],
+   "watchFor": [
+    "Pushing into the end of either position. Stay in the comfortable middle.",
+    "Rushing"
+   ],
+   "photos": "Cat_Stretch",
+   "video": {
+    "id": "c2kKOjpzK14",
+    "title": "How to do the cat camel stretch",
+    "channel": "Rehab My Patient"
+   }
+  },
+  "mcgillCurlUp": {
+   "steps": [
+    [
+     "Set up",
+     "Lie on your back with one knee bent and the other leg straight. Slide both hands under the small of your back to keep its natural curve."
+    ],
+    [
+     "Brace and lift",
+     "Brace your stomach, then lift your head and shoulders just a few centimetres as one block. Don't flatten your back onto your hands."
+    ],
+    [
+     "Hold",
+     "Hold for 10 seconds, breathing lightly, then lower. Do 5 reps, rest 30 seconds, then 3, then 1. Swap the bent leg halfway."
+    ]
+   ],
+   "watchFor": [
+    "Tucking your chin or pulling with your neck",
+    "Curling up like a sit-up",
+    "Your lower back pressing flat into your hands"
+   ],
+   "video": {
+    "id": "2_e4I-brfqs",
+    "title": "The 3 Best Core Exercises [Do These Every Day]",
+    "channel": "Squat University",
+    "note": "Covers the curl-up, side plank and bird dog together."
+   }
+  },
+  "sidePlank": {
+   "steps": [
+    [
+     "Set up",
+     "Lie on your side with your elbow under your shoulder and your knees bent. That's the starting version."
+    ],
+    [
+     "Lift",
+     "Push your hips forward and up until you're a straight line from ear to knee, hips stacked."
+    ],
+    [
+     "Hold",
+     "Hold for 10 seconds, rest 10, and repeat 4–5 times each side."
+    ]
+   ],
+   "watchFor": [
+    "Hips sagging or sitting back",
+    "Your chest rolling toward the floor"
+   ],
+   "photos": "Side_Bridge",
+   "photoNote": "The photo may show the harder version on the feet. You start on your knees.",
+   "video": {
+    "id": "2_e4I-brfqs",
+    "title": "The 3 Best Core Exercises [Do These Every Day]",
+    "channel": "Squat University",
+    "note": "Covers the curl-up, side plank and bird dog together."
+   }
+  },
+  "birdDog": {
+   "steps": [
+    [
+     "Set up",
+     "On hands and knees with your back in its natural position and your stomach lightly braced."
+    ],
+    [
+     "Reach",
+     "Slide one leg straight back and the opposite arm straight forward until both are level with your body. Make a fist and push your heel away."
+    ],
+    [
+     "Hold",
+     "Hold 8–10 seconds without your hips or back moving. Sweep your hand and knee back under you and go again. 6 reps, then 4, then 2 per side."
+    ]
+   ],
+   "watchFor": [
+    "Hips rotating or your back arching as the leg lifts",
+    "Lifting the leg higher than hip height"
+   ],
+   "video": {
+    "id": "2_e4I-brfqs",
+    "title": "The 3 Best Core Exercises [Do These Every Day]",
+    "channel": "Squat University",
+    "note": "Covers the curl-up, side plank and bird dog together."
+   }
+  },
+  "gluteBridge": {
+   "steps": [
+    [
+     "Set up",
+     "Lie on your back with your knees bent, feet flat and hip-width, arms by your sides."
+    ],
+    [
+     "Lift",
+     "Squeeze your glutes first, then lift your hips until you're level from shoulders to knees. Hold the squeeze for 5 seconds."
+    ],
+    [
+     "Lower",
+     "Lower slowly."
+    ]
+   ],
+   "watchFor": [
+    "Arching your lower back to get higher",
+    "Feeling it mostly in your hamstrings. Bring your feet closer."
+   ],
+   "photos": "Butt_Lift_Bridge"
+  },
+  "skipping": {
+   "steps": [
+    [
+     "Set up",
+     "Rope handles at hip height, elbows close to your sides."
+    ],
+    [
+     "Skip",
+     "Turn the rope with your wrists and make small, quiet jumps on the balls of your feet, just high enough to clear it."
+    ],
+    [
+     "Rounds",
+     "1–2 minutes, three times, with a short rest between."
+    ]
+   ],
+   "watchFor": [
+    "Loud, heavy landings",
+    "Jumping high with stiff knees",
+    "Knee swelling or pain afterwards. Flag it in the next morning check."
+   ],
+   "photos": "Rope_Jumping"
+  },
+  "hopAndStick": {
+   "steps": [
+    [
+     "Set up",
+     "Stand on one leg with your knee slightly bent."
+    ],
+    [
+     "Hop",
+     "Hop forward a comfortable distance and land on the same leg."
+    ],
+    [
+     "Stick",
+     "Land softly with your knee over your foot and freeze for 2 seconds before the next rep."
+    ]
+   ],
+   "watchFor": [
+    "Knee caving inward on landing",
+    "Stiff, loud landings",
+    "Wobbling. Shorten the hop until you can freeze it."
+   ],
+   "photos": "Single-Leg_Hop_Progression",
+   "photoNote": "The photo shows continuous hops over cones. You do one hop at a time and freeze each landing.",
+   "video": {
+    "id": "iULSY4NdKXM",
+    "title": "How to Perform a Single Leg Hop (and Stick the Landing)",
+    "channel": "Miguel Aragoncillo"
+   }
+  },
+  "skaterBound": {
+   "steps": [
+    [
+     "Set up",
+     "Stand on one leg in a slight squat."
+    ],
+    [
+     "Bound",
+     "Push off sideways and land on the opposite leg."
+    ],
+    [
+     "Stick",
+     "Land softly with your knee over your foot and freeze for 2 seconds. Then bound back."
+    ]
+   ],
+   "watchFor": [
+    "Knee caving in or twisting on landing",
+    "Putting the trailing foot down for balance",
+    "Going for distance before you can stick the landing"
+   ],
+   "photos": "Lateral_Bound",
+   "video": {
+    "id": "1IukLCtNqvM",
+    "title": "Lateral Skater Jump & Stick",
+    "channel": "Garrett McLaughlin"
+   }
+  },
+  "chestSupportedRow": {
+   "steps": [
+    [
+     "Set up",
+     "Set a bench to a low incline and lie chest-down on it with a DB in each hand, arms hanging straight."
+    ],
+    [
+     "Pull",
+     "Pull your elbows back toward your hips and squeeze your shoulder blades together."
+    ],
+    [
+     "Lower",
+     "Lower to straight arms. Your chest stays on the bench the whole time."
+    ]
+   ],
+   "watchFor": [
+    "Your chest lifting off the bench to heave the weight",
+    "Shrugging toward your ears"
+   ],
+   "photos": "Dumbbell_Incline_Row"
+  },
+  "gobletBoxSquat": {
+   "steps": [
+    [
+     "Set up",
+     "Stand in front of a chair that puts your thighs parallel to the floor when you sit. Hold the DB against your chest, feet shoulder-width."
+    ],
+    [
+     "Lower",
+     "Sit back and down over 3 seconds until you lightly touch the chair. Don't rest on it."
+    ],
+    [
+     "Stand",
+     "Stand up through your whole foot with your chest tall."
+    ]
+   ],
+   "watchFor": [
+    "Plopping onto the chair",
+    "Knees caving in",
+    "A chair so low your knees bend past 90°"
+   ],
+   "photos": "Goblet_Squat",
+   "photoNote": "The photo shows a deep squat with a kettlebell. Yours stops when you touch the chair at parallel.",
+   "video": {
+    "id": "j_aozkAccpQ",
+    "title": "Dumbbell Goblet Box Squat Tutorial | Dumbbell Goblet Squat",
+    "channel": "Lift With Michelle"
+   }
+  },
+  "bStanceRdl": {
+   "steps": [
+    [
+     "Set up",
+     "Hold the DB in front of your thighs. Slide one foot back so its toes are level with your other heel. That back foot is just a kickstand."
+    ],
+    [
+     "Hinge",
+     "With most of your weight on the front leg, push your hips back and lower the DB down the front shin over 3 seconds, back flat."
+    ],
+    [
+     "Stand",
+     "Drive your hips forward to stand tall."
+    ]
+   ],
+   "watchFor": [
+    "Your back rounding",
+    "Weight shifting onto the back foot",
+    "The front knee locking straight. Keep it soft."
+   ],
+   "video": {
+    "id": "d8mnjJ00DjI",
+    "title": "Dumbbell B Stance Romanian Deadlift (RDL) Demo",
+    "channel": "Steph Gaudreau"
+   }
+  },
+  "bandGoodMorning": {
+   "steps": [
+    [
+     "Set up",
+     "Stand on the band with your feet hip-width and loop the other end over the back of your shoulders, holding it in place with your hands."
+    ],
+    [
+     "Hinge",
+     "Push your hips back with soft knees and a flat back until you feel your hamstrings load."
+    ],
+    [
+     "Stand",
+     "Drive your hips forward and stand up straight. Stop at straight; don't lean back."
+    ]
+   ],
+   "watchFor": [
+    "Your back rounding",
+    "The band sitting on your neck instead of your shoulders",
+    "Leaning back at the top"
+   ],
+   "photos": "Band_Good_Morning"
+  },
+  "barbellHipThrust": {
+   "steps": [
+    [
+     "Set up",
+     "Sit with your shoulder blades against a bench and roll a padded bar over your hips. Feet flat, hip-width."
+    ],
+    [
+     "Lift",
+     "Drive through your heels until you're level from shoulders to knees. Tuck your pelvis and squeeze your glutes for a second."
+    ],
+    [
+     "Lower",
+     "Lower under control and reset."
+    ]
+   ],
+   "watchFor": [
+    "Arching your lower back at the top",
+    "The bar rolling toward your stomach",
+    "Looking at the ceiling. Keep your chin tucked."
+   ],
+   "photos": "Barbell_Hip_Thrust"
+  },
+  "legCurlMachine": {
+   "steps": [
+    [
+     "Set up",
+     "Adjust the machine so the pad sits just above your heels and your knees line up with the pivot."
+    ],
+    [
+     "Curl",
+     "Curl the pad toward your bum without your hips lifting."
+    ],
+    [
+     "Lower",
+     "Lower over 2–3 seconds until your legs are nearly straight."
+    ]
+   ],
+   "watchFor": [
+    "Hips lifting off the pad",
+    "Swinging the weight"
+   ],
+   "photos": "Lying_Leg_Curls"
+  }
+ }
+}
