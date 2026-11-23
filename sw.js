@@ -2,7 +2,7 @@
 // App files (page, styles, script, program data): always try the network first so an update
 // shows on the next open, and fall back to the saved copy when offline or slow.
 // Photos, icons and fonts: saved copy first, they don't change.
-const CACHE = 'training-v8';
+const CACHE = 'training-v9';
 const CORE = ['./', 'index.html', 'app.css', 'app.js', 'manifest.webmanifest',
   'data/program.json', 'data/howto.json', 'icons/icon-192.png'];
 

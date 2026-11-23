@@ -7,6 +7,7 @@ const DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const DAYNAME = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const REST_SECONDS = 120;
+const VERSION = 13; // shown at the bottom of Body, so you can tell which version the phone is running
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -418,6 +419,7 @@ function viewBody() {
   html += `<div class="lbl">Appearance</div><div class="card"><div class="seg" style="display:flex">${P.appearance.options.map(o => `<button style="flex:1" data-act="theme" data-val="${o}" class="${th === o ? 'on' : ''}">${o[0].toUpperCase() + o.slice(1)}</button>`).join('')}</div></div>`;
   html += `<details><summary>Backup</summary><div class="dd"><p class="note" style="margin-top:0">Everything you log lives on this phone. Copy a backup now and then, and paste it back if the phone ever loses it.</p>
     <div style="display:flex;gap:8px" class="mt"><button class="btn ghost sm" data-act="backup">Copy backup</button><button class="btn ghost sm" data-act="sheet" data-s="restore">Restore</button></div></div></details>`;
+  html += `<div class="card" style="display:flex;align-items:center;gap:10px"><div style="flex:1"><b>Version ${VERSION}</b><div class="sub">Your log is kept when you update.</div></div><button class="btn ghost sm" data-act="update">Update app</button></div>`;
   return html;
 }
 
@@ -640,6 +642,16 @@ const ACT = {
   plyoFreq(t) { setSetting('plyoFreq', t.dataset.val); render(); },
   runStage(t) { setSetting('runStage', t.dataset.val); render(); },
   theme(t) { setSetting('theme', t.dataset.val); applyTheme(); render(); },
+  async update() {
+    toast('Updating…');
+    try {
+      // fetch fresh copies past every cache, then drop the offline cache and reload
+      await Promise.all(['./', 'index.html', 'app.css', 'app.js', 'sw.js', 'data/program.json', 'data/howto.json'].map(u => fetch(u, { cache: 'reload' }).catch(() => { })));
+      if ('serviceWorker' in navigator) { const regs = await navigator.serviceWorker.getRegistrations(); await Promise.all(regs.map(r => r.unregister())); }
+      if (window.caches) { const keys = await caches.keys(); await Promise.all(keys.map(k => caches.delete(k))); }
+    } catch (e) { }
+    location.reload();
+  },
   async copyExport() { toast(await copyText(exportText()) ? 'Copied. Paste it into the chat.' : 'Select the text and copy it'); },
   async backup() {
     const all = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); all[k] = localStorage.getItem(k); }
@@ -697,6 +709,6 @@ async function boot() {
   // roll the date over if the app stays open past midnight
   document.addEventListener('visibilitychange', () => { if (!document.hidden && S.date < today() && !S.stack.length) { S.date = today(); render(); } });
   render();
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').then(r => r.update()).catch(() => { });
 }
 boot();
