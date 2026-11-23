@@ -33,6 +33,8 @@ h1, h2, .num { font-family: var(--fh); }
   font-size: 12px; font-weight: 600; color: var(--faint); }
 #tabs svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 #tabs button.on { color: var(--acc); }
+/* Pin the bar to the real bottom of the screen. iPhone home-screen apps can get bottom:0 wrong. */
+@supports (top: 100dvh) { #tabs { bottom: auto; top: 100dvh; transform: translateY(-100%); } }
 body.ov-open #tabs { display: none; }
 
 /* header */
