@@ -72,6 +72,7 @@ textarea.field { min-height: 84px; resize: vertical; }
 .seg.danger button.on[data-val="true"] { background: var(--stop); color: #fff; }
 .btn { display: block; width: 100%; padding: 13px; border-radius: 12px; background: var(--acc); color: var(--on-acc); font-weight: 700; text-align: center; }
 .btn.ghost { background: transparent; border: 1px solid var(--edge); color: var(--text); }
+.btn.saved { background: transparent; border: 1px solid var(--ok); color: var(--ok); }
 .btn.sm { display: inline-block; width: auto; padding: 8px 14px; font-size: 14px; border-radius: 10px; }
 input[type=range] { width: 100%; accent-color: var(--acc); }
 .pain-val { font-family: var(--fh); font-weight: 700; font-size: 20px; min-width: 28px; text-align: right; }

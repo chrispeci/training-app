@@ -97,6 +97,19 @@ document.addEventListener('toggle', e => {
   if (!d || d.tagName !== 'DETAILS' || !d.isConnected) return;
   if (d.open) OPEN.add(dkey(d)); else OPEN.delete(dkey(d));
 }, true);
+/* Save buttons. Everything is stored the moment you enter it; the button confirms it,
+   and flips back to "Save" as soon as that section changes again. */
+const isSaved = (sec, k) => sec === 'appts' ? !!settings().apptsSaved : !!((day(k || S.date).saved || {})[sec]);
+const saveBtn = sec => { const ok = isSaved(sec); return `<button class="btn mt ${ok ? 'saved' : ''}" data-act="saveSec" data-sec="${sec}">${ok ? 'Saved ✓' : 'Save'}</button>`; };
+function markDirty(sec) {
+  if (sec === 'appts') { if (settings().apptsSaved) setSetting('apptsSaved', false); }
+  else if (isSaved(sec)) upd(S.date, d => { d.saved[sec] = false; });
+  const finished = !!(day(S.date).end || {}).finished;
+  document.querySelectorAll(`[data-sec="${sec}"]`).forEach(b => {
+    b.classList.remove('saved');
+    b.textContent = sec !== 'session' ? 'Save' : finished ? 'Save changes' : 'Finish session';
+  });
+}
 function restoreOpen() { document.querySelectorAll('details').forEach(d => { if (OPEN.has(dkey(d))) d.open = true; }); }
 
 function toast(msg) {
@@ -226,7 +239,7 @@ function viewDay(k, d) {
     }
   }).join('');
   html += `<div class="card">${rows}</div>`;
-  html += `<div class="lbl">Notes</div><textarea class="field" data-in="note" placeholder="Anything for the weekly check-in">${esc(d.notes || '')}</textarea>`;
+  html += `<div class="lbl">Notes</div><textarea class="field" data-in="note" placeholder="Anything for the weekly check-in">${esc(d.notes || '')}</textarea>${saveBtn('today')}`;
   return html;
 }
 
@@ -264,7 +277,7 @@ function viewSession() {
     <button data-act="seg" data-val="false" class="${end[f.id] === false ? 'on' : ''}">No</button><button data-act="seg" data-val="true" class="${end[f.id] === true ? 'on' : ''}">Yes</button></div></div>`;
   const endRows = P.sessionEnd.fields.map(f => f.type === 'scale' ? scale(f) : (f.id === 'sauna' && !sauna) ? '' : yn(f)).join('');
   html += `<div class="lbl">How was it?</div><div class="card">${endRows}</div>
-    <button class="btn" data-act="finish">${d.end && d.end.finished ? 'Saved · update' : 'Finish session'}</button>`;
+    <button class="btn ${isSaved('session') ? 'saved' : ''}" data-act="finish" data-sec="session">${!(d.end && d.end.finished) ? 'Finish session' : isSaved('session') ? 'Saved ✓' : 'Save changes'}</button>`;
   return html;
 }
 
@@ -357,7 +370,7 @@ function viewFood() {
     <button class="tick ${done.creatine ? 'on' : ''}" data-act="tick" data-k="creatine" aria-label="Taken"></button></div></div>`;
   const total = fast ? meals.dayTotal : meals.dayTotal[pr];
   html += `<p class="note" style="margin:0 2px 4px">Day: ${esc(total)}</p>`;
-  html += `<div class="lbl">Ate something else?</div><textarea class="field" data-in="foodExtra" placeholder="What and roughly how much">${esc(d.foodExtra || '')}</textarea>`;
+  html += `<div class="lbl">Ate something else?</div><textarea class="field" data-in="foodExtra" placeholder="What and roughly how much">${esc(d.foodExtra || '')}</textarea>${saveBtn('food')}`;
 
   const sh = P.food.shopping, bc = P.food.batchCook;
   const li = arr => (arr || []).map(x => Array.isArray(x) ? `<li>${esc(x[0])}${x[1] ? ` <span class="muted">× ${esc(x[1])}</span>` : ''}</li>` : `<li>${esc(x)}</li>`).join('');
@@ -386,7 +399,7 @@ function viewBody() {
   html += `<details><summary>Next up ${next ? `<span class="chip acc" style="margin-left:4px">${esc(next.label)}</span>` : ''}</summary><div class="dd">
     ${appts.length ? appts.map(a => `<div class="ex"><div class="grow"><div class="name">${esc(a.what)}</div><div class="sub">${esc(a.label)}${a.time ? ' · ' + esc(a.time) : ''}${a.note ? '<br>' + esc(a.note) : ''}</div></div></div>`).join('') : '<p class="note">Nothing yet.</p>'}
     <div class="lbl" style="margin-top:12px">Add your own · one per line: date | time | what</div>
-    <textarea class="field" data-in="appts" placeholder="2026-12-03 | 4:00 pm | Physio">${esc(settings().appts || '')}</textarea>
+    <textarea class="field" data-in="appts" placeholder="2026-12-03 | 4:00 pm | Physio">${esc(settings().appts || '')}</textarea>${saveBtn('appts')}
     </div></details>`;
   const list = items => `<ul class="plain">${items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`;
   html += `<details class="stop"><summary>Stop and get seen if</summary><div class="dd" style="color:var(--text)">${list(g.kneeStop.items)}<p class="note">${esc(g.kneeStop.note)}</p></div></details>`;
@@ -567,7 +580,7 @@ const ACT = {
     const g = t.parentElement;
     g.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === t));
     const raw = t.dataset.val, val = raw === 'true' ? true : raw === 'false' ? false : isNaN(+raw) ? raw : +raw;
-    if (g.dataset.save) upd(S.date, d => setPath(d, g.dataset.save, val));
+    if (g.dataset.save) { upd(S.date, d => setPath(d, g.dataset.save, val)); markDirty('session'); }
   },
   saveCheck() {
     const c = {};
@@ -583,7 +596,13 @@ const ACT = {
   },
   editCheck() { upd(S.date, d => { d.editCheck = true; }); render(); },
   cancelEdit() { upd(S.date, d => { delete d.editCheck; }); render(); },
-  tick(t) { upd(S.date, d => { d.done = d.done || {}; d.done[t.dataset.k] = !d.done[t.dataset.k]; }); render(); },
+  tick(t) { upd(S.date, d => { d.done = d.done || {}; d.done[t.dataset.k] = !d.done[t.dataset.k]; }); markDirty(S.view === 'food' ? 'food' : 'today'); render(); },
+  saveSec(t) {
+    const sec = t.dataset.sec;
+    if (sec === 'appts') setSetting('apptsSaved', true);
+    else upd(S.date, d => { d.saved = d.saved || {}; d.saved[sec] = true; });
+    toast('Saved'); render();
+  },
   openSession() { pushOverlay({ type: 'session' }); },
   howto(t) { pushOverlay({ type: 'howto', ex: t.dataset.ex, fromSheet: !!S.sheet }); },
   meal(t) { const key = S.date + ':' + t.dataset.m; S.mealOpen[key] = !S.mealOpen[key]; render(); },
@@ -603,18 +622,20 @@ const ACT = {
   pain(t) {
     const slot = t.dataset.slot;
     upd(S.date, d => { d.pain = d.pain || {}; const c = d.pain[slot]; d.pain[slot] = !c ? 'amber' : c === 'amber' ? 'red' : null; if (!d.pain[slot]) delete d.pain[slot]; });
+    markDirty('session');
     const ov = $('#overlay'); S.stack[S.stack.length - 1].scroll = ov.scrollTop; render();
   },
   swap(t) {
     upd(S.date, d => { d.swap = d.swap || {}; d.swap[t.dataset.slot] = !d.swap[t.dataset.slot]; });
+    markDirty('session');
     const ov = $('#overlay'); S.stack[S.stack.length - 1].scroll = ov.scrollTop; render();
   },
   finish() {
-    upd(S.date, d => { d.end = d.end || {}; d.end.finished = true; });
+    upd(S.date, d => { d.end = d.end || {}; d.end.finished = true; d.saved = d.saved || {}; d.saved.session = true; });
     S.rest = null; toast('Session saved'); back();
   },
   stopRest() { S.rest = null; S.restBuzzed = false; paintRest(); },
-  water(t) { upd(S.date, d => { d.water = Math.max(0, (d.water || 0) + +t.dataset.n); }); render(); },
+  water(t) { upd(S.date, d => { d.water = Math.max(0, (d.water || 0) + +t.dataset.n); }); markDirty('food'); render(); },
   protein() { setSetting('protein', protein() === 'beef' ? 'chicken' : 'beef'); render(); },
   plyoFreq(t) { setSetting('plyoFreq', t.dataset.val); render(); },
   runStage(t) { setSetting('runStage', t.dataset.val); render(); },
@@ -644,15 +665,17 @@ document.addEventListener('input', e => {
   const t = e.target, kind = t.dataset.in;
   if (!kind) return;
   if (kind === 'painSlider') { const pv = $('#pv'); pv.textContent = t.value; pv.className = 'pain-val ' + painClass(+t.value); }
-  if (kind === 'note') upd(S.date, d => { d.notes = t.value; });
-  if (kind === 'foodExtra') upd(S.date, d => { d.foodExtra = t.value; });
-  if (kind === 'appts') setSetting('appts', t.value);
+  if (kind === 'note') { upd(S.date, d => { d.notes = t.value; }); markDirty('today'); }
+  if (kind === 'foodExtra') { upd(S.date, d => { d.foodExtra = t.value; }); markDirty('food'); }
+  if (kind === 'appts') { setSetting('appts', t.value); markDirty('appts'); }
   if (kind === 'load') {
     upd(S.date, d => { d.loads = d.loads || {}; d.loads[t.dataset.slot] = t.value; });
     const s = settings(); s.loads = s.loads || {}; if (t.value) s.loads[t.dataset.ex] = t.value; LS.set('settings', s);
+    markDirty('session');
   }
   if (kind === 'set') {
     upd(S.date, d => { d.sets = d.sets || {}; const a = d.sets[t.dataset.slot] = d.sets[t.dataset.slot] || []; a[+t.dataset.i] = t.value; });
+    markDirty('session');
   }
 });
 document.addEventListener('change', e => {
