@@ -7,7 +7,7 @@ const DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const DAYNAME = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const REST_SECONDS = 120;
-const VERSION = 14; // shown at the bottom of Body, so you can tell which version the phone is running
+const VERSION = 15; // shown at the bottom of Body, so you can tell which version the phone is running
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -82,13 +82,19 @@ function sessionBlocks(sid, k) {
 }
 
 /* Ladders (the handstand balance ladder): current rung lives on the phone, starting at the program's rung. */
-const rungOf = id => { const e = P.exercises[id] || {}; const r = (settings().rungs || {})[id]; return r != null ? r : e.rung; };
+const rungOf = id => {
+  const e = P.exercises[id] || {}, s = (settings().rungs || {})[id];
+  if (s == null) return e.rung;
+  const saved = typeof s === 'number' ? { r: s, base: 5 } : s;  // build 14 saved a bare number while the program's rung was 5
+  return saved.base === e.rung ? saved.r : e.rung;                // the program moved the rung at a check-in: the program wins
+};
 function ladderLine(id) {
   const e = P.exercises[id];
   if (!e || !e.ladder) return '';
   const r = rungOf(id), step = e.ladder.find(x => x.n === r) || e.ladder[0];
   return `<button class="rungline" data-act="howto" data-ex="${esc(id)}">Rung ${step.n}: ${esc(step.name)} · ${esc(step.target)} <span class="muted">›</span></button>`;
 }
+const altOf = item => ({ ...item, load: null, loadNote: undefined, warmUpSets: undefined, note: undefined, ...item.orInstead });
 const loadValue = l => ((String(l ?? '').match(/^(\+?[\d.]+)\s*kg/) || [])[1] || '');
 const kneeFlags = c => c ? [['kneeSwelling', 'swelling'], ['kneeStraightensLess', 'straightens less'], ['kneePainfulClicking', 'painful clicking']].filter(([f]) => c[f]).map(([, l]) => l) : [];
 const kneeStop = k => kneeFlags(day(k).check).length > 0;
@@ -183,7 +189,8 @@ function viewToday() {
 function viewCheck(k, d) {
   const c = d.check || {};
   const y = addDays(k, -1);
-  const showAfter = (planFor(y).timeline.some(t => t.kind === 'plyo') && plyoDue(y)) || runDay(y);
+  const yPlyoInSession = sessionBlocks(sessionIdFor(y), y).some(b => b.useBlock === 'plyo');
+  const showAfter = ((planFor(y).timeline.some(t => t.kind === 'plyo') || yPlyoInSession) && plyoDue(y)) || runDay(y);
   let groupDone = false;
   const rows = P.morningCheck.fields.map(f => {
     if (f.id === 'afterPlyos' && !showAfter) return '';
@@ -233,7 +240,7 @@ function viewDay(k, d) {
       case 'water': return tick('water', 'Water on waking', `${P.food.water.onWakingMl} ml`);
       case 'back': return tick('back', 'Back routine', `${esc(P.blocks.backRoutine.minutes)} min · tap for the list`, 'data-act="sheet" data-s="block" data-b="backRoutine"');
       case 'session': {
-        const fin = !!d.end;
+        const fin = !!(d.end && d.end.finished);
         const where = loc ? (loc === 'home' ? 'Home' : 'Gym') : s.where;
         return `<div class="tl"><div class="t">${esc(t.time)}</div><div class="grow"><div class="sess ${fin ? 'done' : ''}">
           <div class="name">${esc(s.name)}${fin ? ' · done' : ''}</div><div class="sub">${s.minutes} min · ${esc(where || '')}</div>
@@ -258,6 +265,9 @@ function viewDay(k, d) {
         return tick('run', `Run · stage ${runStage()}`, esc(P.run.stages[runStage()].session));
       case 'walk':
         return tick('walk', esc(t.title || 'Walk'), esc(t.sub || ''));
+      case 'ex':
+        return tick('ex_' + t.ex, esc(t.title || exName(t.ex)), (t.sub ? esc(t.sub) + ' · ' : '') + 'tap for how-to',
+          `data-act="howto" data-ex="${esc(t.ex)}"`, stop && t.kneeOffNote ? `<div class="note red" style="margin-top:2px">${esc(t.kneeOffNote)}</div>` : '');
       default: return '';
     }
   }).join('');
@@ -281,7 +291,10 @@ function viewSession() {
   if (P.block.weekNotes[wk]) html += `<div class="note" style="margin:-2px 2px 10px">${esc(P.block.weekNotes[wk])}</div>`;
 
   blocks.forEach((b, bi) => {
-    if (stop && b.useBlock === 'plyo') return;
+    if (b.useBlock === 'plyo' && (stop || !plyoDue(k))) {
+      if (!stop) html += `<p class="note" style="margin:0 2px 10px">Physio plyos: rest day today (every 2nd day).</p>`;
+      return;
+    }
     const logged = b.items.some(i => i.log);
     if (logged) {
       html += `<div class="lbl">${esc(b.name)} <span style="text-transform:none;letter-spacing:0;font-weight:400">· ${b.minutes} min</span></div>`;
@@ -324,7 +337,7 @@ function guidelinesBox(blocks) {
 function exRow(item, ctx) {
   const key = item._key || item.ex;
   const swapped = !!(ctx && item.orInstead && ctx.d.swap && ctx.d.swap[key]);
-  const it = swapped ? { ...item, ...item.orInstead } : item;
+  const it = swapped ? altOf(item) : item;
   return `<div class="ex"><div class="grow"><div class="name">${esc(exName(it.ex))}</div>
     <div class="sub">${esc(it.target || '')}${it.note ? ' · ' + esc(it.note) : ''}${it.alternateDays ? ' · Other days: ' + esc(it.alternateDays) : ''}</div>
     ${ctx ? ladderLine(it.ex) : ''}
@@ -335,7 +348,7 @@ function exRow(item, ctx) {
 function liftCard(k, d, item) {
   const slot = item._key || item.slot || item.ex;
   const swapped = item.orInstead && d.swap && d.swap[slot];
-  const it = swapped ? { ...item, ...item.orInstead } : item;
+  const it = swapped ? altOf(item) : item;
   const sets = (d.sets && d.sets[slot]) || [];
   const loads = settings().loads || {};
   const load = (d.loads && d.loads[slot]) ?? loads[it.ex] ?? loadValue(it.load);
@@ -344,7 +357,7 @@ function liftCard(k, d, item) {
   const n = it.sets || 3;
   const pain = d.pain && d.pain[slot];
   const boxes = Array.from({ length: n }, (_, i) => `<input class="field" type="number" inputmode="numeric" data-in="set" data-slot="${esc(slot)}" data-i="${i}" value="${esc(sets[i] ?? '')}" placeholder="${esc(ph + unit)}" aria-label="Set ${i + 1}">`).join('');
-  const usesLoad = !!('load' in it || loads[it.ex] || (d.loads && d.loads[slot] != null) || /weighted|press|deadlift|rdl|row|squat|thrust|curl|carry/i.test(it.ex));
+  const usesLoad = !!('load' in it || loads[it.ex] || (d.loads && d.loads[slot] != null));
   return `<div class="lift"><div class="head">${item.slot ? `<span class="slot">${esc(item.slot)}</span>` : ''}
       <div style="flex:1;min-width:0"><div class="name">${esc(exName(it.ex))}</div><div class="sub">${esc(it.target)}</div>${it.note ? `<div class="note">${esc(it.note)}</div>` : ''}${ladderLine(it.ex)}</div>
       <button class="info" data-act="howto" data-ex="${esc(it.ex)}" aria-label="How to">i</button></div>
@@ -412,7 +425,7 @@ function viewLibrary() {
   return `<div class="ov-top"><button class="back" data-act="back" aria-label="Back">‹</button><div style="flex:1"><h1>Library</h1><div class="sub">Approved exercises and what they swap with</div></div></div>
     <p class="note" style="margin:0 2px 6px">To swap one in, ask Claude at your check-in. Tap any of them for the how-to.</p>
     ${bench.length ? `<div class="lbl">Ready to swap in</div>${bench.map(row).join('')}` : ''}
-    ${live.length ? `<div class="lbl">Already in a session</div>${live.map(row).join('')}` : ''}`;
+    ${live.length ? `<div class="lbl">Already in the program</div>${live.map(row).join('')}` : ''}`;
 }
 
 /* ----- Food ----- */
@@ -577,7 +590,7 @@ function exportText() {
     blocks.forEach(b => b.items.filter(it => it.log).forEach(item => {
       const slot = item._key || item.slot || item.ex;
       const swapped = item.orInstead && d.swap && d.swap[slot];
-      const it = swapped ? { ...item, ...item.orInstead } : item;
+      const it = swapped ? altOf(item) : item;
       const sets = ((d.sets || {})[slot] || []).filter(v => v !== '' && v != null);
       const load = (d.loads || {})[slot];
       const pain = (d.pain || {})[slot];
@@ -598,6 +611,7 @@ function exportText() {
     const ate = ['shake', 'lunch', 'dinner'].filter(m => dn['meal_' + m]);
     bits.push(ate.length ? 'ate ' + ate.join(', ') : 'no meals ticked');
     if (dn.creatine) bits.push('creatine');
+    plan.timeline.filter(t => t.kind === 'ex' && dn['ex_' + t.ex]).forEach(t => bits.push((t.title || exName(t.ex)).toLowerCase()));
     if (dn.back) bits.push('back routine');
     if (dn.plyo) bits.push('plyos');
     if (dn.run) bits.push('run');
@@ -684,7 +698,7 @@ const ACT = {
   rung(t) {
     const id = t.dataset.ex, L = P.exercises[id].ladder;
     const r = Math.min(L[L.length - 1].n, Math.max(L[0].n, rungOf(id) + +t.dataset.n));
-    const all = settings().rungs || {}; all[id] = r; setSetting('rungs', all);
+    const all = settings().rungs || {}; all[id] = { r, base: P.exercises[id].rung }; setSetting('rungs', all);
     toast(`Rung ${r} saved`); render();
   },
   howto(t) { pushOverlay({ type: 'howto', ex: t.dataset.ex, fromSheet: !!S.sheet }); },

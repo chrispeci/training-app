@@ -1,2588 +1,786 @@
 {
- "meta": {
-  "file": "claude/app-data.json",
-  "purpose": "Everything the training app shows, as plain data. The app reads this file; nothing in here is code. To change the program, Claude edits this file and republishes.",
-  "basedOn": [
-   "claude/program.md v1.6.1",
-   "claude/meal-plan.md v2",
-   "claude/health-admin.md (23 Nov 2026)",
-   "baseline.md (23 Nov 2026)"
-  ],
-  "dataVersion": 6,
-  "updated": "2026-11-24",
-  "status": "Matches program.md v1.6.1 (morning flow has its hops back). Live changes: rear delt raise added to the Upper A accessory block; standing hip flexor raise alternates weekly with side-plank hip abduction on Lower B. New top-level library section: approved exercises that are not in a session slot (status bench) plus what each one swaps with. Eight new exercise ids: rearDeltRaise, hipFlexorRaise, halfKneelingHipLoad, pigeonRaise, frogStand, proneStickExtension, eveningStretch, morningFlow. Their how-tos carry an Instagram demo link. The build does not show the library yet."
- },
- "block": {
-  "number": 1,
-  "start": "2026-11-02",
-  "weeks": 6,
-  "weekNotes": {
-   "4": "Full sets. Loaded lifts RPE 7–8. Bodyweight sets RPE 8–9, never to failure on the first set.",
-   "5": "Full sets. Retest Sat 5 Dec. From about 3 Dec, eat at maintenance (the cut pauses around surgery).",
-   "6": "Deload: same exercises, half the sets, RPE 6–7 or easier. Skill and mobility unchanged. Surgery booked Thu 10 Dec."
-  }
- },
- "week": {
-  "mon": {
-   "session": "upperA",
-   "fastDay": false,
-   "timeline": [
-    {
-     "time": "6:00",
-     "kind": "water"
-    },
-    {
-     "time": "6:10",
-     "kind": "back"
-    },
-    {
-     "time": "6:30",
-     "kind": "session"
-    },
-    {
-     "time": "7:30",
-     "kind": "meal",
-     "meal": "shake"
-    },
-    {
-     "time": "12:30",
-     "kind": "meal",
-     "meal": "lunch"
-    },
-    {
-     "time": "4:30",
-     "kind": "plyo"
-    },
-    {
-     "time": "",
-     "kind": "run"
-    },
-    {
-     "time": "7:00",
-     "kind": "meal",
-     "meal": "dinner"
+  "meta": {
+    "file": "claude/app-data.json",
+    "purpose": "Everything the training app shows, as plain data. The app reads this file; nothing in here is code. To change the program, Claude edits this file and republishes.",
+    "basedOn": ["claude/program.md v1.6.2", "claude/meal-plan.md v2", "claude/health-admin.md (23 Nov 2026)", "baseline.md (23 Nov 2026)"],
+    "dataVersion": 7,
+    "updated": "2026-11-24",
+    "status": "Matches program.md v1.6.2: the morning loosening flow is live as a 6:00 row on Today every day (timeline kind \"ex\": tap opens its how-to; kneeOffNote shows when the knee check is off), and the back routine's walk or march is now only the fallback if the flow is skipped. Earlier (v1.6/v1.6.1): rear delt raise added to the Upper A accessory block; standing hip flexor raise alternates weekly with side-plank hip abduction on Lower B. New top-level library section: approved exercises that are not in a session slot (status bench) plus what each one swaps with. Eight new exercise ids: rearDeltRaise, hipFlexorRaise, halfKneelingHipLoad, pigeonRaise, frogStand, proneStickExtension, eveningStretch, morningFlow. Their how-tos carry an Instagram demo link. Live app build v14 (24 Nov) shows the library, demo links and the handstand ladder. Appointments include the four bookings added on 23 Nov (dentist ×3, City Cave)."
+  },
+  "block": {
+    "number": 1,
+    "start": "2026-11-02",
+    "weeks": 6,
+    "weekNotes": {
+      "4": "Full sets. Loaded lifts RPE 7–8. Bodyweight sets RPE 8–9, never to failure on the first set.",
+      "5": "Full sets. Retest Sat 5 Dec. From about 3 Dec, eat at maintenance (the cut pauses around surgery).",
+      "6": "Deload: same exercises, half the sets, RPE 6–7 or easier. Skill and mobility unchanged. Surgery booked Thu 10 Dec."
     }
-   ]
   },
-  "tue": {
-   "session": "lowerA",
-   "fastDay": false,
-   "timeline": [
-    {
-     "time": "6:00",
-     "kind": "water"
+  "week": {
+    "mon": {
+      "session": "upperA",
+      "fastDay": false,
+      "timeline": [
+        {"time": "6:00", "kind": "water"},
+        {"time": "6:00", "kind": "ex", "ex": "morningFlow", "title": "Morning flow", "sub": "5–6 min, before the back routine", "kneeOffNote": "Knee check is off: drop the hops, the deep squat and the seiza today."},
+        {"time": "6:10", "kind": "back"},
+        {"time": "6:30", "kind": "session"},
+        {"time": "7:30", "kind": "meal", "meal": "shake"},
+        {"time": "12:30", "kind": "meal", "meal": "lunch"},
+        {"time": "4:30", "kind": "plyo"},
+        {"time": "", "kind": "run"},
+        {"time": "7:00", "kind": "meal", "meal": "dinner"}
+      ]
     },
-    {
-     "time": "6:10",
-     "kind": "back"
+    "tue": {
+      "session": "lowerA",
+      "fastDay": false,
+      "timeline": [
+        {"time": "6:00", "kind": "water"},
+        {"time": "6:00", "kind": "ex", "ex": "morningFlow", "title": "Morning flow", "sub": "5–6 min, before the back routine", "kneeOffNote": "Knee check is off: drop the hops, the deep squat and the seiza today."},
+        {"time": "6:10", "kind": "back"},
+        {"time": "6:30", "kind": "walk", "title": "Morning walk", "sub": "30–45 min, brisk, outside"},
+        {"time": "7:30", "kind": "meal", "meal": "shake"},
+        {"time": "12:30", "kind": "meal", "meal": "lunch"},
+        {"time": "4:30", "kind": "session", "sub": "Plyos are inside this session"},
+        {"time": "7:00", "kind": "meal", "meal": "dinner"}
+      ]
     },
-    {
-     "time": "6:30",
-     "kind": "walk",
-     "title": "Morning walk",
-     "sub": "30–45 min, brisk, outside"
+    "wed": {
+      "session": "skillCore",
+      "fastDay": true,
+      "timeline": [
+        {"time": "6:00", "kind": "water"},
+        {"time": "6:00", "kind": "ex", "ex": "morningFlow", "title": "Morning flow", "sub": "5–6 min, before the back routine", "kneeOffNote": "Knee check is off: drop the hops, the deep squat and the seiza today."},
+        {"time": "6:10", "kind": "back"},
+        {"time": "6:30", "kind": "session"},
+        {"time": "7:30", "kind": "meal", "meal": "shake"},
+        {"time": "12:30", "kind": "meal", "meal": "lunch"},
+        {"time": "4:30", "kind": "plyo"},
+        {"time": "", "kind": "run"},
+        {"time": "7:00", "kind": "meal", "meal": "dinner"}
+      ]
     },
-    {
-     "time": "7:30",
-     "kind": "meal",
-     "meal": "shake"
+    "thu": {
+      "session": "upperB",
+      "fastDay": false,
+      "timeline": [
+        {"time": "6:00", "kind": "water"},
+        {"time": "6:00", "kind": "ex", "ex": "morningFlow", "title": "Morning flow", "sub": "5–6 min, before the back routine", "kneeOffNote": "Knee check is off: drop the hops, the deep squat and the seiza today."},
+        {"time": "6:10", "kind": "back"},
+        {"time": "6:30", "kind": "session"},
+        {"time": "7:30", "kind": "meal", "meal": "shake"},
+        {"time": "12:30", "kind": "meal", "meal": "lunch"},
+        {"time": "4:30", "kind": "plyo"},
+        {"time": "", "kind": "walk", "title": "Walk", "sub": "30 min (an easy 30-min ride also counts)"},
+        {"time": "7:00", "kind": "meal", "meal": "dinner"}
+      ]
     },
-    {
-     "time": "12:30",
-     "kind": "meal",
-     "meal": "lunch"
+    "fri": {
+      "session": "lowerB",
+      "fastDay": true,
+      "timeline": [
+        {"time": "6:00", "kind": "water"},
+        {"time": "6:00", "kind": "ex", "ex": "morningFlow", "title": "Morning flow", "sub": "5–6 min, before the back routine", "kneeOffNote": "Knee check is off: drop the hops, the deep squat and the seiza today."},
+        {"time": "6:10", "kind": "back"},
+        {"time": "6:30", "kind": "walk", "title": "Morning walk", "sub": "30–45 min, brisk, outside"},
+        {"time": "7:30", "kind": "meal", "meal": "shake"},
+        {"time": "12:30", "kind": "meal", "meal": "lunch"},
+        {"time": "4:30", "kind": "session", "sub": "Plyos are inside this session"},
+        {"time": "7:00", "kind": "meal", "meal": "dinner"}
+      ]
     },
-    {
-     "time": "4:30",
-     "kind": "session",
-     "sub": "Plyos are inside this session"
+    "sat": {
+      "session": "skillGripBag",
+      "fastDay": false,
+      "timeline": [
+        {"time": "6:00", "kind": "water"},
+        {"time": "6:00", "kind": "ex", "ex": "morningFlow", "title": "Morning flow", "sub": "5–6 min, before the back routine", "kneeOffNote": "Knee check is off: drop the hops, the deep squat and the seiza today."},
+        {"time": "6:10", "kind": "back"},
+        {"time": "6:30", "kind": "session"},
+        {"time": "7:30", "kind": "meal", "meal": "shake"},
+        {"time": "12:30", "kind": "meal", "meal": "lunch"},
+        {"time": "4:30", "kind": "plyo"},
+        {"time": "", "kind": "run"},
+        {"time": "7:00", "kind": "meal", "meal": "dinner"}
+      ]
     },
-    {
-     "time": "7:00",
-     "kind": "meal",
-     "meal": "dinner"
+    "sun": {
+      "session": "recovery",
+      "fastDay": false,
+      "timeline": [
+        {"time": "6:00", "kind": "water"},
+        {"time": "6:00", "kind": "ex", "ex": "morningFlow", "title": "Morning flow", "sub": "5–6 min, before the back routine", "kneeOffNote": "Knee check is off: drop the hops, the deep squat and the seiza today."},
+        {"time": "6:10", "kind": "back"},
+        {"time": "6:30", "kind": "session"},
+        {"time": "7:30", "kind": "meal", "meal": "shake"},
+        {"time": "12:30", "kind": "meal", "meal": "lunch"},
+        {"time": "4:30", "kind": "plyo", "sub": "Keep it light today"},
+        {"time": "7:00", "kind": "meal", "meal": "dinner"}
+      ]
     }
-   ]
   },
-  "wed": {
-   "session": "skillCore",
-   "fastDay": true,
-   "timeline": [
-    {
-     "time": "6:00",
-     "kind": "water"
+  "sessions": {
+    "upperA": {
+      "name": "Upper A",
+      "where": "Home",
+      "minutes": 60,
+      "hard": true,
+      "blocks": [
+        {
+          "name": "Warm-up",
+          "minutes": 7,
+          "note": "Check your overhead reach is full.",
+          "items": [{"ex": "bandPullApart", "target": "2 × 15"}, {"ex": "bandDislocate", "target": "1 × 10"}, {"ex": "scapPushUp", "target": "1 × 10"}, {"ex": "wristPrep", "target": "3 min"}]
+        },
+        {
+          "name": "Skill",
+          "minutes": 10,
+          "note": "Skill work, not conditioning: every set stops well short of fatigue.",
+          "items": [
+            {"ex": "handstandFingerPrep", "target": "2–3 min, 1–2 of the 4 prep drills"},
+            {"ex": "handstandWallBalance", "target": "2–3 drills at the current rung, 2 × 30 s or 2 × 10 each", "log": "seconds", "sets": 2},
+            {"ex": "cartwheelBail", "target": "3 × 5"}
+          ]
+        },
+        {
+          "name": "Strength",
+          "minutes": 30,
+          "items": [
+            {"slot": "A1", "ex": "weightedPullUp", "target": "4 × 5", "log": "reps", "sets": 4, "load": "+10 kg", "alt": {"gym": {"note": "Dip belt, or a DB between the feet."}}},
+            {"slot": "A2", "ex": "pikePushUp", "target": "4 × 8–12", "log": "reps", "sets": 4},
+            {
+              "slot": "B1",
+              "ex": "diamondPushUp",
+              "target": "3 × 5–8",
+              "log": "reps",
+              "sets": 3,
+              "alt": {"gym": {"ex": "benchPress", "target": "3 × 5–8", "load": null, "note": "First session: find a weight that leaves 2–3 reps in the tank."}}
+            },
+            {"slot": "B2", "ex": "invertedRow", "target": "3 × 8–12", "log": "reps", "sets": 3, "alt": {"gym": {"ex": "chestSupportedRow", "target": "3 × 8–12", "load": null}}}
+          ]
+        },
+        {"name": "Accessory", "minutes": 6, "items": [{"ex": "neckIsometrics", "target": "2 × 10–15 s each direction"}, {"ex": "rearDeltRaise", "target": "2 × 12–15/side", "log": "reps", "sets": 2, "load": "5 kg plate", "alt": {"gym": {"target": "2 × 12–15", "load": null, "note": "Chest on an incline bench, a light DB in each hand (5–8 kg)."}}}]},
+        {"name": "Mobility", "minutes": 7, "items": [{"ex": "thoracicExtension", "target": "60 s"}, {"ex": "latStretch", "target": "60 s"}, {"ex": "couchStretch", "target": "45 s/side"}]}
+      ],
+      "location": {"default": "home"}
     },
-    {
-     "time": "6:10",
-     "kind": "back"
+    "upperB": {
+      "name": "Upper B",
+      "where": "Home",
+      "minutes": 60,
+      "hard": true,
+      "blocks": [
+        {
+          "name": "Warm-up",
+          "minutes": 7,
+          "note": "Check your overhead reach is full.",
+          "items": [{"ex": "bandPullApart", "target": "2 × 15"}, {"ex": "bandDislocate", "target": "1 × 10"}, {"ex": "scapPushUp", "target": "1 × 10"}, {"ex": "wristPrep", "target": "3 min"}]
+        },
+        {
+          "name": "Skill",
+          "minutes": 10,
+          "note": "Skill work, not conditioning: every set stops well short of fatigue.",
+          "items": [
+            {"ex": "handstandFingerPrep", "target": "2–3 min, 1–2 of the 4 prep drills"},
+            {"ex": "handstandWallBalance", "target": "2–3 drills at the current rung, 2 × 30 s or 2 × 10 each", "log": "seconds", "sets": 2},
+            {"ex": "cartwheelBail", "target": "3 × 5"}
+          ]
+        },
+        {
+          "name": "Strength",
+          "minutes": 30,
+          "items": [
+            {"slot": "A1", "ex": "weightedDip", "target": "4 × 5", "log": "reps", "sets": 4, "load": "+10 kg", "alt": {"gym": {"note": "Dip belt, or a DB between the feet."}}},
+            {"slot": "A2", "ex": "falseGripHang", "target": "3 × 15–30 s", "log": "seconds", "sets": 3},
+            {"slot": "A2", "ex": "muscleUpNegative", "target": "3 × 3, 5 s lowering", "log": "reps", "sets": 3, "alt": {"gym": {"note": "Step up from a box to get above the bar. Step down after, don't drop."}}},
+            {"slot": "B1", "ex": "oneArmDbPress", "target": "3 × 5–8/side", "log": "reps", "sets": 3, "load": "20 kg", "alt": {"gym": {"load": null, "note": "Pick the DB that hits the reps at RPE 7–8."}}},
+            {"slot": "B2", "ex": "dbRow", "target": "3 × 8–12/side", "log": "reps", "sets": 3, "load": "20 kg", "alt": {"gym": {"load": null, "note": "Heavier DB, free hand and knee on a bench."}}}
+          ]
+        },
+        {
+          "name": "Accessory",
+          "minutes": 6,
+          "note": "Pain 3/10 or less, and no worse the next morning.",
+          "items": [{"ex": "wristCurl", "target": "2 × 12–15"}, {"ex": "kbPronationSupination", "target": "2 × 15"}, {"ex": "bandFingerExtension", "target": "2 × 15–20"}]
+        },
+        {"name": "Mobility", "minutes": 7, "items": [{"ex": "thoracicExtension", "target": "60 s"}, {"ex": "latStretch", "target": "60 s"}, {"ex": "couchStretch", "target": "45 s/side"}]}
+      ],
+      "location": {"default": "home"}
     },
-    {
-     "time": "6:30",
-     "kind": "session"
+    "lowerA": {
+      "name": "Lower A",
+      "where": "Gym",
+      "minutes": 60,
+      "hard": true,
+      "rewriteAfterSurgery": true,
+      "blocks": [
+        {
+          "name": "Warm-up",
+          "minutes": 7,
+          "note": "Rock-backs and the squat hold only as deep as pain-free and click-free.",
+          "items": [
+            {"ex": "bike", "target": "5 min", "alt": {"home": {"ex": "march", "target": "2–3 min"}}},
+            {"ex": "lungeRotation", "target": "6–8/side"},
+            {"ex": "quadrupedRockBack", "target": "× 10"},
+            {"ex": "deepSquatHold", "target": "2 × 30 s"}
+          ]
+        },
+        {"name": "Physio plyos", "minutes": 10, "useBlock": "plyo"},
+        {"name": "Skill", "minutes": 5, "note": "1-s pause at the bottom of each pistol.", "items": [{"ex": "singleLegBalance", "target": "2 × 30 s/side"}, {"ex": "boxPistol", "target": "2 × 5/leg"}]},
+        {
+          "name": "Strength",
+          "minutes": 30,
+          "items": [
+            {
+              "slot": "A1",
+              "ex": "legPress",
+              "target": "4 × 6–8",
+              "log": "reps",
+              "sets": 4,
+              "load": "110 kg",
+              "loadNote": "Starting weight, not logged. Adjust so rep 8 leaves 2–3 in the tank.",
+              "alt": {"home": {"ex": "gobletBoxSquat", "target": "4 × 8–12, 3 s down", "load": "20 kg"}}
+            },
+            {
+              "slot": "A2",
+              "ex": "trapBarDeadlift",
+              "target": "3 × 5 · RPE 7",
+              "log": "reps",
+              "sets": 3,
+              "load": "70 kg",
+              "warmUpSets": "40 kg × 5, then 60 kg × 5",
+              "loadNote": "Starting weight after the 3 Nov back tweak at about 120 kg. +5 kg a session while every set is RPE 7 or easier and the back is quiet next morning.",
+              "orInstead": {"ex": "barbellRdl", "target": "3 × 8"},
+              "alt": {"home": {"ex": "bStanceRdl", "target": "3 × 8–10/side, 3 s down", "load": "20 kg"}}
+            },
+            {
+              "slot": "B1",
+              "ex": "nordicCurl",
+              "target": "3 × 8–10",
+              "log": "reps",
+              "sets": 3,
+              "targetByWeek": {"4": "3 × 8–10", "5": "3 × 10–12", "6": "3 × 10–12"},
+              "alt": {"home": {"target": "3 × 6–8, lowering only", "note": "Feet hooked under the couch, no band. Catch with your hands and push back up."}}
+            },
+            {
+              "slot": "B2",
+              "ex": "backExtension",
+              "target": "3 × 10–15",
+              "log": "reps",
+              "sets": 3,
+              "orInstead": {"ex": "backExtensionTwist", "target": "3 × 8–10 twists/side", "load": "5 kg plate", "note": "Alternate weeks. Gym only."},
+              "alt": {"home": {"ex": "bandGoodMorning", "target": "3 × 12–15"}}
+            }
+          ]
+        },
+        {"name": "Accessory", "minutes": 6, "items": [{"ex": "singleLegCalfRaise", "target": "2 × 15/side"}, {"ex": "copenhagenPlank", "target": "2 × 30 s/side"}]},
+        {
+          "name": "Mobility",
+          "minutes": 7,
+          "note": "Ease off if the right knee twists or clicks; prop the hip on a cushion.",
+          "items": [{"ex": "ninetyNinety", "target": "45–60 s/side"}, {"ex": "pigeon", "target": "45–60 s/side"}, {"ex": "hipFlexorStretch", "target": "45–60 s/side"}]
+        },
+        {"name": "Sauna", "minutes": 20, "note": "15–20 min, then 500 ml water + electrolytes.", "items": [], "onlyAt": "gym"}
+      ],
+      "location": {"default": "gym"}
     },
-    {
-     "time": "7:30",
-     "kind": "meal",
-     "meal": "shake"
+    "lowerB": {
+      "name": "Lower B",
+      "where": "Home",
+      "minutes": 60,
+      "hard": true,
+      "rewriteAfterSurgery": true,
+      "blocks": [
+        {
+          "name": "Warm-up",
+          "minutes": 7,
+          "note": "Knee extensions: squeeze toward straight, but don't force past a block.",
+          "items": [
+            {"ex": "march", "target": "2 min", "alt": {"gym": {"ex": "bike", "target": "5 min"}}},
+            {"ex": "lungeRotation", "target": "6–8/side"},
+            {"ex": "quadrupedRockBack", "target": "× 10"},
+            {"ex": "bodyweightSquat", "target": "2 × 10, to parallel"},
+            {"ex": "bandedKneeExtension", "target": "2 × 10, 10-s holds"}
+          ]
+        },
+        {"name": "Physio plyos", "minutes": 10, "useBlock": "plyo"},
+        {
+          "name": "Strength",
+          "minutes": 30,
+          "items": [
+            {"slot": "A1", "ex": "bulgarianSplitSquat", "target": "3–4 × 6–12/leg", "log": "reps", "sets": 4, "load": "20 kg", "alt": {"gym": {"target": "3–4 × 6–8/leg", "load": null, "note": "A DB in each hand. RPE 7–8."}}},
+            {"slot": "A2", "ex": "singleLegRdl", "target": "3 × 8–10/side", "log": "reps", "sets": 3, "load": "20 kg", "alt": {"gym": {"load": null, "note": "Heavier DB. A free hand on the rack for balance is fine."}}},
+            {"slot": "B1", "ex": "hipThrust", "target": "3 × 8–15", "log": "reps", "sets": 3, "load": "29 kg", "alt": {"gym": {"ex": "barbellHipThrust", "target": "3 × 8–12", "load": null}}},
+            {"slot": "B2", "ex": "sliderLegCurl", "target": "3 × 8–12", "log": "reps", "sets": 3, "alt": {"gym": {"ex": "legCurlMachine", "target": "3 × 8–12", "load": null, "note": "No machine at the gym: do the slider curl on a towel."}}}
+          ]
+        },
+        {
+          "name": "Accessory",
+          "minutes": 6,
+          "items": [
+            {"ex": "sidePlankHipAbduction", "target": "2 × 30–45 s/side", "orInstead": {"ex": "hipFlexorRaise", "target": "2 × 10–12/side", "note": "Alternate weeks."}},
+            {"ex": "suitcaseCarry", "target": "3 × 30 m/side", "load": "20 kg", "alt": {"gym": {"load": null, "note": "Heavier DB or kettlebell."}}},
+            {"ex": "stepDown", "target": "2 × 8/leg"}
+          ]
+        },
+        {
+          "name": "Mobility",
+          "minutes": 7,
+          "note": "Ease off if the right knee twists or clicks; prop the hip on a cushion.",
+          "items": [{"ex": "ninetyNinety", "target": "45–60 s/side"}, {"ex": "pigeon", "target": "45–60 s/side"}, {"ex": "hipFlexorStretch", "target": "45–60 s/side"}]
+        },
+        {"name": "Sauna", "minutes": 20, "note": "15–20 min, then 500 ml water + electrolytes.", "items": [], "onlyAt": "gym"}
+      ],
+      "location": {"default": "home"}
     },
-    {
-     "time": "12:30",
-     "kind": "meal",
-     "meal": "lunch"
+    "skillCore": {
+      "name": "Skill + mobility + core",
+      "where": "Home",
+      "minutes": 60,
+      "hard": false,
+      "blocks": [
+        {"name": "Prep", "minutes": 10, "items": [{"ex": "wristPrep", "target": "3 min"}, {"ex": "bandShoulderWork", "target": "Pull-aparts 2 × 15, dislocates 1 × 10"}, {"ex": "hollowCheck", "target": "Quick check"}]},
+        {
+          "name": "Skill",
+          "minutes": 25,
+          "note": "Every set stops well short of fatigue.",
+          "items": [
+            {"ex": "handstandFingerPrep", "target": "2–3 min, 1–2 of the 4 prep drills"},
+            {"ex": "handstandWallBalance", "target": "2–3 drills at the current rung, 2 × 30 s or 2 × 10 each", "log": "seconds", "sets": 2},
+            {"ex": "cartwheelBail", "target": "3 × 5"},
+            {"ex": "lSitAdvancedTuck", "target": "60 s total, in sets of 10–15 s", "log": "seconds", "sets": 5},
+            {"ex": "lSitOneLeg", "target": "3 × 5–10 s/side", "log": "seconds", "sets": 3},
+            {"ex": "elbowLeverGripHold", "target": "3 × 15–30 s", "log": "seconds", "sets": 3}
+          ]
+        },
+        {
+          "name": "Core + grip",
+          "minutes": 10,
+          "items": [
+            {"ex": "hollowHold", "target": "3 × 25–30 s", "log": "seconds", "sets": 3},
+            {"ex": "pallofPress", "target": "2 × 10/side"},
+            {"ex": "hangingKneeRaise", "target": "3 × 8–12", "log": "reps", "sets": 3},
+            {"ex": "deadHangRepeaters", "target": "2 sets of 7 s on / 3 s off × 6"}
+          ]
+        },
+        {
+          "name": "Mobility",
+          "minutes": 15,
+          "note": "Holds of 60–90 s are fine here. Ease off 90/90 and pigeon if the right knee twists or clicks.",
+          "items": [
+            {"ex": "ninetyNinety", "target": "60 s/side"},
+            {"ex": "pigeon", "target": "60 s/side"},
+            {"ex": "couchStretch", "target": "60 s/side"},
+            {"ex": "thoracicExtension", "target": "60 s"},
+            {"ex": "hamstringStretch", "target": "2 × 60 s/side"}
+          ]
+        }
+      ],
+      "location": {"default": "home", "sameBothPlaces": true}
     },
-    {
-     "time": "4:30",
-     "kind": "plyo"
+    "skillGripBag": {
+      "name": "Skill + grip + bag",
+      "where": "Home or gym",
+      "minutes": 60,
+      "hard": false,
+      "blocks": [
+        {"name": "Prep", "minutes": 10, "items": [{"ex": "wristPrep", "target": "3 min"}, {"ex": "bandShoulderWork", "target": "Pull-aparts 2 × 15, dislocates 1 × 10"}, {"ex": "hollowCheck", "target": "Quick check"}]},
+        {
+          "name": "Skill",
+          "minutes": 18,
+          "note": "Every set stops well short of fatigue.",
+          "items": [
+            {"ex": "handstandFingerPrep", "target": "2–3 min, 1–2 of the 4 prep drills"},
+            {"ex": "handstandWallBalance", "target": "2–3 drills at the current rung, 2 × 30 s or 2 × 10 each", "log": "seconds", "sets": 2},
+            {"ex": "cartwheelBail", "target": "3 × 5"},
+            {"ex": "lSitAdvancedTuck", "target": "60 s total, in sets of 10–15 s", "log": "seconds", "sets": 5},
+            {"ex": "lSitOneLeg", "target": "3 × 5–10 s/side", "log": "seconds", "sets": 3}
+          ]
+        },
+        {
+          "name": "Fingers + grip",
+          "minutes": 8,
+          "note": "Never to fatigue. Three fingers is the limit, ever.",
+          "items": [{"ex": "fingertipHoldIncline", "target": "3 × 10–15 s"}, {"ex": "platePinch", "target": "2 × 20–30 s/hand", "load": "5 kg plates"}]
+        },
+        {
+          "name": "Power",
+          "minutes": 4,
+          "note": "Power before conditioning. 4 kg in the morning slot; heavier only at the gym in the afternoon.",
+          "items": [{"ex": "kbRotationalSwing", "target": "3 × 6–8/side, 90 s rest", "log": "reps", "sets": 3, "load": "4 kg", "alt": {"gym": {"load": null, "note": "8–16 kg bell, once every rep at 4 kg is quiet."}}}]
+        },
+        {"name": "Bag", "minutes": 12, "note": "No pivoting on a planted foot. Let the heel lift and the whole foot turn.", "items": [{"ex": "bagRounds", "target": "4 × 2 min, 1 min rest, moderate pace"}]},
+        {
+          "name": "Mobility",
+          "minutes": 8,
+          "note": "Shorter holds today. Ease off 90/90 and pigeon if the right knee twists or clicks.",
+          "items": [
+            {"ex": "ninetyNinety", "target": "45 s/side"},
+            {"ex": "pigeon", "target": "45 s/side"},
+            {"ex": "couchStretch", "target": "45 s/side"},
+            {"ex": "thoracicExtension", "target": "45 s"},
+            {"ex": "hamstringStretch", "target": "60 s/side"}
+          ]
+        }
+      ],
+      "location": {"default": "home", "sameBothPlaces": true}
     },
-    {
-     "time": "",
-     "kind": "run"
-    },
-    {
-     "time": "7:00",
-     "kind": "meal",
-     "meal": "dinner"
+    "recovery": {
+      "name": "Active recovery",
+      "where": "Bike, then gym sauna",
+      "minutes": 80,
+      "hard": false,
+      "blocks": [
+        {"name": "Ride", "minutes": 45, "note": "Stay seated and spin an easy gear on hills. Road or bike path, no rough trails. Gym bike if it's raining.", "items": [{"ex": "zone2Ride", "target": "30–45 min, conversational pace"}]},
+        {"name": "Mobility", "minutes": 15, "items": [{"ex": "couchStretch", "target": "60 s/side"}, {"ex": "ninetyNinety", "target": "60 s/side"}, {"ex": "pigeon", "target": "60 s/side"}, {"ex": "thoracicExtension", "target": "60 s"}]},
+        {"name": "Sauna", "minutes": 20, "note": "15–20 min, then 500 ml water + electrolytes.", "items": []}
+      ],
+      "location": null
     }
-   ]
   },
-  "thu": {
-   "session": "upperB",
-   "fastDay": false,
-   "timeline": [
-    {
-     "time": "6:00",
-     "kind": "water"
+  "blocks": {
+    "backRoutine": {
+      "name": "Back routine",
+      "minutes": "12–15",
+      "note": "After the morning flow, before your first long sit. Progress by moving up the pyramids, not by adding time.",
+      "items": [
+        {"ex": "marchCatCamel", "target": "6–8 slow cat-camels. Skipped the morning flow? Walk or march 2–3 min first."},
+        {"ex": "mcgillCurlUp", "target": "10-s holds, 5-3-1, 30 s rest"},
+        {"ex": "sidePlank", "target": "On knees: 10 s on / 10 s off, 4–5 per side"},
+        {"ex": "birdDog", "target": "8–10-s holds, 6-4-2 per side"},
+        {"ex": "hipFlexorStretch", "target": "2 × 30–45 s/side", "alternateDays": "Couch stretch, or 90/90 + pigeon"},
+        {"ex": "gluteBridge", "target": "2 × 15–20, 5-s squeeze"}
+      ]
     },
-    {
-     "time": "6:10",
-     "kind": "back"
-    },
-    {
-     "time": "6:30",
-     "kind": "session"
-    },
-    {
-     "time": "7:30",
-     "kind": "meal",
-     "meal": "shake"
-    },
-    {
-     "time": "12:30",
-     "kind": "meal",
-     "meal": "lunch"
-    },
-    {
-     "time": "4:30",
-     "kind": "plyo"
-    },
-    {
-     "time": "",
-     "kind": "walk",
-     "title": "Walk",
-     "sub": "30 min (an easy 30-min ride also counts)"
-    },
-    {
-     "time": "7:00",
-     "kind": "meal",
-     "meal": "dinner"
+    "plyo": {
+      "name": "Physio plyos",
+      "minutes": 10,
+      "source": "Bryce Dreghorn, 23 Nov 2026",
+      "frequency": "daily",
+      "frequencyOptions": ["daily", "every 2nd day"],
+      "note": "Afternoon only, at least 1–2 h after waking. Land soft, knee over the foot, hold each landing 2 s. Switch to every 2nd day if there's pain or swelling.",
+      "items": [{"ex": "skipping", "target": "3 × 1–2 min"}, {"ex": "hopAndStick", "target": "3 × 4–6/leg"}, {"ex": "skaterBound", "target": "3 × 4–6/leg"}]
     }
-   ]
   },
-  "fri": {
-   "session": "lowerB",
-   "fastDay": true,
-   "timeline": [
-    {
-     "time": "6:00",
-     "kind": "water"
-    },
-    {
-     "time": "6:10",
-     "kind": "back"
-    },
-    {
-     "time": "6:30",
-     "kind": "walk",
-     "title": "Morning walk",
-     "sub": "30–45 min, brisk, outside"
-    },
-    {
-     "time": "7:30",
-     "kind": "meal",
-     "meal": "shake"
-    },
-    {
-     "time": "12:30",
-     "kind": "meal",
-     "meal": "lunch"
-    },
-    {
-     "time": "4:30",
-     "kind": "session",
-     "sub": "Plyos are inside this session"
-    },
-    {
-     "time": "7:00",
-     "kind": "meal",
-     "meal": "dinner"
-    }
-   ]
-  },
-  "sat": {
-   "session": "skillGripBag",
-   "fastDay": false,
-   "timeline": [
-    {
-     "time": "6:00",
-     "kind": "water"
-    },
-    {
-     "time": "6:10",
-     "kind": "back"
-    },
-    {
-     "time": "6:30",
-     "kind": "session"
-    },
-    {
-     "time": "7:30",
-     "kind": "meal",
-     "meal": "shake"
-    },
-    {
-     "time": "12:30",
-     "kind": "meal",
-     "meal": "lunch"
-    },
-    {
-     "time": "4:30",
-     "kind": "plyo"
-    },
-    {
-     "time": "",
-     "kind": "run"
-    },
-    {
-     "time": "7:00",
-     "kind": "meal",
-     "meal": "dinner"
-    }
-   ]
-  },
-  "sun": {
-   "session": "recovery",
-   "fastDay": false,
-   "timeline": [
-    {
-     "time": "6:00",
-     "kind": "water"
-    },
-    {
-     "time": "6:10",
-     "kind": "back"
-    },
-    {
-     "time": "6:30",
-     "kind": "session"
-    },
-    {
-     "time": "7:30",
-     "kind": "meal",
-     "meal": "shake"
-    },
-    {
-     "time": "12:30",
-     "kind": "meal",
-     "meal": "lunch"
-    },
-    {
-     "time": "4:30",
-     "kind": "plyo",
-     "sub": "Keep it light today"
-    },
-    {
-     "time": "7:00",
-     "kind": "meal",
-     "meal": "dinner"
-    }
-   ]
-  }
- },
- "sessions": {
-  "upperA": {
-   "name": "Upper A",
-   "where": "Home",
-   "minutes": 60,
-   "hard": true,
-   "blocks": [
-    {
-     "name": "Warm-up",
-     "minutes": 7,
-     "note": "Check your overhead reach is full.",
-     "items": [
-      {
-       "ex": "bandPullApart",
-       "target": "2 × 15"
-      },
-      {
-       "ex": "bandDislocate",
-       "target": "1 × 10"
-      },
-      {
-       "ex": "scapPushUp",
-       "target": "1 × 10"
-      },
-      {
-       "ex": "wristPrep",
-       "target": "3 min"
-      }
-     ]
-    },
-    {
-     "name": "Skill",
-     "minutes": 10,
-     "note": "Skill work, not conditioning: every set stops well short of fatigue.",
-     "items": [
-      {
-       "ex": "handstandFingerPrep",
-       "target": "2–3 min, 1–2 of the 4 prep drills"
-      },
-      {
-       "ex": "handstandWallBalance",
-       "target": "2–3 drills at the current rung, 2 × 30 s or 2 × 10 each",
-       "log": "seconds",
-       "sets": 2
-      },
-      {
-       "ex": "cartwheelBail",
-       "target": "3 × 5"
-      }
-     ]
-    },
-    {
-     "name": "Strength",
-     "minutes": 30,
-     "items": [
-      {
-       "slot": "A1",
-       "ex": "weightedPullUp",
-       "target": "4 × 5",
-       "log": "reps",
-       "sets": 4,
-       "load": "+10 kg",
-       "alt": {
-        "gym": {
-         "note": "Dip belt, or a DB between the feet."
-        }
-       }
-      },
-      {
-       "slot": "A2",
-       "ex": "pikePushUp",
-       "target": "4 × 8–12",
-       "log": "reps",
-       "sets": 4
-      },
-      {
-       "slot": "B1",
-       "ex": "diamondPushUp",
-       "target": "3 × 5–8",
-       "log": "reps",
-       "sets": 3,
-       "alt": {
-        "gym": {
-         "ex": "benchPress",
-         "target": "3 × 5–8",
-         "load": null,
-         "note": "First session: find a weight that leaves 2–3 reps in the tank."
-        }
-       }
-      },
-      {
-       "slot": "B2",
-       "ex": "invertedRow",
-       "target": "3 × 8–12",
-       "log": "reps",
-       "sets": 3,
-       "alt": {
-        "gym": {
-         "ex": "chestSupportedRow",
-         "target": "3 × 8–12",
-         "load": null
-        }
-       }
-      }
-     ]
-    },
-    {
-     "name": "Accessory",
-     "minutes": 6,
-     "items": [
-      {
-       "ex": "neckIsometrics",
-       "target": "2 × 10–15 s each direction"
-      },
-      {
-       "ex": "rearDeltRaise",
-       "target": "2 × 12–15/side",
-       "log": "reps",
-       "sets": 2,
-       "load": "5 kg plate",
-       "alt": {
-        "gym": {
-         "target": "2 × 12–15",
-         "load": null,
-         "note": "Chest on an incline bench, a light DB in each hand (5–8 kg)."
-        }
-       }
-      }
-     ]
-    },
-    {
-     "name": "Mobility",
-     "minutes": 7,
-     "items": [
-      {
-       "ex": "thoracicExtension",
-       "target": "60 s"
-      },
-      {
-       "ex": "latStretch",
-       "target": "60 s"
-      },
-      {
-       "ex": "couchStretch",
-       "target": "45 s/side"
-      }
-     ]
-    }
-   ],
-   "location": {
-    "default": "home"
-   }
-  },
-  "upperB": {
-   "name": "Upper B",
-   "where": "Home",
-   "minutes": 60,
-   "hard": true,
-   "blocks": [
-    {
-     "name": "Warm-up",
-     "minutes": 7,
-     "note": "Check your overhead reach is full.",
-     "items": [
-      {
-       "ex": "bandPullApart",
-       "target": "2 × 15"
-      },
-      {
-       "ex": "bandDislocate",
-       "target": "1 × 10"
-      },
-      {
-       "ex": "scapPushUp",
-       "target": "1 × 10"
-      },
-      {
-       "ex": "wristPrep",
-       "target": "3 min"
-      }
-     ]
-    },
-    {
-     "name": "Skill",
-     "minutes": 10,
-     "note": "Skill work, not conditioning: every set stops well short of fatigue.",
-     "items": [
-      {
-       "ex": "handstandFingerPrep",
-       "target": "2–3 min, 1–2 of the 4 prep drills"
-      },
-      {
-       "ex": "handstandWallBalance",
-       "target": "2–3 drills at the current rung, 2 × 30 s or 2 × 10 each",
-       "log": "seconds",
-       "sets": 2
-      },
-      {
-       "ex": "cartwheelBail",
-       "target": "3 × 5"
-      }
-     ]
-    },
-    {
-     "name": "Strength",
-     "minutes": 30,
-     "items": [
-      {
-       "slot": "A1",
-       "ex": "weightedDip",
-       "target": "4 × 5",
-       "log": "reps",
-       "sets": 4,
-       "load": "+10 kg",
-       "alt": {
-        "gym": {
-         "note": "Dip belt, or a DB between the feet."
-        }
-       }
-      },
-      {
-       "slot": "A2",
-       "ex": "falseGripHang",
-       "target": "3 × 15–30 s",
-       "log": "seconds",
-       "sets": 3
-      },
-      {
-       "slot": "A2",
-       "ex": "muscleUpNegative",
-       "target": "3 × 3, 5 s lowering",
-       "log": "reps",
-       "sets": 3,
-       "alt": {
-        "gym": {
-         "note": "Step up from a box to get above the bar. Step down after, don't drop."
-        }
-       }
-      },
-      {
-       "slot": "B1",
-       "ex": "oneArmDbPress",
-       "target": "3 × 5–8/side",
-       "log": "reps",
-       "sets": 3,
-       "load": "20 kg",
-       "alt": {
-        "gym": {
-         "load": null,
-         "note": "Pick the DB that hits the reps at RPE 7–8."
-        }
-       }
-      },
-      {
-       "slot": "B2",
-       "ex": "dbRow",
-       "target": "3 × 8–12/side",
-       "log": "reps",
-       "sets": 3,
-       "load": "20 kg",
-       "alt": {
-        "gym": {
-         "load": null,
-         "note": "Heavier DB, free hand and knee on a bench."
-        }
-       }
-      }
-     ]
-    },
-    {
-     "name": "Accessory",
-     "minutes": 6,
-     "note": "Pain 3/10 or less, and no worse the next morning.",
-     "items": [
-      {
-       "ex": "wristCurl",
-       "target": "2 × 12–15"
-      },
-      {
-       "ex": "kbPronationSupination",
-       "target": "2 × 15"
-      },
-      {
-       "ex": "bandFingerExtension",
-       "target": "2 × 15–20"
-      }
-     ]
-    },
-    {
-     "name": "Mobility",
-     "minutes": 7,
-     "items": [
-      {
-       "ex": "thoracicExtension",
-       "target": "60 s"
-      },
-      {
-       "ex": "latStretch",
-       "target": "60 s"
-      },
-      {
-       "ex": "couchStretch",
-       "target": "45 s/side"
-      }
-     ]
-    }
-   ],
-   "location": {
-    "default": "home"
-   }
-  },
-  "lowerA": {
-   "name": "Lower A",
-   "where": "Gym",
-   "minutes": 60,
-   "hard": true,
-   "rewriteAfterSurgery": true,
-   "blocks": [
-    {
-     "name": "Warm-up",
-     "minutes": 7,
-     "note": "Rock-backs and the squat hold only as deep as pain-free and click-free.",
-     "items": [
-      {
-       "ex": "bike",
-       "target": "5 min",
-       "alt": {
-        "home": {
-         "ex": "march",
-         "target": "2–3 min"
-        }
-       }
-      },
-      {
-       "ex": "lungeRotation",
-       "target": "6–8/side"
-      },
-      {
-       "ex": "quadrupedRockBack",
-       "target": "× 10"
-      },
-      {
-       "ex": "deepSquatHold",
-       "target": "2 × 30 s"
-      }
-     ]
-    },
-    {
-     "name": "Physio plyos",
-     "minutes": 10,
-     "useBlock": "plyo"
-    },
-    {
-     "name": "Skill",
-     "minutes": 5,
-     "note": "1-s pause at the bottom of each pistol.",
-     "items": [
-      {
-       "ex": "singleLegBalance",
-       "target": "2 × 30 s/side"
-      },
-      {
-       "ex": "boxPistol",
-       "target": "2 × 5/leg"
-      }
-     ]
-    },
-    {
-     "name": "Strength",
-     "minutes": 30,
-     "items": [
-      {
-       "slot": "A1",
-       "ex": "legPress",
-       "target": "4 × 6–8",
-       "log": "reps",
-       "sets": 4,
-       "load": "110 kg",
-       "loadNote": "Starting weight, not logged. Adjust so rep 8 leaves 2–3 in the tank.",
-       "alt": {
-        "home": {
-         "ex": "gobletBoxSquat",
-         "target": "4 × 8–12, 3 s down",
-         "load": "20 kg"
-        }
-       }
-      },
-      {
-       "slot": "A2",
-       "ex": "trapBarDeadlift",
-       "target": "3 × 5 · RPE 7",
-       "log": "reps",
-       "sets": 3,
-       "load": "70 kg",
-       "warmUpSets": "40 kg × 5, then 60 kg × 5",
-       "loadNote": "Starting weight after the 3 Nov back tweak at about 120 kg. +5 kg a session while every set is RPE 7 or easier and the back is quiet next morning.",
-       "orInstead": {
-        "ex": "barbellRdl",
-        "target": "3 × 8"
-       },
-       "alt": {
-        "home": {
-         "ex": "bStanceRdl",
-         "target": "3 × 8–10/side, 3 s down",
-         "load": "20 kg"
-        }
-       }
-      },
-      {
-       "slot": "B1",
-       "ex": "nordicCurl",
-       "target": "3 × 8–10",
-       "log": "reps",
-       "sets": 3,
-       "targetByWeek": {
-        "4": "3 × 8–10",
-        "5": "3 × 10–12",
-        "6": "3 × 10–12"
-       },
-       "alt": {
-        "home": {
-         "target": "3 × 6–8, lowering only",
-         "note": "Feet hooked under the couch, no band. Catch with your hands and push back up."
-        }
-       }
-      },
-      {
-       "slot": "B2",
-       "ex": "backExtension",
-       "target": "3 × 10–15",
-       "log": "reps",
-       "sets": 3,
-       "orInstead": {
-        "ex": "backExtensionTwist",
-        "target": "3 × 8–10 twists/side",
-        "load": "5 kg plate",
-        "note": "Alternate weeks. Gym only."
-       },
-       "alt": {
-        "home": {
-         "ex": "bandGoodMorning",
-         "target": "3 × 12–15"
-        }
-       }
-      }
-     ]
-    },
-    {
-     "name": "Accessory",
-     "minutes": 6,
-     "items": [
-      {
-       "ex": "singleLegCalfRaise",
-       "target": "2 × 15/side"
-      },
-      {
-       "ex": "copenhagenPlank",
-       "target": "2 × 30 s/side"
-      }
-     ]
-    },
-    {
-     "name": "Mobility",
-     "minutes": 7,
-     "note": "Ease off if the right knee twists or clicks; prop the hip on a cushion.",
-     "items": [
-      {
-       "ex": "ninetyNinety",
-       "target": "45–60 s/side"
-      },
-      {
-       "ex": "pigeon",
-       "target": "45–60 s/side"
-      },
-      {
-       "ex": "hipFlexorStretch",
-       "target": "45–60 s/side"
-      }
-     ]
-    },
-    {
-     "name": "Sauna",
-     "minutes": 20,
-     "note": "15–20 min, then 500 ml water + electrolytes.",
-     "items": [],
-     "onlyAt": "gym"
-    }
-   ],
-   "location": {
-    "default": "gym"
-   }
-  },
-  "lowerB": {
-   "name": "Lower B",
-   "where": "Home",
-   "minutes": 60,
-   "hard": true,
-   "rewriteAfterSurgery": true,
-   "blocks": [
-    {
-     "name": "Warm-up",
-     "minutes": 7,
-     "note": "Knee extensions: squeeze toward straight, but don't force past a block.",
-     "items": [
-      {
-       "ex": "march",
-       "target": "2 min",
-       "alt": {
-        "gym": {
-         "ex": "bike",
-         "target": "5 min"
-        }
-       }
-      },
-      {
-       "ex": "lungeRotation",
-       "target": "6–8/side"
-      },
-      {
-       "ex": "quadrupedRockBack",
-       "target": "× 10"
-      },
-      {
-       "ex": "bodyweightSquat",
-       "target": "2 × 10, to parallel"
-      },
-      {
-       "ex": "bandedKneeExtension",
-       "target": "2 × 10, 10-s holds"
-      }
-     ]
-    },
-    {
-     "name": "Physio plyos",
-     "minutes": 10,
-     "useBlock": "plyo"
-    },
-    {
-     "name": "Strength",
-     "minutes": 30,
-     "items": [
-      {
-       "slot": "A1",
-       "ex": "bulgarianSplitSquat",
-       "target": "3–4 × 6–12/leg",
-       "log": "reps",
-       "sets": 4,
-       "load": "20 kg",
-       "alt": {
-        "gym": {
-         "target": "3–4 × 6–8/leg",
-         "load": null,
-         "note": "A DB in each hand. RPE 7–8."
-        }
-       }
-      },
-      {
-       "slot": "A2",
-       "ex": "singleLegRdl",
-       "target": "3 × 8–10/side",
-       "log": "reps",
-       "sets": 3,
-       "load": "20 kg",
-       "alt": {
-        "gym": {
-         "load": null,
-         "note": "Heavier DB. A free hand on the rack for balance is fine."
-        }
-       }
-      },
-      {
-       "slot": "B1",
-       "ex": "hipThrust",
-       "target": "3 × 8–15",
-       "log": "reps",
-       "sets": 3,
-       "load": "29 kg",
-       "alt": {
-        "gym": {
-         "ex": "barbellHipThrust",
-         "target": "3 × 8–12",
-         "load": null
-        }
-       }
-      },
-      {
-       "slot": "B2",
-       "ex": "sliderLegCurl",
-       "target": "3 × 8–12",
-       "log": "reps",
-       "sets": 3,
-       "alt": {
-        "gym": {
-         "ex": "legCurlMachine",
-         "target": "3 × 8–12",
-         "load": null,
-         "note": "No machine at the gym: do the slider curl on a towel."
-        }
-       }
-      }
-     ]
-    },
-    {
-     "name": "Accessory",
-     "minutes": 6,
-     "items": [
-      {
-       "ex": "sidePlankHipAbduction",
-       "target": "2 × 30–45 s/side",
-       "orInstead": {
-        "ex": "hipFlexorRaise",
-        "target": "2 × 10–12/side",
-        "note": "Alternate weeks."
-       }
-      },
-      {
-       "ex": "suitcaseCarry",
-       "target": "3 × 30 m/side",
-       "load": "20 kg",
-       "alt": {
-        "gym": {
-         "load": null,
-         "note": "Heavier DB or kettlebell."
-        }
-       }
-      },
-      {
-       "ex": "stepDown",
-       "target": "2 × 8/leg"
-      }
-     ]
-    },
-    {
-     "name": "Mobility",
-     "minutes": 7,
-     "note": "Ease off if the right knee twists or clicks; prop the hip on a cushion.",
-     "items": [
-      {
-       "ex": "ninetyNinety",
-       "target": "45–60 s/side"
-      },
-      {
-       "ex": "pigeon",
-       "target": "45–60 s/side"
-      },
-      {
-       "ex": "hipFlexorStretch",
-       "target": "45–60 s/side"
-      }
-     ]
-    },
-    {
-     "name": "Sauna",
-     "minutes": 20,
-     "note": "15–20 min, then 500 ml water + electrolytes.",
-     "items": [],
-     "onlyAt": "gym"
-    }
-   ],
-   "location": {
-    "default": "home"
-   }
-  },
-  "skillCore": {
-   "name": "Skill + mobility + core",
-   "where": "Home",
-   "minutes": 60,
-   "hard": false,
-   "blocks": [
-    {
-     "name": "Prep",
-     "minutes": 10,
-     "items": [
-      {
-       "ex": "wristPrep",
-       "target": "3 min"
-      },
-      {
-       "ex": "bandShoulderWork",
-       "target": "Pull-aparts 2 × 15, dislocates 1 × 10"
-      },
-      {
-       "ex": "hollowCheck",
-       "target": "Quick check"
-      }
-     ]
-    },
-    {
-     "name": "Skill",
-     "minutes": 25,
-     "note": "Every set stops well short of fatigue.",
-     "items": [
-      {
-       "ex": "handstandFingerPrep",
-       "target": "2–3 min, 1–2 of the 4 prep drills"
-      },
-      {
-       "ex": "handstandWallBalance",
-       "target": "2–3 drills at the current rung, 2 × 30 s or 2 × 10 each",
-       "log": "seconds",
-       "sets": 2
-      },
-      {
-       "ex": "cartwheelBail",
-       "target": "3 × 5"
-      },
-      {
-       "ex": "lSitAdvancedTuck",
-       "target": "60 s total, in sets of 10–15 s",
-       "log": "seconds",
-       "sets": 5
-      },
-      {
-       "ex": "lSitOneLeg",
-       "target": "3 × 5–10 s/side",
-       "log": "seconds",
-       "sets": 3
-      },
-      {
-       "ex": "elbowLeverGripHold",
-       "target": "3 × 15–30 s",
-       "log": "seconds",
-       "sets": 3
-      }
-     ]
-    },
-    {
-     "name": "Core + grip",
-     "minutes": 10,
-     "items": [
-      {
-       "ex": "hollowHold",
-       "target": "3 × 25–30 s",
-       "log": "seconds",
-       "sets": 3
-      },
-      {
-       "ex": "pallofPress",
-       "target": "2 × 10/side"
-      },
-      {
-       "ex": "hangingKneeRaise",
-       "target": "3 × 8–12",
-       "log": "reps",
-       "sets": 3
-      },
-      {
-       "ex": "deadHangRepeaters",
-       "target": "2 sets of 7 s on / 3 s off × 6"
-      }
-     ]
-    },
-    {
-     "name": "Mobility",
-     "minutes": 15,
-     "note": "Holds of 60–90 s are fine here. Ease off 90/90 and pigeon if the right knee twists or clicks.",
-     "items": [
-      {
-       "ex": "ninetyNinety",
-       "target": "60 s/side"
-      },
-      {
-       "ex": "pigeon",
-       "target": "60 s/side"
-      },
-      {
-       "ex": "couchStretch",
-       "target": "60 s/side"
-      },
-      {
-       "ex": "thoracicExtension",
-       "target": "60 s"
-      },
-      {
-       "ex": "hamstringStretch",
-       "target": "2 × 60 s/side"
-      }
-     ]
-    }
-   ],
-   "location": {
-    "default": "home",
-    "sameBothPlaces": true
-   }
-  },
-  "skillGripBag": {
-   "name": "Skill + grip + bag",
-   "where": "Home or gym",
-   "minutes": 60,
-   "hard": false,
-   "blocks": [
-    {
-     "name": "Prep",
-     "minutes": 10,
-     "items": [
-      {
-       "ex": "wristPrep",
-       "target": "3 min"
-      },
-      {
-       "ex": "bandShoulderWork",
-       "target": "Pull-aparts 2 × 15, dislocates 1 × 10"
-      },
-      {
-       "ex": "hollowCheck",
-       "target": "Quick check"
-      }
-     ]
-    },
-    {
-     "name": "Skill",
-     "minutes": 18,
-     "note": "Every set stops well short of fatigue.",
-     "items": [
-      {
-       "ex": "handstandFingerPrep",
-       "target": "2–3 min, 1–2 of the 4 prep drills"
-      },
-      {
-       "ex": "handstandWallBalance",
-       "target": "2–3 drills at the current rung, 2 × 30 s or 2 × 10 each",
-       "log": "seconds",
-       "sets": 2
-      },
-      {
-       "ex": "cartwheelBail",
-       "target": "3 × 5"
-      },
-      {
-       "ex": "lSitAdvancedTuck",
-       "target": "60 s total, in sets of 10–15 s",
-       "log": "seconds",
-       "sets": 5
-      },
-      {
-       "ex": "lSitOneLeg",
-       "target": "3 × 5–10 s/side",
-       "log": "seconds",
-       "sets": 3
-      }
-     ]
-    },
-    {
-     "name": "Fingers + grip",
-     "minutes": 8,
-     "note": "Never to fatigue. Three fingers is the limit, ever.",
-     "items": [
-      {
-       "ex": "fingertipHoldIncline",
-       "target": "3 × 10–15 s"
-      },
-      {
-       "ex": "platePinch",
-       "target": "2 × 20–30 s/hand",
-       "load": "5 kg plates"
-      }
-     ]
-    },
-    {
-     "name": "Power",
-     "minutes": 4,
-     "note": "Power before conditioning. 4 kg in the morning slot; heavier only at the gym in the afternoon.",
-     "items": [
-      {
-       "ex": "kbRotationalSwing",
-       "target": "3 × 6–8/side, 90 s rest",
-       "log": "reps",
-       "sets": 3,
-       "load": "4 kg",
-       "alt": {
-        "gym": {
-         "load": null,
-         "note": "8–16 kg bell, once every rep at 4 kg is quiet."
-        }
-       }
-      }
-     ]
-    },
-    {
-     "name": "Bag",
-     "minutes": 12,
-     "note": "No pivoting on a planted foot. Let the heel lift and the whole foot turn.",
-     "items": [
-      {
-       "ex": "bagRounds",
-       "target": "4 × 2 min, 1 min rest, moderate pace"
-      }
-     ]
-    },
-    {
-     "name": "Mobility",
-     "minutes": 8,
-     "note": "Shorter holds today. Ease off 90/90 and pigeon if the right knee twists or clicks.",
-     "items": [
-      {
-       "ex": "ninetyNinety",
-       "target": "45 s/side"
-      },
-      {
-       "ex": "pigeon",
-       "target": "45 s/side"
-      },
-      {
-       "ex": "couchStretch",
-       "target": "45 s/side"
-      },
-      {
-       "ex": "thoracicExtension",
-       "target": "45 s"
-      },
-      {
-       "ex": "hamstringStretch",
-       "target": "60 s/side"
-      }
-     ]
-    }
-   ],
-   "location": {
-    "default": "home",
-    "sameBothPlaces": true
-   }
-  },
-  "recovery": {
-   "name": "Active recovery",
-   "where": "Bike, then gym sauna",
-   "minutes": 80,
-   "hard": false,
-   "blocks": [
-    {
-     "name": "Ride",
-     "minutes": 45,
-     "note": "Stay seated and spin an easy gear on hills. Road or bike path, no rough trails. Gym bike if it's raining.",
-     "items": [
-      {
-       "ex": "zone2Ride",
-       "target": "30–45 min, conversational pace"
-      }
-     ]
-    },
-    {
-     "name": "Mobility",
-     "minutes": 15,
-     "items": [
-      {
-       "ex": "couchStretch",
-       "target": "60 s/side"
-      },
-      {
-       "ex": "ninetyNinety",
-       "target": "60 s/side"
-      },
-      {
-       "ex": "pigeon",
-       "target": "60 s/side"
-      },
-      {
-       "ex": "thoracicExtension",
-       "target": "60 s"
-      }
-     ]
-    },
-    {
-     "name": "Sauna",
-     "minutes": 20,
-     "note": "15–20 min, then 500 ml water + electrolytes.",
-     "items": []
-    }
-   ],
-   "location": null
-  }
- },
- "blocks": {
-  "backRoutine": {
-   "name": "Back routine",
-   "minutes": "12–15",
-   "note": "After 2–3 minutes on your feet, before your first long sit. Progress by moving up the pyramids, not by adding time.",
-   "items": [
-    {
-     "ex": "marchCatCamel",
-     "target": "2–3 min walk, then 6–8 slow cat-camels"
-    },
-    {
-     "ex": "mcgillCurlUp",
-     "target": "10-s holds, 5-3-1, 30 s rest"
-    },
-    {
-     "ex": "sidePlank",
-     "target": "On knees: 10 s on / 10 s off, 4–5 per side"
-    },
-    {
-     "ex": "birdDog",
-     "target": "8–10-s holds, 6-4-2 per side"
-    },
-    {
-     "ex": "hipFlexorStretch",
-     "target": "2 × 30–45 s/side",
-     "alternateDays": "Couch stretch, or 90/90 + pigeon"
-    },
-    {
-     "ex": "gluteBridge",
-     "target": "2 × 15–20, 5-s squeeze"
-    }
-   ]
-  },
-  "plyo": {
-   "name": "Physio plyos",
-   "minutes": 10,
-   "source": "Bryce Dreghorn, 23 Nov 2026",
-   "frequency": "daily",
-   "frequencyOptions": [
-    "daily",
-    "every 2nd day"
-   ],
-   "note": "Afternoon only, at least 1–2 h after waking. Land soft, knee over the foot, hold each landing 2 s. Switch to every 2nd day if there's pain or swelling.",
-   "items": [
-    {
-     "ex": "skipping",
-     "target": "3 × 1–2 min"
-    },
-    {
-     "ex": "hopAndStick",
-     "target": "3 × 4–6/leg"
-    },
-    {
-     "ex": "skaterBound",
-     "target": "3 × 4–6/leg"
-    }
-   ]
-  }
- },
- "run": {
-  "days": [
-   "mon",
-   "wed",
-   "sat"
-  ],
-  "current": "a",
-  "note": "Easy pace, flat path or grass. No hard sets yet.",
-  "stages": {
-   "a": {
-    "session": "Jog 1 min, walk 1 min × 6",
-    "moveOn": "Your knee isn't more swollen or sore the morning after a run."
-   },
-   "b": {
-    "session": "Jog 2 min, walk 1 min × 4",
-    "moveOn": "Your knee isn't more swollen or sore the morning after a run."
-   },
-   "c": {
-    "session": "Continuous jog 8–10 min",
-    "moveOn": "Check the next step with Bryce (3 Dec)."
-   }
-  },
-  "nextMorningRule": "Joint swelling or pain up: plyos to every 2nd day and repeat the previous run stage. Still up after 48 h: stop and tell Bryce."
- },
- "exercises": {
-  "bandPullApart": {
-   "name": "Band pull-aparts"
-  },
-  "bandDislocate": {
-   "name": "Band dislocates"
-  },
-  "scapPushUp": {
-   "name": "Scap push-ups"
-  },
-  "wristPrep": {
-   "name": "Wrist prep",
-   "cue": "Hands on the floor, fingers forward then back, gentle rocks."
-  },
-  "bandShoulderWork": {
-   "name": "Band shoulder work"
-  },
-  "hollowCheck": {
-   "name": "Hollow-body check",
-   "cue": "Lower back flat, ribs down."
-  },
-  "handstandFingerPrep": {
-   "name": "Handstand finger prep",
-   "cue": "Plank drills. Lean the shoulders past the hands and let the fingers push you back.",
-   "limit": {
-    "wrist": "Wrist pain over 3/10: no finger work that day."
-   },
-   "goal": "Prep only. Rotate through the four drills; you're past them as a progression."
-  },
-  "handstandWallBalance": {
-   "name": "Handstand balance ladder",
-   "cue": "Chest to wall. Fingers do the balancing; shoulders pushed up to the ears the whole time.",
-   "limit": {
-    "back": "Chest-to-wall only, never back-to-wall holds. Press-offs are shrugs, not arches: ribs down.",
-    "wrist": "Wrist pain over 3/10: stop finger work for the day."
-   },
-   "goal": "A drill is done at 2 × 30 s or 2 × 10 clean; then the next drill is the rung. One drill per session. Kick-up drills once the leg-joins are clean.",
-   "rung": 5,
-   "ladder": [
-    {
-     "n": 5,
-     "name": "Wall lean, fingers, sideways to the wall",
-     "target": "2 × 30 s"
-    },
-    {
-     "n": 6,
-     "name": "Wall hold, fingers, facing the wall",
-     "target": "2 × 30 s"
-    },
-    {
-     "n": 7,
-     "name": "Shoulder press-off",
-     "target": "2 × 10"
-    },
-    {
-     "n": 8,
-     "name": "Shoulder press-off hold",
-     "target": "2 × 30 s"
-    },
-    {
-     "n": 9,
-     "name": "Shoulder + finger press-off",
-     "target": "2 × 10, then 2 × 30 s"
-    },
-    {
-     "n": 10,
-     "name": "Alternating leg lift-offs",
-     "target": "2 × 10/side"
-    },
-    {
-     "n": 11,
-     "name": "Single-leg lift-off hold",
-     "target": "2 × 30 s/side"
-    },
-    {
-     "n": 12,
-     "name": "Leg-join attempts",
-     "target": "2 × 10/side"
-    },
-    {
-     "n": 13,
-     "name": "Partial handstand jumps, finger resistance (floor)",
-     "target": "2 × 10"
-    },
-    {
-     "n": 14,
-     "name": "Handstand jumps to the wall",
-     "target": "2 × 10, then 2 × 10 with leg lift-offs"
-    },
-    {
-     "n": 15,
-     "name": "Free handstand attempts",
-     "target": "1–2 s 2 × 10, then 5 s 2 × 5"
-    }
-   ]
-  },
-  "handstandChestToWall": {
-   "name": "Handstand, chest to wall",
-   "cue": "Ribs down, glutes on. Hands a little closer to the wall each week.",
-   "limit": {
-    "back": "Chest-to-wall only, never back-to-wall holds."
-   },
-   "goal": "Retest max hold. In sessions it's drill 6 of the balance ladder."
-  },
-  "cartwheelBail": {
-   "name": "Cartwheel bail practice",
-   "cue": "From a low wall walk."
-  },
-  "weightedPullUp": {
-   "name": "Weighted pull-up",
-   "cue": "Backpack with both 5 kg plates. Step down off the bar, don't drop.",
-   "goal": "At 4 × 8 clean, move to the 20 kg DB between the feet and restart at 4 × 5."
-  },
-  "pikePushUp": {
-   "name": "Pike push-up",
-   "cue": "Elbows about 45°, nose lands ahead of the hands, 2–3 s lowering.",
-   "goal": "At 3 × 12 clean, raise the feet to knee height."
-  },
-  "diamondPushUp": {
-   "name": "Diamond push-up",
-   "goal": "At 3 × 8, move to pseudo-planche push-ups."
-  },
-  "benchPress": {
-   "name": "Bench press"
-  },
-  "invertedRow": {
-   "name": "Inverted row",
-   "cue": "Under the dip bar."
-  },
-  "neckIsometrics": {
-   "name": "Neck isometrics, 4-way",
-   "cue": "Push your head into your hand without moving."
-  },
-  "thoracicExtension": {
-   "name": "Thoracic extension",
-   "cue": "Over a rolled towel."
-  },
-  "latStretch": {
-   "name": "Lat stretch"
-  },
-  "couchStretch": {
-   "name": "Couch stretch",
-   "cue": "Squeeze the back glute, ribs down, tuck the pelvis, then shift forward.",
-   "limit": {
-    "knee": "Pad under the right knee."
-   }
-  },
-  "weightedDip": {
-   "name": "Weighted dip",
-   "cue": "Backpack with both 5 kg plates.",
-   "goal": "At 4 × 8 clean, move to the 20 kg DB between the feet."
-  },
-  "falseGripHang": {
-   "name": "False-grip hang"
-  },
-  "muscleUpNegative": {
-   "name": "Muscle-up negative",
-   "cue": "Climb up via the dip bar, lower over 5 s. Never chicken-wing.",
-   "goal": "First muscle-up attempts only after 10 strict chest-to-bar pull-ups."
-  },
-  "oneArmDbPress": {
-   "name": "One-arm DB overhead press",
-   "cue": "Brace, ribs down.",
-   "limit": {
-    "back": "No leaning back."
-   }
-  },
-  "dbRow": {
-   "name": "DB row",
-   "limit": {
-    "back": "Neutral back, brace."
-   }
-  },
-  "wristCurl": {
-   "name": "Wrist curls",
-   "cue": "5 kg plate or 4 kg KB, 2–3 s lowering."
-  },
-  "kbPronationSupination": {
-   "name": "KB pronation / supination"
-  },
-  "bandFingerExtension": {
-   "name": "Band finger extensions"
-  },
-  "bike": {
-   "name": "Bike"
-  },
-  "lungeRotation": {
-   "name": "Lunge with rotation",
-   "cue": "Long lunge, inside hand on the floor, reach the other arm up and follow it with your eyes. Turn from the mid-back, ribs down.",
-   "limit": {
-    "knee": "Front knee over the foot, no inward collapse. Pad under the back knee.",
-    "back": "Rotate from the upper back, not by arching the lower back."
-   }
-  },
-  "quadrupedRockBack": {
-   "name": "Quadruped rock-backs",
-   "limit": {
-    "knee": "Only as deep as pain-free and click-free."
-   }
-  },
-  "deepSquatHold": {
-   "name": "Deep-squat hold on a pole",
-   "limit": {
-    "knee": "Only as deep as pain-free and click-free."
-   }
-  },
-  "singleLegBalance": {
-   "name": "Single-leg balance"
-  },
-  "boxPistol": {
-   "name": "Box pistol, knee-height box",
-   "cue": "Knee stays over the foot, no inward collapse.",
-   "limit": {
-    "knee": "Box stays at knee height. Stop at 90° knee bend."
-   },
-   "goal": "At 3 × 8/leg clean, slow the lowering to 3–5 s or hold the 4 kg KB. Don't lower the box."
-  },
-  "legPress": {
-   "name": "Leg press",
-   "cue": "Feet flat, knees track over the toes.",
-   "limit": {
-    "knee": "Stop at 90° knee bend. Set the safety stop there."
-   },
-   "goal": "+5 kg when all sets hit 8 at RPE 8 or easier."
-  },
-  "trapBarDeadlift": {
-   "name": "Trap-bar deadlift",
-   "limit": {
-    "back": "Raise the start height if your back rounds."
-   }
-  },
-  "barbellRdl": {
-   "name": "Barbell RDL",
-   "limit": {
-    "back": "Hinge in a neutral range. Stop where the pelvis stops rotating."
-   }
-  },
-  "nordicCurl": {
-   "name": "Nordic curl, band-assisted",
-   "cue": "Lower as slowly as you can.",
-   "limit": {
-    "knee": "Pad under the knees."
-   }
-  },
-  "backExtension": {
-   "name": "Back extension",
-   "limit": {
-    "back": "Stop at straight. No arching past it."
-   }
-  },
-  "backExtensionTwist": {
-   "name": "Back-extension hold with twist",
-   "cue": "Lock the torso flat at the top, plate at the chest, turn the shoulders slowly from the upper back. Hips and lower back don't move.",
-   "limit": {
-    "back": "Light plate only. Stop at straight, never arched. If the hips swing or the twist drops into the lower back, go lighter or unweighted."
-   },
-   "goal": "Progress by slowing the twist, then by plate. Never by range."
-  },
-  "singleLegCalfRaise": {
-   "name": "Single-leg calf raise",
-   "cue": "On a step."
-  },
-  "copenhagenPlank": {
-   "name": "Copenhagen plank, short lever"
-  },
-  "ninetyNinety": {
-   "name": "90/90",
-   "limit": {
-    "knee": "Ease off if the right knee twists or clicks."
-   }
-  },
-  "pigeon": {
-   "name": "Pigeon",
-   "limit": {
-    "knee": "Ease off if the right knee twists or clicks; prop the hip on a cushion."
-   }
-  },
-  "hipFlexorStretch": {
-   "name": "Hip flexor stretch, pelvis tucked",
-   "cue": "Squeeze the back glute, ribs down, tuck the pelvis, then shift forward. Feel it in the front of the hip, not your back.",
-   "limit": {
-    "knee": "Pad under the right knee."
-   }
-  },
-  "march": {
-   "name": "March on the spot"
-  },
-  "bodyweightSquat": {
-   "name": "Slow bodyweight squat",
-   "limit": {
-    "knee": "To parallel only."
-   }
-  },
-  "bandedKneeExtension": {
-   "name": "Banded knee extension",
-   "limit": {
-    "knee": "Don't force the knee straight. Stop at any block."
-   }
-  },
-  "bulgarianSplitSquat": {
-   "name": "Bulgarian split squat",
-   "cue": "Go lighter on the right leg if needed.",
-   "limit": {
-    "knee": "Front thigh no lower than parallel. Pad under the back knee as a depth stop."
-   }
-  },
-  "singleLegRdl": {
-   "name": "Single-leg RDL",
-   "cue": "Soft, not bent, standing knee.",
-   "limit": {
-    "back": "Hinge with a neutral back."
-   }
-  },
-  "hipThrust": {
-   "name": "Hip thrust",
-   "cue": "Shoulders on the couch, DB + plates.",
-   "limit": {
-    "back": "Tuck the pelvis at the top. Don't over-arch."
-   }
-  },
-  "sliderLegCurl": {
-   "name": "Slider leg curl",
-   "cue": "Double leg first, then single leg."
-  },
-  "sidePlankHipAbduction": {
-   "name": "Side-plank hip abduction"
-  },
-  "suitcaseCarry": {
-   "name": "Suitcase carry"
-  },
-  "stepDown": {
-   "name": "Step-down, 10 cm step",
-   "limit": {
-    "knee": "Knee stays over the foot, no inward collapse."
-   }
-  },
-  "lSitAdvancedTuck": {
-   "name": "L-sit, advanced tuck",
-   "cue": "On the dip bars. Knees at hip height, shins level.",
-   "limit": {
-    "back": "Pelvis tucked. Shorten the range if your lower back pulls."
-   }
-  },
-  "lSitOneLeg": {
-   "name": "L-sit, one leg out",
-   "limit": {
-    "back": "Pelvis tucked."
-   },
-   "goal": "Full L on the bars once these reach 3 × 15 s/side."
-  },
-  "elbowLeverGripHold": {
-   "name": "Elbow-lever grip hold",
-   "cue": "On the dip bar.",
-   "limit": {
-    "elbow": "Inner-elbow ache into the next morning: cut this by a third to a half."
-   }
-  },
-  "hollowHold": {
-   "name": "Hollow hold",
-   "goal": "At 60 s, move to kneeling ab-wheel rollouts."
-  },
-  "pallofPress": {
-   "name": "Band Pallof press"
-  },
-  "hangingKneeRaise": {
-   "name": "Hanging knee raise",
-   "cue": "Tuck the pelvis as the knees come up.",
-   "limit": {
-    "back": "Shorten the range if your lower back pulls at the bottom."
-   }
-  },
-  "deadHangRepeaters": {
-   "name": "Dead-hang repeaters",
-   "cue": "Step down off the bar, don't drop."
-  },
-  "hamstringStretch": {
-   "name": "Hamstring stretch",
-   "goal": "Touch the floor with locked knees by the retest."
-  },
-  "fingertipHoldIncline": {
-   "name": "Fingertip hold, incline",
-   "cue": "Hands on the dip bar base or a bench.",
-   "limit": {
-    "elbow": "Never fatigued. Three fingers is the limit."
-   }
-  },
-  "platePinch": {
-   "name": "Plate pinch"
-  },
-  "kbRotationalSwing": {
-   "name": "KB rotational swing",
-   "cue": "Hinge, not squat. The bell swings from outside one knee, across the body and up over the opposite shoulder. Hips drive it, the arm steers, the obliques brake it on the way down.",
-   "limit": {
-    "back": "Neutral spine at the bottom. If the lower back rounds or the swing yanks you, go lighter or slower. Not in the first 1–2 h after waking at anything above 4 kg.",
-    "knee": "Feet wide and planted. Let the back heel lift and the whole foot turn; don't grind a planted foot."
-   },
-   "goal": "Add load only when every rep is quiet and the bottom is neutral. 4 kg at home; 8 → 12 → 16 kg at the gym."
-  },
-  "bagRounds": {
-   "name": "Bag rounds",
-   "cue": "Step in, out and sideways.",
-   "limit": {
-    "knee": "No pivoting on a planted foot. Let the heel lift and the whole foot turn."
-   }
-  },
-  "zone2Ride": {
-   "name": "Zone 2 ride",
-   "cue": "Saddle height: knee slightly bent at the bottom of the stroke.",
-   "limit": {
-    "knee": "Stay seated on hills. No standing sprints or grinding big gears."
-   }
-  },
-  "marchCatCamel": {
-   "name": "Walk or march, then cat-camel",
-   "cue": "Comfortable range. This loosens you up; it isn't a stretch."
-  },
-  "mcgillCurlUp": {
-   "name": "McGill curl-up",
-   "cue": "Hands under your lower back, brace without flattening it, lift head and shoulders a few cm."
-  },
-  "sidePlank": {
-   "name": "Side plank",
-   "cue": "Straight line from ear to knee, hips stacked.",
-   "goal": "Progress to 6-4-2 on the feet."
-  },
-  "birdDog": {
-   "name": "Bird dog",
-   "cue": "Neutral spine, no rotation, reach long not high."
-  },
-  "gluteBridge": {
-   "name": "Glute bridge",
-   "cue": "Glutes first, then lift. Stop at level, no arching.",
-   "goal": "Then single-leg, 2 × 8–12/side."
-  },
-  "skipping": {
-   "name": "Skipping",
-   "cue": "Light and quiet."
-  },
-  "hopAndStick": {
-   "name": "Single-leg hop and stick",
-   "cue": "Land soft, knee over the foot, hold 2 s.",
-   "limit": {
-    "knee": "Only as written. No extra jumps."
-   }
-  },
-  "skaterBound": {
-   "name": "Skater bound and stick",
-   "cue": "Stick the landing.",
-   "limit": {
-    "knee": "Don't let the knee cave in or twist."
-   }
-  },
-  "chestSupportedRow": {
-   "name": "Chest-supported DB row",
-   "cue": "Chest on an incline bench, a DB in each hand.",
-   "limit": {
-    "back": "Chest stays on the bench. Used instead of barbell rows to keep load off your lower back."
-   }
-  },
-  "gobletBoxSquat": {
-   "name": "Goblet squat to a chair",
-   "cue": "3 s down, light touch on the chair, stand up. Add the backpack plates when 4 × 12 is easy.",
-   "limit": {
-    "knee": "Chair at parallel height, so it stops you at 90°."
-   }
-  },
-  "bStanceRdl": {
-   "name": "B-stance RDL",
-   "cue": "Back foot is a kickstand; the front leg does the work.",
-   "limit": {
-    "back": "Hinge with a neutral back. Stop where the pelvis stops rotating."
-   }
-  },
-  "bandGoodMorning": {
-   "name": "Banded good morning",
-   "cue": "Stand on the band and loop it over your shoulders.",
-   "limit": {
-    "back": "Neutral back. Come up to straight and stop."
-   }
-  },
-  "barbellHipThrust": {
-   "name": "Barbell hip thrust",
-   "cue": "Shoulders on a bench, pad on the bar.",
-   "limit": {
-    "back": "Tuck the pelvis at the top. Don't over-arch."
-   }
-  },
-  "legCurlMachine": {
-   "name": "Leg curl machine"
-  },
-  "rearDeltRaise": {
-   "name": "Rear delt raise",
-   "cue": "Lead with the elbow, pinky slightly up, 2–3 s lowering. Light weight: feel the back of the shoulder, not the traps.",
-   "limit": {
-    "shoulder": "Stop if the front of the shoulder pinches."
-   },
-   "goal": "At 2 × 20 clean, go up a weight."
-  },
-  "hipFlexorRaise": {
-   "name": "Standing hip flexor raise",
-   "cue": "Stand tall, pelvis tucked. Lift the knee with the hip to hip height and pause for a second.",
-   "limit": {
-    "back": "Ribs down, no arching to get the knee up. End the set when your lower back takes over."
-   },
-   "goal": "At 2 × 15/side, add band tension or hook the 4 kg KB on your foot."
-  },
-  "halfKneelingHipLoad": {
-   "name": "Loaded half-kneeling hip rock",
-   "cue": "Half-kneel with a light weight at your chest, pelvis tucked. Rock the hips forward from the hip, not the lower back.",
-   "limit": {
-    "knee": "Pad under the down knee. Right leg in front: the knee stops over the toes, no deeper than 90°.",
-    "back": "Keep the tuck. No arching as you rock forward."
-   },
-   "goal": "2 × 10–12/side, then a heavier plate."
-  },
-  "pigeonRaise": {
-   "name": "Pigeon raise (90/90 lift-off)",
-   "cue": "Sit in 90/90. Lift the whole front shin a few centimetres as one piece, hold 2 s, lower.",
-   "limit": {
-    "knee": "Shin angled, small range. Skip it on any morning the knee check is off, and stop if the right knee twists or clicks."
-   },
-   "goal": "2 × 10–12/side with a clean 2-s hold."
-  },
-  "frogStand": {
-   "name": "Frog stand (crow prep)",
-   "cue": "Hands shoulder-width, fingers gripping the floor, knees on the backs of your upper arms. Lean until your toes float.",
-   "limit": {
-    "wrist": "Wrist pain over 3/10: stop."
-   },
-   "goal": "At 3 × 30 s, straighten the arms into a crow."
-  },
-  "proneStickExtension": {
-   "name": "Prone stick lift and rotation",
-   "cue": "Face down, glutes on, chin tucked. Lift the chest and the stick from the mid-back; the lower back stays flat.",
-   "limit": {
-    "back": "If your lower back does the work, put a towel under your hips and shrink the range. Stop over 3/10."
-   },
-   "goal": "Add a second to the hold each week, up to 5 s. No load."
-  },
-  "eveningStretch": {
-   "name": "Evening wind-down stretch",
-   "cue": "Long exhale into each hold. Forward fold, sphinx, pigeon, lying twist.",
-   "limit": {
-    "back": "Sphinx on the forearms, not a full cobra. No pushing into the end of the arch.",
-    "knee": "Pigeon with the front shin angled and a cushion under the hip."
-   }
-  },
-  "morningFlow": {
-   "name": "Morning loosening flow",
-   "cue": "Loose and easy, about 5–6 minutes. It replaces the walk or march before the back routine.",
-   "limit": {
-    "knee": "Hops tiny, quiet, straight up and down, no turn on landing. Deep squat and seiza only if pain-free and click-free. Drop the hops, squat and seiza on a morning the knee check is off.",
-    "back": "Toe touches unloaded, soft knees, comfortable reach only."
-   }
-  }
- },
- "library": {
-  "note": "Every approved exercise that came from reel intake after v1.5. status live = it is in a session. status bench = approved and ready, not in a session. Swaps are like-for-like: same slot, same sets and time, one swap per session. To use a bench item, Claude moves it into sessions (and program.md) and sets it live.",
-  "items": [
-   {
-    "ex": "rearDeltRaise",
-    "status": "live",
-    "where": "Upper A accessory"
-   },
-   {
-    "ex": "hipFlexorRaise",
-    "status": "live",
-    "where": "Lower B accessory, alternate weeks",
-    "swapsWith": [
-     "sidePlankHipAbduction"
+  "run": {
+    "days": ["mon", "wed", "sat"],
+    "current": "a",
+    "note": "Easy pace, flat path or grass. No hard sets yet.",
+    "stages": {
+      "a": {"session": "Jog 1 min, walk 1 min × 6", "moveOn": "Your knee isn't more swollen or sore the morning after a run."},
+      "b": {"session": "Jog 2 min, walk 1 min × 4", "moveOn": "Your knee isn't more swollen or sore the morning after a run."},
+      "c": {"session": "Continuous jog 8–10 min", "moveOn": "Check the next step with Bryce (3 Dec)."}
+    },
+    "nextMorningRule": "Joint swelling or pain up: plyos to every 2nd day and repeat the previous run stage. Still up after 48 h: stop and tell Bryce."
+  },
+  "exercises": {
+    "bandPullApart": {"name": "Band pull-aparts"},
+    "bandDislocate": {"name": "Band dislocates"},
+    "scapPushUp": {"name": "Scap push-ups"},
+    "wristPrep": {"name": "Wrist prep", "cue": "Hands on the floor, fingers forward then back, gentle rocks."},
+    "bandShoulderWork": {"name": "Band shoulder work"},
+    "hollowCheck": {"name": "Hollow-body check", "cue": "Lower back flat, ribs down."},
+    "handstandFingerPrep": {
+      "name": "Handstand finger prep",
+      "cue": "Plank drills. Lean the shoulders past the hands and let the fingers push you back.",
+      "limit": {"wrist": "Wrist pain over 3/10: no finger work that day."},
+      "goal": "Prep only. Rotate through the four drills; you're past them as a progression."
+    },
+    "handstandWallBalance": {
+      "name": "Handstand balance ladder",
+      "cue": "Chest to wall. Fingers do the balancing; shoulders pushed up to the ears the whole time.",
+      "limit": {"back": "Chest-to-wall only, never back-to-wall holds. Press-offs are shrugs, not arches: ribs down.", "wrist": "Wrist pain over 3/10: stop finger work for the day."},
+      "goal": "A drill is done at 2 × 30 s or 2 × 10 clean; then the next drill is the rung. One drill per session. Kick-up drills once the leg-joins are clean.",
+      "rung": 5,
+      "ladder": [
+        {"n": 5, "name": "Wall lean, fingers, sideways to the wall", "target": "2 × 30 s"},
+        {"n": 6, "name": "Wall hold, fingers, facing the wall", "target": "2 × 30 s"},
+        {"n": 7, "name": "Shoulder press-off", "target": "2 × 10"},
+        {"n": 8, "name": "Shoulder press-off hold", "target": "2 × 30 s"},
+        {"n": 9, "name": "Shoulder + finger press-off", "target": "2 × 10, then 2 × 30 s"},
+        {"n": 10, "name": "Alternating leg lift-offs", "target": "2 × 10/side"},
+        {"n": 11, "name": "Single-leg lift-off hold", "target": "2 × 30 s/side"},
+        {"n": 12, "name": "Leg-join attempts", "target": "2 × 10/side"},
+        {"n": 13, "name": "Partial handstand jumps, finger resistance (floor)", "target": "2 × 10"},
+        {"n": 14, "name": "Handstand jumps to the wall", "target": "2 × 10, then 2 × 10 with leg lift-offs"},
+        {"n": 15, "name": "Free handstand attempts", "target": "1–2 s 2 × 10, then 5 s 2 × 5"}
+      ]
+    },
+    "handstandChestToWall": {"name": "Handstand, chest to wall", "cue": "Ribs down, glutes on. Hands a little closer to the wall each week.", "limit": {"back": "Chest-to-wall only, never back-to-wall holds."}, "goal": "Retest max hold. In sessions it's drill 6 of the balance ladder."},
+    "cartwheelBail": {"name": "Cartwheel bail practice", "cue": "From a low wall walk."},
+    "weightedPullUp": {"name": "Weighted pull-up", "cue": "Backpack with both 5 kg plates. Step down off the bar, don't drop.", "goal": "At 4 × 8 clean, move to the 20 kg DB between the feet and restart at 4 × 5."},
+    "pikePushUp": {"name": "Pike push-up", "cue": "Elbows about 45°, nose lands ahead of the hands, 2–3 s lowering.", "goal": "At 3 × 12 clean, raise the feet to knee height."},
+    "diamondPushUp": {"name": "Diamond push-up", "goal": "At 3 × 8, move to pseudo-planche push-ups."},
+    "benchPress": {"name": "Bench press"},
+    "invertedRow": {"name": "Inverted row", "cue": "Under the dip bar."},
+    "neckIsometrics": {"name": "Neck isometrics, 4-way", "cue": "Push your head into your hand without moving."},
+    "thoracicExtension": {"name": "Thoracic extension", "cue": "Over a rolled towel."},
+    "latStretch": {"name": "Lat stretch"},
+    "couchStretch": {"name": "Couch stretch", "cue": "Squeeze the back glute, ribs down, tuck the pelvis, then shift forward.", "limit": {"knee": "Pad under the right knee."}},
+    "weightedDip": {"name": "Weighted dip", "cue": "Backpack with both 5 kg plates.", "goal": "At 4 × 8 clean, move to the 20 kg DB between the feet."},
+    "falseGripHang": {"name": "False-grip hang"},
+    "muscleUpNegative": {"name": "Muscle-up negative", "cue": "Climb up via the dip bar, lower over 5 s. Never chicken-wing.", "goal": "First muscle-up attempts only after 10 strict chest-to-bar pull-ups."},
+    "oneArmDbPress": {"name": "One-arm DB overhead press", "cue": "Brace, ribs down.", "limit": {"back": "No leaning back."}},
+    "dbRow": {"name": "DB row", "limit": {"back": "Neutral back, brace."}},
+    "wristCurl": {"name": "Wrist curls", "cue": "5 kg plate or 4 kg KB, 2–3 s lowering."},
+    "kbPronationSupination": {"name": "KB pronation / supination"},
+    "bandFingerExtension": {"name": "Band finger extensions"},
+    "bike": {"name": "Bike"},
+    "lungeRotation": {
+      "name": "Lunge with rotation",
+      "cue": "Long lunge, inside hand on the floor, reach the other arm up and follow it with your eyes. Turn from the mid-back, ribs down.",
+      "limit": {"knee": "Front knee over the foot, no inward collapse. Pad under the back knee.", "back": "Rotate from the upper back, not by arching the lower back."}
+    },
+    "quadrupedRockBack": {"name": "Quadruped rock-backs", "limit": {"knee": "Only as deep as pain-free and click-free."}},
+    "deepSquatHold": {"name": "Deep-squat hold on a pole", "limit": {"knee": "Only as deep as pain-free and click-free."}},
+    "singleLegBalance": {"name": "Single-leg balance"},
+    "boxPistol": {
+      "name": "Box pistol, knee-height box",
+      "cue": "Knee stays over the foot, no inward collapse.",
+      "limit": {"knee": "Box stays at knee height. Stop at 90° knee bend."},
+      "goal": "At 3 × 8/leg clean, slow the lowering to 3–5 s or hold the 4 kg KB. Don't lower the box."
+    },
+    "legPress": {"name": "Leg press", "cue": "Feet flat, knees track over the toes.", "limit": {"knee": "Stop at 90° knee bend. Set the safety stop there."}, "goal": "+5 kg when all sets hit 8 at RPE 8 or easier."},
+    "trapBarDeadlift": {"name": "Trap-bar deadlift", "limit": {"back": "Raise the start height if your back rounds."}},
+    "barbellRdl": {"name": "Barbell RDL", "limit": {"back": "Hinge in a neutral range. Stop where the pelvis stops rotating."}},
+    "nordicCurl": {"name": "Nordic curl, band-assisted", "cue": "Lower as slowly as you can.", "limit": {"knee": "Pad under the knees."}},
+    "backExtension": {"name": "Back extension", "limit": {"back": "Stop at straight. No arching past it."}},
+    "backExtensionTwist": {
+      "name": "Back-extension hold with twist",
+      "cue": "Lock the torso flat at the top, plate at the chest, turn the shoulders slowly from the upper back. Hips and lower back don't move.",
+      "limit": {"back": "Light plate only. Stop at straight, never arched. If the hips swing or the twist drops into the lower back, go lighter or unweighted."},
+      "goal": "Progress by slowing the twist, then by plate. Never by range."
+    },
+    "singleLegCalfRaise": {"name": "Single-leg calf raise", "cue": "On a step."},
+    "copenhagenPlank": {"name": "Copenhagen plank, short lever"},
+    "ninetyNinety": {"name": "90/90", "limit": {"knee": "Ease off if the right knee twists or clicks."}},
+    "pigeon": {"name": "Pigeon", "limit": {"knee": "Ease off if the right knee twists or clicks; prop the hip on a cushion."}},
+    "hipFlexorStretch": {"name": "Hip flexor stretch, pelvis tucked", "cue": "Squeeze the back glute, ribs down, tuck the pelvis, then shift forward. Feel it in the front of the hip, not your back.", "limit": {"knee": "Pad under the right knee."}},
+    "march": {"name": "March on the spot"},
+    "bodyweightSquat": {"name": "Slow bodyweight squat", "limit": {"knee": "To parallel only."}},
+    "bandedKneeExtension": {"name": "Banded knee extension", "limit": {"knee": "Don't force the knee straight. Stop at any block."}},
+    "bulgarianSplitSquat": {"name": "Bulgarian split squat", "cue": "Go lighter on the right leg if needed.", "limit": {"knee": "Front thigh no lower than parallel. Pad under the back knee as a depth stop."}},
+    "singleLegRdl": {"name": "Single-leg RDL", "cue": "Soft, not bent, standing knee.", "limit": {"back": "Hinge with a neutral back."}},
+    "hipThrust": {"name": "Hip thrust", "cue": "Shoulders on the couch, DB + plates.", "limit": {"back": "Tuck the pelvis at the top. Don't over-arch."}},
+    "sliderLegCurl": {"name": "Slider leg curl", "cue": "Double leg first, then single leg."},
+    "sidePlankHipAbduction": {"name": "Side-plank hip abduction"},
+    "suitcaseCarry": {"name": "Suitcase carry"},
+    "stepDown": {"name": "Step-down, 10 cm step", "limit": {"knee": "Knee stays over the foot, no inward collapse."}},
+    "lSitAdvancedTuck": {"name": "L-sit, advanced tuck", "cue": "On the dip bars. Knees at hip height, shins level.", "limit": {"back": "Pelvis tucked. Shorten the range if your lower back pulls."}},
+    "lSitOneLeg": {"name": "L-sit, one leg out", "limit": {"back": "Pelvis tucked."}, "goal": "Full L on the bars once these reach 3 × 15 s/side."},
+    "elbowLeverGripHold": {"name": "Elbow-lever grip hold", "cue": "On the dip bar.", "limit": {"elbow": "Inner-elbow ache into the next morning: cut this by a third to a half."}},
+    "hollowHold": {"name": "Hollow hold", "goal": "At 60 s, move to kneeling ab-wheel rollouts."},
+    "pallofPress": {"name": "Band Pallof press"},
+    "hangingKneeRaise": {"name": "Hanging knee raise", "cue": "Tuck the pelvis as the knees come up.", "limit": {"back": "Shorten the range if your lower back pulls at the bottom."}},
+    "deadHangRepeaters": {"name": "Dead-hang repeaters", "cue": "Step down off the bar, don't drop."},
+    "hamstringStretch": {"name": "Hamstring stretch", "goal": "Touch the floor with locked knees by the retest."},
+    "fingertipHoldIncline": {"name": "Fingertip hold, incline", "cue": "Hands on the dip bar base or a bench.", "limit": {"elbow": "Never fatigued. Three fingers is the limit."}},
+    "platePinch": {"name": "Plate pinch"},
+    "kbRotationalSwing": {
+      "name": "KB rotational swing",
+      "cue": "Hinge, not squat. The bell swings from outside one knee, across the body and up over the opposite shoulder. Hips drive it, the arm steers, the obliques brake it on the way down.",
+      "limit": {"back": "Neutral spine at the bottom. If the lower back rounds or the swing yanks you, go lighter or slower. Not in the first 1–2 h after waking at anything above 4 kg.", "knee": "Feet wide and planted. Let the back heel lift and the whole foot turn; don't grind a planted foot."},
+      "goal": "Add load only when every rep is quiet and the bottom is neutral. 4 kg at home; 8 → 12 → 16 kg at the gym."
+    },
+    "bagRounds": {"name": "Bag rounds", "cue": "Step in, out and sideways.", "limit": {"knee": "No pivoting on a planted foot. Let the heel lift and the whole foot turn."}},
+    "zone2Ride": {"name": "Zone 2 ride", "cue": "Saddle height: knee slightly bent at the bottom of the stroke.", "limit": {"knee": "Stay seated on hills. No standing sprints or grinding big gears."}},
+    "marchCatCamel": {"name": "Walk or march, then cat-camel", "cue": "Comfortable range. This loosens you up; it isn't a stretch."},
+    "mcgillCurlUp": {"name": "McGill curl-up", "cue": "Hands under your lower back, brace without flattening it, lift head and shoulders a few cm."},
+    "sidePlank": {"name": "Side plank", "cue": "Straight line from ear to knee, hips stacked.", "goal": "Progress to 6-4-2 on the feet."},
+    "birdDog": {"name": "Bird dog", "cue": "Neutral spine, no rotation, reach long not high."},
+    "gluteBridge": {"name": "Glute bridge", "cue": "Glutes first, then lift. Stop at level, no arching.", "goal": "Then single-leg, 2 × 8–12/side."},
+    "skipping": {"name": "Skipping", "cue": "Light and quiet."},
+    "hopAndStick": {"name": "Single-leg hop and stick", "cue": "Land soft, knee over the foot, hold 2 s.", "limit": {"knee": "Only as written. No extra jumps."}},
+    "skaterBound": {"name": "Skater bound and stick", "cue": "Stick the landing.", "limit": {"knee": "Don't let the knee cave in or twist."}},
+    "chestSupportedRow": {"name": "Chest-supported DB row", "cue": "Chest on an incline bench, a DB in each hand.", "limit": {"back": "Chest stays on the bench. Used instead of barbell rows to keep load off your lower back."}},
+    "gobletBoxSquat": {"name": "Goblet squat to a chair", "cue": "3 s down, light touch on the chair, stand up. Add the backpack plates when 4 × 12 is easy.", "limit": {"knee": "Chair at parallel height, so it stops you at 90°."}},
+    "bStanceRdl": {"name": "B-stance RDL", "cue": "Back foot is a kickstand; the front leg does the work.", "limit": {"back": "Hinge with a neutral back. Stop where the pelvis stops rotating."}},
+    "bandGoodMorning": {"name": "Banded good morning", "cue": "Stand on the band and loop it over your shoulders.", "limit": {"back": "Neutral back. Come up to straight and stop."}},
+    "barbellHipThrust": {"name": "Barbell hip thrust", "cue": "Shoulders on a bench, pad on the bar.", "limit": {"back": "Tuck the pelvis at the top. Don't over-arch."}},
+    "legCurlMachine": {"name": "Leg curl machine"},
+    "rearDeltRaise": {"name": "Rear delt raise", "cue": "Lead with the elbow, pinky slightly up, 2–3 s lowering. Light weight: feel the back of the shoulder, not the traps.", "limit": {"shoulder": "Stop if the front of the shoulder pinches."}, "goal": "At 2 × 20 clean, go up a weight."},
+    "hipFlexorRaise": {"name": "Standing hip flexor raise", "cue": "Stand tall, pelvis tucked. Lift the knee with the hip to hip height and pause for a second.", "limit": {"back": "Ribs down, no arching to get the knee up. End the set when your lower back takes over."}, "goal": "At 2 × 15/side, add band tension or hook the 4 kg KB on your foot."},
+    "halfKneelingHipLoad": {"name": "Loaded half-kneeling hip rock", "cue": "Half-kneel with a light weight at your chest, pelvis tucked. Rock the hips forward from the hip, not the lower back.", "limit": {"knee": "Pad under the down knee. Right leg in front: the knee stops over the toes, no deeper than 90°.", "back": "Keep the tuck. No arching as you rock forward."}, "goal": "2 × 10–12/side, then a heavier plate."},
+    "pigeonRaise": {"name": "Pigeon raise (90/90 lift-off)", "cue": "Sit in 90/90. Lift the whole front shin a few centimetres as one piece, hold 2 s, lower.", "limit": {"knee": "Shin angled, small range. Skip it on any morning the knee check is off, and stop if the right knee twists or clicks."}, "goal": "2 × 10–12/side with a clean 2-s hold."},
+    "frogStand": {"name": "Frog stand (crow prep)", "cue": "Hands shoulder-width, fingers gripping the floor, knees on the backs of your upper arms. Lean until your toes float.", "limit": {"wrist": "Wrist pain over 3/10: stop."}, "goal": "At 3 × 30 s, straighten the arms into a crow."},
+    "proneStickExtension": {"name": "Prone stick lift and rotation", "cue": "Face down, glutes on, chin tucked. Lift the chest and the stick from the mid-back; the lower back stays flat.", "limit": {"back": "If your lower back does the work, put a towel under your hips and shrink the range. Stop over 3/10."}, "goal": "Add a second to the hold each week, up to 5 s. No load."},
+    "eveningStretch": {"name": "Evening wind-down stretch", "cue": "Long exhale into each hold. Forward fold, sphinx, pigeon, lying twist.", "limit": {"back": "Sphinx on the forearms, not a full cobra. No pushing into the end of the arch.", "knee": "Pigeon with the front shin angled and a cushion under the hip."}},
+    "morningFlow": {"name": "Morning loosening flow", "cue": "Loose and easy, about 5–6 minutes. It replaces the walk or march before the back routine.", "limit": {"knee": "Hops tiny, quiet, straight up and down, no turn on landing. Deep squat and seiza only if pain-free and click-free. Drop the hops, squat and seiza on a morning the knee check is off.", "back": "Toe touches unloaded, soft knees, comfortable reach only."}}
+  },
+  "library": {
+    "note": "Every approved exercise that came from reel intake after v1.5. status live = it is in a session. status bench = approved and ready, not in a session. Swaps are like-for-like: same slot, same sets and time, one swap per session. To use a bench item, Claude moves it into sessions (and program.md) and sets it live.",
+    "items": [
+      {"ex": "rearDeltRaise", "status": "live", "where": "Upper A accessory"},
+      {"ex": "hipFlexorRaise", "status": "live", "where": "Lower B accessory, alternate weeks", "swapsWith": ["sidePlankHipAbduction"]},
+      {"ex": "halfKneelingHipLoad", "status": "bench", "target": "2 × 10–12/side", "load": "5 kg plate", "swapsWith": ["hipFlexorStretch", "couchStretch"], "where": "Lower A/B mobility block"},
+      {"ex": "pigeonRaise", "status": "bench", "target": "2 × 10–12/side", "swapsWith": ["sidePlankHipAbduction", "copenhagenPlank"], "where": "Lower A/B accessory block"},
+      {"ex": "frogStand", "status": "bench", "target": "3 × 10–15 s", "swapsWith": ["handstandFingerPrep"], "where": "Wed/Sat skill block"},
+      {"ex": "proneStickExtension", "status": "bench", "target": "2 × 8 lifts + 2 × 6 rotations/side, 2-s holds", "swapsWith": ["thoracicExtension"], "where": "Upper A/B mobility block", "needs": "A broomstick or PVC pipe"},
+      {"ex": "eveningStretch", "status": "bench", "target": "8–10 min", "swapsWith": [], "where": "9:00 pm wind-down, outside the session. Can also replace the Wed/Sat mobility block.", "optionalAddOn": true},
+      {"ex": "morningFlow", "status": "live", "target": "5–6 min", "swapsWith": [], "where": "Today at 6:00, in place of the walk or march before the back routine (live from v1.6.2)."}
     ]
-   },
-   {
-    "ex": "halfKneelingHipLoad",
-    "status": "bench",
-    "target": "2 × 10–12/side",
-    "load": "5 kg plate",
-    "swapsWith": [
-     "hipFlexorStretch",
-     "couchStretch"
-    ],
-    "where": "Lower A/B mobility block"
-   },
-   {
-    "ex": "pigeonRaise",
-    "status": "bench",
-    "target": "2 × 10–12/side",
-    "swapsWith": [
-     "sidePlankHipAbduction",
-     "copenhagenPlank"
-    ],
-    "where": "Lower A/B accessory block"
-   },
-   {
-    "ex": "frogStand",
-    "status": "bench",
-    "target": "3 × 10–15 s",
-    "swapsWith": [
-     "handstandFingerPrep"
-    ],
-    "where": "Wed/Sat skill block"
-   },
-   {
-    "ex": "proneStickExtension",
-    "status": "bench",
-    "target": "2 × 8 lifts + 2 × 6 rotations/side, 2-s holds",
-    "swapsWith": [
-     "thoracicExtension"
-    ],
-    "where": "Upper A/B mobility block",
-    "needs": "A broomstick or PVC pipe"
-   },
-   {
-    "ex": "eveningStretch",
-    "status": "bench",
-    "target": "8–10 min",
-    "swapsWith": [],
-    "where": "9:00 pm wind-down, outside the session. Can also replace the Wed/Sat mobility block.",
-    "optionalAddOn": true
-   },
-   {
-    "ex": "morningFlow",
-    "status": "bench",
-    "target": "5–6 min",
-    "swapsWith": [],
-    "where": "6:00, in place of the walk or march before the back routine.",
-    "optionalAddOn": true
-   }
-  ]
- },
- "howToTemplate": {
-  "note": "app-howto.json holds the How-to screen for every exercise above. New in v1.5: an exercise can have a demo {label, url} (an Instagram reel) instead of a YouTube video.",
-  "howTo": [
-   {
-    "title": "",
-    "text": "",
-    "photo": ""
-   }
-  ],
-  "watchFor": [
-   ""
-  ],
-  "video": {
-   "label": "",
-   "url": ""
   },
-  "demo": {
-   "label": "",
-   "url": ""
+  "howToTemplate": {
+    "note": "app-howto.json holds the How-to screen for every exercise above. New in v1.5: an exercise can have a demo {label, url} (an Instagram reel) instead of a YouTube video.",
+    "howTo": [{"title": "", "text": "", "photo": ""}],
+    "watchFor": [""],
+    "video": {"label": "", "url": ""},
+    "demo": {"label": "", "url": ""},
+    "photoCredit": ""
   },
-  "photoCredit": ""
- },
- "food": {
-  "protein": {
-   "current": "chicken",
-   "options": [
-    "chicken",
-    "beef"
-   ],
-   "sticky": true,
-   "note": "Stays on whatever you pick until you switch it."
-  },
-  "water": {
-   "targetLitres": 3,
-   "saunaDayLitres": 3.5,
-   "tapMl": 500,
-   "onWakingMl": 500
-  },
-  "creatine": "5 g",
-  "fastDayRule": "No meat, dairy or eggs. Fish is fine. No oil. Protein isn't checked against target on fast days.",
-  "targets": {
-   "kcal": 2450,
-   "proteinG": 190,
-   "note": "Shown for reference only. The app doesn't count calories."
-  },
-  "meals": {
-   "normal": {
-    "shake": {
-     "time": "7:30",
-     "name": "Shake + kiwi",
-     "items": [
-      [
-       "Full cream milk",
-       "300 ml"
-      ],
-      [
-       "Whey",
-       "30 g"
-      ],
-      [
-       "Rolled oats",
-       "40 g"
-      ],
-      [
-       "Banana",
-       "1"
-      ],
-      [
-       "Kiwi, on the side",
-       "1"
-      ]
-     ]
+  "food": {
+    "protein": {"current": "chicken", "options": ["chicken", "beef"], "sticky": true, "note": "Stays on whatever you pick until you switch it."},
+    "water": {"targetLitres": 3, "saunaDayLitres": 3.5, "tapMl": 500, "onWakingMl": 500},
+    "creatine": "5 g",
+    "fastDayRule": "No meat, dairy or eggs. Fish is fine. No oil. Protein isn't checked against target on fast days.",
+    "targets": {"kcal": 2450, "proteinG": 190, "note": "Shown for reference only. The app doesn't count calories."},
+    "meals": {
+      "normal": {
+        "shake": {"time": "7:30", "name": "Shake + kiwi", "items": [["Full cream milk", "300 ml"], ["Whey", "30 g"], ["Rolled oats", "40 g"], ["Banana", "1"], ["Kiwi, on the side", "1"]]},
+        "lunch": {
+          "time": "12:30",
+          "name": "Lunch",
+          "chicken": [["Cooked chicken breast", "180 g"], ["Cooked rice", "250 g"], ["Frozen veg", "150 g"], ["Olive oil", "1 tsp"]],
+          "beef": [["Lean mince (raw weight)", "250 g"], ["Cooked rice", "250 g"], ["Frozen veg", "150 g"]]
+        },
+        "dinner": {
+          "time": "by 7:00",
+          "name": "Dinner",
+          "chicken": [["Cooked chicken breast", "200 g"], ["Cooked rice", "300 g"], ["Frozen veg", "200 g"], ["Olive oil", "1 tbsp"], ["Greek yoghurt, berries, honey", "150 g"]],
+          "beef": [["Lean mince (raw weight)", "300 g"], ["Cooked rice", "300 g"], ["Frozen veg", "200 g"], ["Olive oil", "1 tsp"], ["Greek yoghurt, berries, honey", "150 g"]]
+        },
+        "dayTotal": {"chicken": "~2,445 kcal · ~198 g protein", "beef": "~2,445 kcal · ~195 g protein"}
+      },
+      "fast": {
+        "shake": {"time": "7:30", "name": "Shake + kiwi", "items": [["Pea protein", "50 g"], ["Rolled oats", "40 g"], ["Banana", "1"], ["Frozen berries", "handful"], ["Water", ""], ["Kiwi, on the side", "1"]]},
+        "lunch": {"time": "12:30", "name": "Lunch", "items": [["Tuna in springwater", "185 g tin"], ["Edamame", "150 g"], ["Cooked rice", "250 g"], ["Frozen veg", "150 g"], ["Soy sauce, lemon", ""]]},
+        "dinner": {"time": "by 7:00", "name": "Dinner", "items": [["Salmon, baked 200 °C 12–15 min", "250 g"], ["Cooked rice", "300 g"], ["Frozen veg", "200 g"], ["Edamame", "150 g"]]},
+        "dayTotal": "~2,395 kcal · ~185 g protein"
+      }
     },
-    "lunch": {
-     "time": "12:30",
-     "name": "Lunch",
-     "chicken": [
-      [
-       "Cooked chicken breast",
-       "180 g"
-      ],
-      [
-       "Cooked rice",
-       "250 g"
-      ],
-      [
-       "Frozen veg",
-       "150 g"
-      ],
-      [
-       "Olive oil",
-       "1 tsp"
-      ]
-     ],
-     "beef": [
-      [
-       "Lean mince (raw weight)",
-       "250 g"
-      ],
-      [
-       "Cooked rice",
-       "250 g"
-      ],
-      [
-       "Frozen veg",
-       "150 g"
-      ]
-     ]
+    "shopping": {
+      "aldi": {
+        "everyWeek": [
+          ["Jasmine rice 1 kg", "2"],
+          ["Frozen mixed veg 1 kg", "3"],
+          ["Full cream milk", "2 L"],
+          ["Greek yoghurt, plain", "1 kg"],
+          ["Frozen berries 500 g", "2"],
+          ["Bananas", "7"],
+          ["Kiwis", "7"],
+          ["Lemons", "2"],
+          ["Tuna in springwater 185 g", "2"],
+          ["Frozen salmon portions", "~500 g"]
+        ],
+        "chicken": [["Chicken breast, bulk 1.38 kg", "2"]],
+        "beef": [["Extra-lean beef mince 500 g", "6"], ["Brown onions", "3"], ["Garlic bulb", "1"], ["Diced tomatoes, tin", "3"]],
+        "whenLow": ["Rolled oats (every 3–4 weeks)", "Olive oil", "Honey", "Soy sauce", "Smoked paprika", "Oregano", "Cumin (beef weeks)", "Garlic"]
+      },
+      "woolworths": {"everyWeek": [["Umami Frozen Edamame Salad 200 g", "3"]]},
+      "online": ["Bulk Nutrients: Pea Protein Raw (unflavoured) 1 kg, unflavoured WPI when needed"]
     },
-    "dinner": {
-     "time": "by 7:00",
-     "name": "Dinner",
-     "chicken": [
-      [
-       "Cooked chicken breast",
-       "200 g"
+    "batchCook": {
+      "minutes": 75,
+      "rice": [
+        "Rinse 3¼ cups jasmine rice per batch (2 batches for the week).",
+        "Add 5 cups water and a pinch of salt. Boil, lid on, lowest heat 12–15 min.",
+        "Off the heat, lid on, 10 min. Fluff.",
+        "Spread on trays to cool. Into the fridge or freezer within an hour."
       ],
-      [
-       "Cooked rice",
-       "300 g"
+      "chicken": [
+        "Oven to 200 °C (180 °C fan). Line 2 trays. Start the rice.",
+        "Slice thick breasts in half so every piece is about 2 cm thick.",
+        "Toss all 2.8 kg with 2 tbsp olive oil, 2 tsp salt, 4 tsp smoked paprika, 2 tsp oregano, 6 crushed garlic cloves.",
+        "Bake 18–22 min, swapping trays halfway. Done at 75 °C in the thickest piece.",
+        "Rest 5 min, then slice."
       ],
-      [
-       "Frozen veg",
-       "200 g"
+      "beef": [
+        "Start the rice. Dice 3 onions, crush 6 garlic cloves.",
+        "Brown the 3 kg mince in 3 batches in a hot pan with 1 tsp oil, 6–8 min each. Drain off pooled fat.",
+        "Same pan: onion and garlic, 5 min until soft.",
+        "Add 3 tsp cumin, 3 tsp smoked paprika, 2 tsp salt, 3 tins diced tomatoes. Simmer uncovered 10–15 min until thick."
       ],
-      [
-       "Olive oil",
-       "1 tbsp"
+      "portioning": [
+        "Split the meat into 5 equal day-piles: a bit under half for lunch, a bit over half for dinner.",
+        "10 normal-day containers: lunch = meat + 250 g rice + 150 g frozen veg; dinner = meat + 300 g rice + 200 g frozen veg.",
+        "4 fast-day containers: lunch = 250 g rice + 150 g veg + 150 g edamame; dinner = 300 g rice + 200 g veg + 150 g edamame.",
+        "Label each with the day. Next 2 days in the fridge, freeze the rest."
       ],
-      [
-       "Greek yoghurt, berries, honey",
-       "150 g"
-      ]
-     ],
-     "beef": [
-      [
-       "Lean mince (raw weight)",
-       "300 g"
-      ],
-      [
-       "Cooked rice",
-       "300 g"
-      ],
-      [
-       "Frozen veg",
-       "200 g"
-      ],
-      [
-       "Olive oil",
-       "1 tsp"
-      ],
-      [
-       "Greek yoghurt, berries, honey",
-       "150 g"
-      ]
-     ]
-    },
-    "dayTotal": {
-     "chicken": "~2,445 kcal · ~198 g protein",
-     "beef": "~2,445 kcal · ~195 g protein"
+      "nightly": "Move tomorrow's containers (and salmon, the night before a fast day) from freezer to fridge."
     }
-   },
-   "fast": {
-    "shake": {
-     "time": "7:30",
-     "name": "Shake + kiwi",
-     "items": [
-      [
-       "Pea protein",
-       "50 g"
-      ],
-      [
-       "Rolled oats",
-       "40 g"
-      ],
-      [
-       "Banana",
-       "1"
-      ],
-      [
-       "Frozen berries",
-       "handful"
-      ],
-      [
-       "Water",
-       ""
-      ],
-      [
-       "Kiwi, on the side",
-       "1"
-      ]
-     ]
-    },
-    "lunch": {
-     "time": "12:30",
-     "name": "Lunch",
-     "items": [
-      [
-       "Tuna in springwater",
-       "185 g tin"
-      ],
-      [
-       "Edamame",
-       "150 g"
-      ],
-      [
-       "Cooked rice",
-       "250 g"
-      ],
-      [
-       "Frozen veg",
-       "150 g"
-      ],
-      [
-       "Soy sauce, lemon",
-       ""
-      ]
-     ]
-    },
-    "dinner": {
-     "time": "by 7:00",
-     "name": "Dinner",
-     "items": [
-      [
-       "Salmon, baked 200 °C 12–15 min",
-       "250 g"
-      ],
-      [
-       "Cooked rice",
-       "300 g"
-      ],
-      [
-       "Frozen veg",
-       "200 g"
-      ],
-      [
-       "Edamame",
-       "150 g"
-      ]
-     ]
-    },
-    "dayTotal": "~2,395 kcal · ~185 g protein"
-   }
   },
-  "shopping": {
-   "aldi": {
-    "everyWeek": [
-     [
-      "Jasmine rice 1 kg",
-      "2"
-     ],
-     [
-      "Frozen mixed veg 1 kg",
-      "3"
-     ],
-     [
-      "Full cream milk",
-      "2 L"
-     ],
-     [
-      "Greek yoghurt, plain",
-      "1 kg"
-     ],
-     [
-      "Frozen berries 500 g",
-      "2"
-     ],
-     [
-      "Bananas",
-      "7"
-     ],
-     [
-      "Kiwis",
-      "7"
-     ],
-     [
-      "Lemons",
-      "2"
-     ],
-     [
-      "Tuna in springwater 185 g",
-      "2"
-     ],
-     [
-      "Frozen salmon portions",
-      "~500 g"
-     ]
-    ],
-    "chicken": [
-     [
-      "Chicken breast, bulk 1.38 kg",
-      "2"
-     ]
-    ],
-    "beef": [
-     [
-      "Extra-lean beef mince 500 g",
-      "6"
-     ],
-     [
-      "Brown onions",
-      "3"
-     ],
-     [
-      "Garlic bulb",
-      "1"
-     ],
-     [
-      "Diced tomatoes, tin",
-      "3"
-     ]
-    ],
-    "whenLow": [
-     "Rolled oats (every 3–4 weeks)",
-     "Olive oil",
-     "Honey",
-     "Soy sauce",
-     "Smoked paprika",
-     "Oregano",
-     "Cumin (beef weeks)",
-     "Garlic"
+  "morningCheck": {
+    "fields": [
+      {"id": "wokeAt", "label": "Woke at", "type": "time", "default": "6:00"},
+      {"id": "weightKg", "label": "Weight", "type": "number", "unit": "kg"},
+      {"id": "backPain", "label": "Back pain", "type": "slider", "min": 0, "max": 10},
+      {"id": "kneeSwelling", "label": "Swelling or fullness", "type": "yesNo", "group": "Knee, compared with usual"},
+      {"id": "kneeStraightensLess", "label": "Straightens less", "type": "yesNo", "group": "Knee, compared with usual"},
+      {"id": "kneePainfulClicking", "label": "Painful clicking", "type": "yesNo", "group": "Knee, compared with usual"},
+      {"id": "afterPlyos", "label": "Swelling or pain up after yesterday's plyos?", "type": "yesNo", "showWhen": "yesterday had plyos or a run"}
     ]
-   },
-   "woolworths": {
-    "everyWeek": [
-     [
-      "Umami Frozen Edamame Salad 200 g",
-      "3"
-     ]
-    ]
-   },
-   "online": [
-    "Bulk Nutrients: Pea Protein Raw (unflavoured) 1 kg, unflavoured WPI when needed"
-   ]
   },
-  "batchCook": {
-   "minutes": 75,
-   "rice": [
-    "Rinse 3¼ cups jasmine rice per batch (2 batches for the week).",
-    "Add 5 cups water and a pinch of salt. Boil, lid on, lowest heat 12–15 min.",
-    "Off the heat, lid on, 10 min. Fluff.",
-    "Spread on trays to cool. Into the fridge or freezer within an hour."
-   ],
-   "chicken": [
-    "Oven to 200 °C (180 °C fan). Line 2 trays. Start the rice.",
-    "Slice thick breasts in half so every piece is about 2 cm thick.",
-    "Toss all 2.8 kg with 2 tbsp olive oil, 2 tsp salt, 4 tsp smoked paprika, 2 tsp oregano, 6 crushed garlic cloves.",
-    "Bake 18–22 min, swapping trays halfway. Done at 75 °C in the thickest piece.",
-    "Rest 5 min, then slice."
-   ],
-   "beef": [
-    "Start the rice. Dice 3 onions, crush 6 garlic cloves.",
-    "Brown the 3 kg mince in 3 batches in a hot pan with 1 tsp oil, 6–8 min each. Drain off pooled fat.",
-    "Same pan: onion and garlic, 5 min until soft.",
-    "Add 3 tsp cumin, 3 tsp smoked paprika, 2 tsp salt, 3 tins diced tomatoes. Simmer uncovered 10–15 min until thick."
-   ],
-   "portioning": [
-    "Split the meat into 5 equal day-piles: a bit under half for lunch, a bit over half for dinner.",
-    "10 normal-day containers: lunch = meat + 250 g rice + 150 g frozen veg; dinner = meat + 300 g rice + 200 g frozen veg.",
-    "4 fast-day containers: lunch = 250 g rice + 150 g veg + 150 g edamame; dinner = 300 g rice + 200 g veg + 150 g edamame.",
-    "Label each with the day. Next 2 days in the fridge, freeze the rest."
-   ],
-   "nightly": "Move tomorrow's containers (and salmon, the night before a fast day) from freezer to fridge."
-  }
- },
- "morningCheck": {
-  "fields": [
-   {
-    "id": "wokeAt",
-    "label": "Woke at",
-    "type": "time",
-    "default": "6:00"
-   },
-   {
-    "id": "weightKg",
-    "label": "Weight",
-    "type": "number",
-    "unit": "kg"
-   },
-   {
-    "id": "backPain",
-    "label": "Back pain",
-    "type": "slider",
-    "min": 0,
-    "max": 10
-   },
-   {
-    "id": "kneeSwelling",
-    "label": "Swelling or fullness",
-    "type": "yesNo",
-    "group": "Knee, compared with usual"
-   },
-   {
-    "id": "kneeStraightensLess",
-    "label": "Straightens less",
-    "type": "yesNo",
-    "group": "Knee, compared with usual"
-   },
-   {
-    "id": "kneePainfulClicking",
-    "label": "Painful clicking",
-    "type": "yesNo",
-    "group": "Knee, compared with usual"
-   },
-   {
-    "id": "afterPlyos",
-    "label": "Swelling or pain up after yesterday's plyos?",
-    "type": "yesNo",
-    "showWhen": "yesterday had plyos or a run"
-   }
-  ]
- },
- "sessionEnd": {
-  "fields": [
-   {
-    "id": "soreness",
-    "label": "Soreness",
-    "type": "scale",
-    "min": 1,
-    "max": 4
-   },
-   {
-    "id": "performance",
-    "label": "Performance",
-    "type": "scale",
-    "min": 1,
-    "max": 4
-   },
-   {
-    "id": "sauna",
-    "label": "Sauna",
-    "type": "yesNo"
-   }
+  "sessionEnd": {
+    "fields": [{"id": "soreness", "label": "Soreness", "type": "scale", "min": 1, "max": 4}, {"id": "performance", "label": "Performance", "type": "scale", "min": 1, "max": 4}, {"id": "sauna", "label": "Sauna", "type": "yesNo"}],
+    "painButton": {"amber": "3–5: finish the set, don't add load.", "red": "Over 5, sharp, catching or new tingling: stop."},
+    "warnIfThreeHardDaysInARow": true
+  },
+  "guidelines": {
+    "kneeStop": {
+      "title": "Knee: stop and get seen if it",
+      "items": ["locks (gets stuck and won't move)", "straightens noticeably less than usual", "actually gives way", "swells noticeably", "keeps getting pain behind the knee"],
+      "note": "Stops lower-body work, plyos and running. A split-second catch that frees straight away isn't a stop: write it in notes for Bryce."
+    },
+    "kneeRules": {
+      "title": "Knee rules",
+      "items": [
+        "Loaded knee bends stop at 90° (thigh parallel)",
+        "Box pistols at knee height only",
+        "No twisting on a bent knee: step to turn",
+        "Don't force it straight",
+        "No cracking it on purpose, no manipulation",
+        "On hold: pickleball, sparring, rugged hikes, MCR ballast shifts"
+      ]
+    },
+    "back": {"title": "Back: pain during a set", "items": ["0–2: carry on", "3–5: finish the set, don't add load", "Over 5, sharp, catching or new tingling: stop, then regress or swap"]},
+    "daily": {
+      "title": "Daily",
+      "items": [
+        "No caffeine until 90 min after waking (7:30 on a 6:00 wake)",
+        "Last caffeine by 12–1 pm; none before Tue/Fri afternoon sessions",
+        "No heavy hinges, sit-ups or loaded deep bending in the first 1–2 h after waking",
+        "Get up every 30 min when sitting",
+        "Dinner done by 7:00 pm"
+      ]
+    }
+  },
+  "appointments": [
+    {"date": "2026-11-25", "time": "3:50 pm", "what": "Dentist, fillings", "note": "Clearly Dental Dapto.", "area": "dental"},
+    {"date": "2026-11-26", "time": "5:00 pm", "what": "Osteo, Beau Edwards", "note": "Back and hips only. No knee manipulation.", "area": "back"},
+    {"date": "2026-11-29", "time": "1:00 pm", "what": "Couples remedial massage, City Cave", "note": "Tell them: no work on the right knee, nothing forceful on the lower back.", "area": "recovery"},
+    {"date": "2026-12-02", "time": "4:00 pm", "what": "MRI, right knee", "note": "PRP Wollongong", "area": "knee"},
+    {"date": "2026-12-02", "time": "5:00 pm", "what": "A/Prof Sundaraj, telehealth", "note": "Second opinion", "area": "knee"},
+    {"date": "2026-12-03", "time": "4:00 pm", "what": "Physio, Bryce", "note": "Ask: run frequency, lifting the 90° cap, nerve screen for the tingling, the 23 Nov catch.", "area": "knee"},
+    {"date": "2026-12-05", "time": "6:30 am", "what": "Block 1 retest", "note": "Strength, mobility, tape. Film it.", "area": "training"},
+    {"date": "2026-12-07", "time": "12:15 pm", "what": "Dr Punjabi consult", "note": "Public vs private decided here.", "area": "knee"},
+    {"date": "2026-12-08", "time": "", "what": "InBody scan (Tue 8 or Wed 9)", "note": "To book. Mid-afternoon, after lunch, no training first.", "area": "training"},
+    {"date": "2026-12-10", "time": "", "what": "Surgery", "note": "If going ahead.", "area": "knee", "headline": true},
+    {"date": "2027-01-13", "time": "2:00 pm", "what": "Dentist, fillings", "note": "Ask about retainer study models and an orthodontist quote.", "area": "dental"},
+    {"date": "2027-05-20", "time": "2:00 pm", "what": "Dentist, check-up and clean", "note": "", "area": "dental"}
   ],
-  "painButton": {
-   "amber": "3–5: finish the set, don't add load.",
-   "red": "Over 5, sharp, catching or new tingling: stop."
+  "trends": {
+    "days": 14,
+    "show": ["weight7DayAverage", "morningBackPain", "kneeChecksClear"]
   },
-  "warnIfThreeHardDaysInARow": true
- },
- "guidelines": {
-  "kneeStop": {
-   "title": "Knee: stop and get seen if it",
-   "items": [
-    "locks (gets stuck and won't move)",
-    "straightens noticeably less than usual",
-    "actually gives way",
-    "swells noticeably",
-    "keeps getting pain behind the knee"
-   ],
-   "note": "Stops lower-body work, plyos and running. A split-second catch that frees straight away isn't a stop: write it in notes for Bryce."
+  "appearance": {
+    "default": "auto",
+    "options": ["auto", "light", "dark"],
+    "signature": "blue"
   },
-  "kneeRules": {
-   "title": "Knee rules",
-   "items": [
-    "Loaded knee bends stop at 90° (thigh parallel)",
-    "Box pistols at knee height only",
-    "No twisting on a bent knee: step to turn",
-    "Don't force it straight",
-    "No cracking it on purpose, no manipulation",
-    "On hold: pickleball, sparring, rugged hikes, MCR ballast shifts"
-   ]
-  },
-  "back": {
-   "title": "Back: pain during a set",
-   "items": [
-    "0–2: carry on",
-    "3–5: finish the set, don't add load",
-    "Over 5, sharp, catching or new tingling: stop, then regress or swap"
-   ]
-  },
-  "daily": {
-   "title": "Daily",
-   "items": [
-    "No caffeine until 90 min after waking (7:30 on a 6:00 wake)",
-    "Last caffeine by 12–1 pm; none before Tue/Fri afternoon sessions",
-    "No heavy hinges, sit-ups or loaded deep bending in the first 1–2 h after waking",
-    "Get up every 30 min when sitting",
-    "Dinner done by 7:00 pm"
-   ]
+  "location": {
+    "options": ["home", "gym"],
+    "note": "Switch on the session screen. Each session opens on its usual place and remembers your last choice. An item's alt.<place> replaces that item when you're at the other place; everything else stays the same."
   }
- },
- "appointments": [
-  {
-   "date": "2026-11-25",
-   "time": "3:50 pm",
-   "what": "Dentist, fillings",
-   "note": "Clearly Dental Dapto.",
-   "area": "dental"
-  },
-  {
-   "date": "2026-11-26",
-   "time": "5:00 pm",
-   "what": "Osteo, Beau Edwards",
-   "note": "Back and hips only. No knee manipulation.",
-   "area": "back"
-  },
-  {
-   "date": "2026-11-29",
-   "time": "1:00 pm",
-   "what": "Couples remedial massage, City Cave",
-   "note": "Tell them: no work on the right knee, nothing forceful on the lower back.",
-   "area": "recovery"
-  },
-  {
-   "date": "2026-12-02",
-   "time": "4:00 pm",
-   "what": "MRI, right knee",
-   "note": "PRP Wollongong",
-   "area": "knee"
-  },
-  {
-   "date": "2026-12-02",
-   "time": "5:00 pm",
-   "what": "A/Prof Sundaraj, telehealth",
-   "note": "Second opinion",
-   "area": "knee"
-  },
-  {
-   "date": "2026-12-03",
-   "time": "4:00 pm",
-   "what": "Physio, Bryce",
-   "note": "Ask: run frequency, lifting the 90° cap, nerve screen for the tingling, the 23 Nov catch.",
-   "area": "knee"
-  },
-  {
-   "date": "2026-12-05",
-   "time": "6:30 am",
-   "what": "Block 1 retest",
-   "note": "Strength, mobility, tape. Film it.",
-   "area": "training"
-  },
-  {
-   "date": "2026-12-07",
-   "time": "12:15 pm",
-   "what": "Dr Punjabi consult",
-   "note": "Public vs private decided here.",
-   "area": "knee"
-  },
-  {
-   "date": "2026-12-08",
-   "time": "",
-   "what": "InBody scan (Tue 8 or Wed 9)",
-   "note": "To book. Mid-afternoon, after lunch, no training first.",
-   "area": "training"
-  },
-  {
-   "date": "2026-12-10",
-   "time": "",
-   "what": "Surgery",
-   "note": "If going ahead.",
-   "area": "knee",
-   "headline": true
-  },
-  {
-   "date": "2027-01-13",
-   "time": "2:00 pm",
-   "what": "Dentist, fillings",
-   "note": "Ask about retainer study models and an orthodontist quote.",
-   "area": "dental"
-  },
-  {
-   "date": "2027-05-20",
-   "time": "2:00 pm",
-   "what": "Dentist, check-up and clean",
-   "note": "",
-   "area": "dental"
-  }
- ],
- "trends": {
-  "days": 14,
-  "show": [
-   "weight7DayAverage",
-   "morningBackPain",
-   "kneeChecksClear"
-  ]
- },
- "appearance": {
-  "default": "auto",
-  "options": [
-   "auto",
-   "light",
-   "dark"
-  ],
-  "signature": "blue"
- },
- "location": {
-  "options": [
-   "home",
-   "gym"
-  ],
-  "note": "Switch on the session screen. Each session opens on its usual place and remembers your last choice. An item's alt.<place> replaces that item when you're at the other place; everything else stays the same."
- }
 }
