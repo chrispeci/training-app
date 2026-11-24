@@ -2,14 +2,228 @@
  "meta": {
   "file": "claude/app-howto.json",
   "purpose": "The How-to screen for every exercise in claude/app-data.json: steps, what to watch for, demo photos and a demo video. Keyed by the same exercise ids.",
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "photos": "From free-exercise-db (public domain, The Unlicense). Each set is two photos, <photoBase><photos>/0.jpg and /1.jpg, showing the two ends of the movement; the How-to screen shows them side by side above the steps. All 37 sets were checked by eye on 23 Nov. The build copies the photos into the app.",
   "videos": "YouTube, played inside the How-to screen (needs internet). <videoBase><video.id>. Reviewed and accepted by Chris on 23 Nov (CrossFit muscle-up negative swapped out; Yellow Dude used where he has a proper tutorial). Closed: only change a video if Chris flags it.",
+  "demos": "Exercises that came from Instagram reels have a demo {label, url} pointing at the reel instead of a YouTube video: the five v1.5 exercises (handstandFingerPrep, handstandWallBalance, lungeRotation, kbRotationalSwing, backExtensionTwist) and the eight v1.6 ones (rearDeltRaise, hipFlexorRaise, halfKneelingHipLoad, pigeonRaise, frogStand, proneStickExtension, eveningStretch, morningFlow). The How-to screen shows it as a link (Instagram won't embed). No photos for these yet.",
   "steps": "Written for this program: its cues, the 90° knee cap and the back rules. Not copied from the photo set."
  },
  "photoBase": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/",
  "videoBase": "https://www.youtube.com/watch?v=",
  "exercises": {
+  "rearDeltRaise": {
+   "steps": [
+    [
+     "Set up (home)",
+     "Lie on your side on the floor, knees bent, head on your bottom arm. Hold a 5 kg plate in the top hand, arm hanging across your chest toward the floor."
+    ],
+    [
+     "Raise",
+     "With a slight bend in the elbow, lift the arm in an arc until it points at the ceiling. Lead with the elbow, pinky slightly up."
+    ],
+    [
+     "Lower",
+     "Lower over 2–3 seconds to a full stretch across the chest. 12–15, then roll over for the other side."
+    ],
+    [
+     "At the gym",
+     "Lie chest-down on an incline bench with a light DB in each hand and raise both arms out to the sides."
+    ]
+   ],
+   "watchFor": [
+    "Shrugging. You should feel the back of the shoulder, not the traps.",
+    "Rolling your torso back to swing the weight up",
+    "A pinch at the front of the shoulder. Stop there."
+   ],
+   "demo": {
+    "label": "shuru, Full Shoulder Day (lying rear delt raise, 'wing flap')",
+    "url": "https://www.instagram.com/jpshuru/reel/Dc7alVrv1zu/"
+   }
+  },
+  "hipFlexorRaise": {
+   "steps": [
+    [
+     "Set up",
+     "Stand tall next to a wall for balance. Loop a light band around both feet, or hook the 4 kg kettlebell over the toes of the working foot. Tuck your pelvis and pull your ribs down."
+    ],
+    [
+     "Raise",
+     "Lift the knee straight up with the hip until your thigh is level with the floor. Pause for a second."
+    ],
+    [
+     "Lower",
+     "Lower slowly. 10–12, then the other side. Start with no weight if you can't hold the tuck."
+    ]
+   ],
+   "watchFor": [
+    "Leaning back or arching to get the knee up",
+    "The standing hip dropping out to the side",
+    "Your lower back doing the work. End the set."
+   ],
+   "demo": {
+    "label": "Maximus Vamvaketis, 'Athlete with weak hips? Train them like this'",
+    "url": "https://www.instagram.com/maximusvam/reel/DeA9z3yNYCk/"
+   }
+  },
+  "halfKneelingHipLoad": {
+   "steps": [
+    [
+     "Set up",
+     "Half-kneel with a pad under the back knee, front foot flat (on a low step if you have one). Hold a 5 kg plate against your chest."
+    ],
+    [
+     "Tuck",
+     "Squeeze the glute of the back leg, ribs down, pelvis tucked."
+    ],
+    [
+     "Rock",
+     "Keeping the tuck, ease your hips forward until you feel the front of the back hip, hold a second, and come back. 10–12 per side."
+    ]
+   ],
+   "watchFor": [
+    "Arching your lower back as you go forward",
+    "Right leg in front: the knee going past your toes or bending deeper than 90°",
+    "Twisting on the knee that's down"
+   ],
+   "demo": {
+    "label": "Maximus Vamvaketis, 'Athlete with weak hips?' (loaded half-kneeling hip mobility)",
+    "url": "https://www.instagram.com/maximusvam/reel/DeA9z3yNYCk/"
+   }
+  },
+  "pigeonRaise": {
+   "steps": [
+    [
+     "Set up",
+     "Sit in 90/90: one leg bent 90° in front of you, the other bent 90° out to the side. Sit tall, hands on the floor beside you or holding something steady."
+    ],
+    [
+     "Lift",
+     "Without leaning away, lift the whole front shin, knee and foot together, a few centimetres off the floor. Hold 2 seconds."
+    ],
+    [
+     "Lower",
+     "Lower under control. 10–12, then swap sides by lifting and placing your legs."
+    ]
+   ],
+   "watchFor": [
+    "Leaning back or sideways to cheat the lift",
+    "Only the foot or only the knee coming up. The shin lifts as one piece.",
+    "Twisting or clicking in the right knee. Stop and skip it that day."
+   ],
+   "demo": {
+    "label": "Maximus Vamvaketis, 'Athlete with weak hips?' (pigeon raises)",
+    "url": "https://www.instagram.com/maximusvam/reel/DeA9z3yNYCk/"
+   }
+  },
+  "frogStand": {
+   "steps": [
+    [
+     "Set up",
+     "Squat down and put your hands flat on the floor, shoulder-width, fingers spread. Put a cushion in front of your face the first few times."
+    ],
+    [
+     "Knees on",
+     "Bend your elbows a little and rest the insides of your knees on the backs of your upper arms."
+    ],
+    [
+     "Lean",
+     "Look slightly ahead and lean forward until your toes float off the floor. Push the floor away and balance with your fingertips. 10–15 seconds."
+    ]
+   ],
+   "watchFor": [
+    "Looking straight down. You'll tip forward.",
+    "Jumping into it. Lean, don't hop.",
+    "Wrist pain over 3/10. Stop."
+   ],
+   "demo": {
+    "label": "hatim, 'Calisthenic skills you must learn first' (frog pose)",
+    "url": "https://www.instagram.com/haattimm/reel/DR4XYp7jZfo/"
+   }
+  },
+  "proneStickExtension": {
+   "steps": [
+    [
+     "Set up",
+     "Lie face down with a broomstick held wide in both hands, arms straight out in front. Squeeze your glutes and press your pelvis into the floor. Chin tucked."
+    ],
+    [
+     "Lift",
+     "Lift the stick and your chest a few centimetres using your mid-back. Hold 2 seconds, lower. 8 reps."
+    ],
+    [
+     "Rotate",
+     "Lift again, then turn your chest so one end of the stick rises toward the ceiling. Eyes follow that hand, hips stay square. 6 per side."
+    ]
+   ],
+   "watchFor": [
+    "Your lower back doing the lifting. Put a towel under your hips and shrink the range.",
+    "Chin poking forward",
+    "Bent elbows. Keep the stick long."
+   ],
+   "demo": {
+    "label": "Andrew (Bulletproof Dad), thoracic stick drills",
+    "url": "https://www.instagram.com/bullet_proofdad/reel/DfM8qS-BZju/"
+   }
+  },
+  "eveningStretch": {
+   "steps": [
+    [
+     "Forward fold, 2 min",
+     "Sit with your legs out in front, knees soft. Fold from the hips and let your hands rest where they reach. No bouncing."
+    ],
+    [
+     "Sphinx, 60 s",
+     "Lie face down and prop up on your forearms, elbows under shoulders, shoulders away from your ears. Lower back relaxed."
+    ],
+    [
+     "Pigeon, 1 min each side",
+     "Front shin angled across your body, cushion under that hip, back leg long. Fold forward over the front leg."
+    ],
+    [
+     "Lying twist, 1 min each side",
+     "On your back, arms out wide. Drop both knees to one side and keep both shoulders on the floor."
+    ]
+   ],
+   "watchFor": [
+    "Pushing up into a full cobra. Stay on the forearms.",
+    "Pressure or twisting in the right knee in pigeon. More cushion, or do a figure-4 on your back.",
+    "Forcing the twist. Stop where the far shoulder starts to lift."
+   ],
+   "demo": {
+    "label": "Trevor Shan, 10 minute evening stretching routine",
+    "url": "https://www.instagram.com/trevorsinstinct/reel/DehsY0fhtSF/"
+   }
+  },
+  "morningFlow": {
+   "steps": [
+    [
+     "Hops",
+     "50 tiny hops on the spot. Quiet, barely leaving the floor, straight up and down."
+    ],
+    [
+     "Arms",
+     "Arm circles 10 each way, then arm pumps 20, then loose arm swings 20: let the hips drive the swing and the arms flop around you."
+    ],
+    [
+     "Spine",
+     "Toe touches 20 with soft knees to a comfortable reach, upper-back twists 20, then 10–20 small, slow body waves."
+    ],
+    [
+     "Hips",
+     "Deep squat hold 30 seconds, then sit back on your heels (seiza) for up to a minute. Only as deep as pain-free and click-free."
+    ]
+   ],
+   "watchFor": [
+    "Loud or high hops, or turning as you land. Tiny and straight.",
+    "Reaching hard for the floor first thing. Comfortable range only.",
+    "A painful click, a block to straightening, or pain behind the knee after the squat or seiza. Drop them and write it down.",
+    "Turning it into a workout. This is 5–6 easy minutes."
+   ],
+   "demo": {
+    "label": "Joseph Curran, 5 Minute Traditional Chinese Morning Flow",
+    "url": "https://www.instagram.com/lifewithjpc/reel/DToEEgHku0s/"
+   }
+  },
   "bandPullApart": {
    "steps": [
     [
@@ -116,6 +330,108 @@
     "id": "HAfUt2Cco74",
     "title": "HOLLOW BODY HOLD Progressions (Beginner to Advanced)",
     "channel": "Zack Henderson"
+   }
+  },
+  "handstandFingerPrep": {
+   "steps": [
+    [
+     "Pick one or two",
+     "These are the first four drills of the balance ladder. You're past them as a progression, so use them as 2–3 minutes of finger and shoulder prep before the wall drills. Rotate through them across the week."
+    ],
+    [
+     "1. Forward lean, finger-press return",
+     "Push-up position. Rock your shoulders forward past your hands, then push yourself back with your fingertips. 2 × 10."
+    ],
+    [
+     "2. Forward lean, finger hold",
+     "Rock forward as far as your fingers can stop you and hold it there. 2 × 30 s."
+    ],
+    [
+     "3. Alternating leg lifts",
+     "In the plank, lift one foot a few centimetres, then the other, without your hips moving. 2 × 20."
+    ],
+    [
+     "4. Sliding mountain climbers",
+     "Socks on a smooth floor. Lean forward over your hands and slide one knee in at a time, fingers pressing the whole time. 2 × 30 s."
+    ]
+   ],
+   "watchFor": [
+    "Wrist pain over 3/10. Stop finger work for the day.",
+    "Fingers going flat. They should be curved and gripping the floor.",
+    "Hips sagging in the plank"
+   ],
+   "demo": {
+    "label": "Get Gymnast Fit, First Handstand Progression (drills 1–4)",
+    "url": "https://www.instagram.com/get.gymnast.fit/reel/DcL--PjRBIm/"
+   }
+  },
+  "handstandWallBalance": {
+   "steps": [
+    [
+     "How it works",
+     "Chest to the wall, always. Each drill is done when its dose is clean: 2 × 30 s or 2 × 10 with no arch and no wrist pain. Then the next drill is your rung. Do 2–3 drills around your rung each session and move up one drill at a time. Start: drill 5."
+    ],
+    [
+     "5. Wall lean, fingers, sideways",
+     "Chest-to-wall handstand with one shoulder touching the wall. Lean your hips away from the wall until your fingers have to work to stop you tipping. 2 × 30 s."
+    ],
+    [
+     "6. Wall hold, fingers, facing the wall",
+     "Toes on the wall. Pull your hips a few centimetres off it so your weight sits over your hands and your fingers do the balancing. 2 × 30 s."
+    ],
+    [
+     "7. Shoulder press-off",
+     "In the hold, shrug your shoulders up toward your ears and back down. Ribs down, no arch. 2 × 10."
+    ],
+    [
+     "8. Press-off hold",
+     "Shrug up and stay there. 2 × 30 s."
+    ],
+    [
+     "9. Shoulder + finger press-off",
+     "Shrug up and press through your fingertips at the same time. 2 × 10, then hold it 2 × 30 s."
+    ],
+    [
+     "10. Alternating leg lift-offs",
+     "Peel one foot off the wall and hold it in line with your body while the other stays. Swap. 2 × 10 each side."
+    ],
+    [
+     "11. Single-leg lift-off hold",
+     "One foot off the wall, held. 2 × 30 s each side."
+    ],
+    [
+     "12. Leg-join attempts",
+     "Lift one leg off, then bring the other to meet it so both are off the wall for a moment, and put one back. 2 × 10 each side."
+    ],
+    [
+     "13. Partial jumps, finger resistance",
+     "On the floor, no wall. Hands down, jump your hips up to about 45° and catch the landing with your fingers. 2 × 10."
+    ],
+    [
+     "14. Jumps to the wall",
+     "Kick up into your chest-to-wall position from the floor. 2 × 10. Then 2 × 10 adding a leg lift-off at the top."
+    ],
+    [
+     "15. Free attempts",
+     "Away from the wall: kick up for 1–2 s, 2 × 10. Then 5-s holds, 2 × 5. Bail with the cartwheel every time."
+    ]
+   ],
+   "watchFor": [
+    "Arching into a banana. You're too far from the wall: bring your hands in.",
+    "Shoulders sinking toward your ears instead of pushing tall",
+    "Wrist pain over 3/10. No finger work for the day.",
+    "Going to fatigue. This is skill work; stop every set early.",
+    "Falling without the cartwheel bail. Practise it every session."
+   ],
+   "demo": {
+    "label": "Get Gymnast Fit, Russian Gymnastics: First Handstand Progression",
+    "url": "https://www.instagram.com/get.gymnast.fit/reel/DcL--PjRBIm/"
+   },
+   "video": {
+    "id": "u-k3gj6Rlhw",
+    "title": "Most people learn handstands wrong",
+    "channel": "Yellow Dude",
+    "note": "General handstand progression for background. The ladder above is the one you follow."
    }
   },
   "handstandChestToWall": {
@@ -552,6 +868,31 @@
    ],
    "watchFor": []
   },
+  "lungeRotation": {
+   "steps": [
+    [
+     "Set up",
+     "Step into a long lunge and put both hands on the floor inside your front foot. Drop the back knee onto a pad (or hover it) and let your hips sink."
+    ],
+    [
+     "Rotate",
+     "Lift the inside hand, open your chest toward the front leg and reach that arm to the ceiling. Follow it with your eyes. Hold 2 seconds."
+    ],
+    [
+     "Repeat",
+     "Bring the hand back down and go again. 6–8 per side. Option: touch your elbow to your instep first, then rotate."
+    ]
+   ],
+   "watchFor": [
+    "Front knee drifting inward. Keep it over the foot.",
+    "Pinch in the lower back on the rotation. You're arching: ribs down, turn from the mid-back.",
+    "Right knee on a hard floor. Pad it."
+   ],
+   "demo": {
+    "label": "Max Ison, Morning release (the 'Lunge rotation' section)",
+    "url": "https://www.instagram.com/maxcison/reel/DffG-7OxI_N/"
+   }
+  },
   "quadrupedRockBack": {
    "steps": [
     [
@@ -759,6 +1100,35 @@
     "Swinging"
    ],
    "photos": "Hyperextensions_Back_Extensions"
+  },
+  "backExtensionTwist": {
+   "steps": [
+    [
+     "Set up",
+     "45° back-extension bench, hip pad just below your hip bones, ankles locked in. Hold a 5 kg plate at your chest (or cross your arms with no weight to start)."
+    ],
+    [
+     "Lock the hold",
+     "Come up until your body is one straight line and stay there. That's the position for the whole set: flat, not arched."
+    ],
+    [
+     "Twist",
+     "Turn your shoulders to one side over 2 seconds, pause, come back to centre, then the other side. Your hips, legs and lower back don't move; the turn comes from the upper back and obliques. 8–10 each side."
+    ],
+    [
+     "Progress",
+     "Slow the twist first, then a heavier plate. Never add range."
+    ]
+   ],
+   "watchFor": [
+    "Speed. Fast, sloppy twists are the failure mode.",
+    "The hold sagging or your hips swinging. End the set.",
+    "Arching past straight, or the twist dropping into your lower back. Go lighter."
+   ],
+   "demo": {
+    "label": "Levon, 'Core feeling weak? Try this drill'",
+    "url": "https://www.instagram.com/levon_up/reel/DffR4wlMIA5/"
+   }
   },
   "singleLegCalfRaise": {
    "steps": [
@@ -1355,11 +1725,46 @@
    ],
    "photos": "Plate_Pinch"
   },
+  "kbRotationalSwing": {
+   "steps": [
+    [
+     "Set up",
+     "Feet wider than your shoulders, bell in one hand. Hinge at the hips and let the bell hang outside the opposite knee. Back flat."
+    ],
+    [
+     "Swing",
+     "Snap your hips forward. The bell arcs across your body and up over the same-side shoulder, arm long, your trunk turning with it. Let the back heel lift and the whole foot turn as you rotate."
+    ],
+    [
+     "Catch",
+     "Let it fall back along the same arc. Hinge to receive it outside the knee again, obliques braking the turn, back flat at the bottom."
+    ],
+    [
+     "Reps",
+     "6–8, then switch hands at the bottom and do the other side. 3 sets, 90 s rest."
+    ],
+    [
+     "Load",
+     "4 kg at home. At the gym, 8 → 12 → 16 kg, only when every rep at the lighter bell is quiet and the bottom position is neutral."
+    ]
+   ],
+   "watchFor": [
+    "Squatting instead of hinging",
+    "Twist felt in your lower back rather than your hips and obliques. Go lighter.",
+    "Grinding a planted foot as you turn. The heel lifts and the whole foot turns.",
+    "The bell pulling your shoulder forward at the top. Keep it packed.",
+    "Doing this heavy in the morning slot. 4 kg only before 7:30."
+   ],
+   "demo": {
+    "label": "Bill Maeda, Rotational Core Exercise 1/3",
+    "url": "https://www.instagram.com/billmaeda/reel/DfeUBYVqVH2/"
+   }
+  },
   "bagRounds": {
    "steps": [
     [
      "Rounds",
-     "5 rounds of 2 minutes at a moderate pace, with 1 minute of rest between."
+     "4 rounds of 2 minutes at a moderate pace, with 1 minute of rest between."
     ],
     [
      "Feet",

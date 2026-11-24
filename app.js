@@ -7,7 +7,7 @@ const DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const DAYNAME = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const REST_SECONDS = 120;
-const VERSION = 13; // shown at the bottom of Body, so you can tell which version the phone is running
+const VERSION = 14; // shown at the bottom of Body, so you can tell which version the phone is running
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -54,7 +54,12 @@ function locFor(sid, k) {
 function resolveItems(items, loc, wk) {
   return (items || []).map(it => {
     let r = { ...it };
-    if (loc && it.alt && it.alt[loc]) r = { ...r, ...it.alt[loc], _alt: true };
+    if (loc && it.alt && it.alt[loc]) {
+      const a = it.alt[loc];
+      r = { ...r, ...a, _alt: true };
+      // an alternate-week option belongs to the main exercise, not to its home/gym replacement
+      if (a.ex && a.ex !== it.ex && !('orInstead' in a)) delete r.orInstead;
+    }
     else if (it.targetByWeek && it.targetByWeek[wk]) r.target = it.targetByWeek[wk];
     delete r.alt;
     return r;
@@ -63,14 +68,28 @@ function resolveItems(items, loc, wk) {
 
 function sessionBlocks(sid, k) {
   const s = P.sessions[sid], loc = locFor(sid, k), wk = weekOf(k);
+  // Each item gets a storage key: its slot (A1, B2…), or slot + exercise when two items share a slot, or the exercise id.
+  const slotCount = {};
+  s.blocks.forEach(b => (b.items || []).forEach(i => { if (i.slot) slotCount[i.slot] = (slotCount[i.slot] || 0) + 1; }));
+  const keyOf = i => i.slot ? (slotCount[i.slot] > 1 ? i.slot + '-' + i.ex : i.slot) : i.ex;
+  const withKeys = items => (items || []).map(i => ({ ...i, _key: keyOf(i) }));
   return s.blocks
     .filter(b => !b.onlyAt || !loc || b.onlyAt === loc)
     .map(b => {
-      if (b.useBlock) { const ub = P.blocks[b.useBlock]; return { ...b, note: ub.note, items: resolveItems(ub.items, loc, wk) }; }
-      return { ...b, items: resolveItems(b.items, loc, wk) };
+      if (b.useBlock) { const ub = P.blocks[b.useBlock]; return { ...b, note: ub.note, items: resolveItems(withKeys(ub.items), loc, wk) }; }
+      return { ...b, items: resolveItems(withKeys(b.items), loc, wk) };
     });
 }
 
+/* Ladders (the handstand balance ladder): current rung lives on the phone, starting at the program's rung. */
+const rungOf = id => { const e = P.exercises[id] || {}; const r = (settings().rungs || {})[id]; return r != null ? r : e.rung; };
+function ladderLine(id) {
+  const e = P.exercises[id];
+  if (!e || !e.ladder) return '';
+  const r = rungOf(id), step = e.ladder.find(x => x.n === r) || e.ladder[0];
+  return `<button class="rungline" data-act="howto" data-ex="${esc(id)}">Rung ${step.n}: ${esc(step.name)} · ${esc(step.target)} <span class="muted">›</span></button>`;
+}
+const loadValue = l => ((String(l ?? '').match(/^(\+?[\d.]+)\s*kg/) || [])[1] || '');
 const kneeFlags = c => c ? [['kneeSwelling', 'swelling'], ['kneeStraightensLess', 'straightens less'], ['kneePainfulClicking', 'painful clicking']].filter(([f]) => c[f]).map(([, l]) => l) : [];
 const kneeStop = k => kneeFlags(day(k).check).length > 0;
 const plyoFreq = () => settings().plyoFreq || P.blocks.plyo.frequency;
@@ -133,7 +152,7 @@ function render() {
   const ov = $('#overlay');
   const prevScroll = ov.scrollTop;
   if (top) {
-    ov.innerHTML = `<div class="ov-body">${top.type === 'howto' ? viewHowTo(top.ex) : viewSession()}</div>`;
+    ov.innerHTML = `<div class="ov-body">${top.type === 'howto' ? viewHowTo(top.ex) : top.type === 'library' ? viewLibrary() : viewSession()}</div>`;
     ov.classList.add('on'); document.body.classList.add('ov-open');
     restoreOpen(); // before restoring the scroll, so the page is its full height again
     if (top.scroll != null) { ov.scrollTop = top.scroll; top.scroll = null; }
@@ -218,6 +237,7 @@ function viewDay(k, d) {
         const where = loc ? (loc === 'home' ? 'Home' : 'Gym') : s.where;
         return `<div class="tl"><div class="t">${esc(t.time)}</div><div class="grow"><div class="sess ${fin ? 'done' : ''}">
           <div class="name">${esc(s.name)}${fin ? ' · done' : ''}</div><div class="sub">${s.minutes} min · ${esc(where || '')}</div>
+          ${t.sub ? `<div class="note" style="margin-top:2px">${esc(t.sub)}</div>` : ''}
           ${stop && s.rewriteAfterSurgery ? '<div class="note red">Knee stop signal: skip this one today.</div>' : ''}
           <div class="acts"><button class="btn ghost sm" data-act="sheet" data-s="change">Change session</button>
           <button class="btn sm" data-act="openSession">${fin ? 'Open' : 'Start'}</button></div></div></div></div>`;
@@ -236,6 +256,8 @@ function viewDay(k, d) {
       case 'run':
         if (stop || !runDay(k)) return '';
         return tick('run', `Run · stage ${runStage()}`, esc(P.run.stages[runStage()].session));
+      case 'walk':
+        return tick('walk', esc(t.title || 'Walk'), esc(t.sub || ''));
       default: return '';
     }
   }).join('');
@@ -254,6 +276,7 @@ function viewSession() {
   html += `<div id="restbox"></div>`;
   if (stop && s.rewriteAfterSurgery) html += `<div class="alert"><b>Knee stop signal.</b> No lower-body work today.</div>`;
   html += guidelinesBox(blocks);
+  if (P.library && P.library.items && P.library.items.length) html += `<button class="slimrow" data-act="library">Library <span class="sub">· approved swaps</span><span class="chev">›</span></button>`;
   const wk = weekOf(k);
   if (P.block.weekNotes[wk]) html += `<div class="note" style="margin:-2px 2px 10px">${esc(P.block.weekNotes[wk])}</div>`;
 
@@ -262,10 +285,14 @@ function viewSession() {
     const logged = b.items.some(i => i.log);
     if (logged) {
       html += `<div class="lbl">${esc(b.name)} <span style="text-transform:none;letter-spacing:0;font-weight:400">· ${b.minutes} min</span></div>`;
-      b.items.forEach(it => { html += liftCard(k, d, it); });
+      if (b.note) html += `<p class="note" style="margin:-4px 2px 8px">${esc(b.note)}</p>`;
+      let plain = [];
+      const flush = () => { if (plain.length) html += `<div class="card" style="padding:2px 14px">${plain.join('')}</div>`; plain = []; };
+      b.items.forEach(it => { if (it.log) { flush(); html += liftCard(k, d, it); } else plain.push(exRow(it, { k, d })); });
+      flush();
       return;
     }
-    const list = b.items.length ? b.items.map(it => exRow(it)).join('') : '';
+    const list = b.items.length ? b.items.map(it => exRow(it, { k, d })).join('') : '';
     html += `<details><summary>${esc(b.name)} <span class="sub">· ${b.minutes} min</span></summary><div class="dd">
       ${b.note ? `<p class="note" style="margin-top:0">${esc(b.note)}</p>` : ''}${list}</div></details>`;
   });
@@ -294,34 +321,39 @@ function guidelinesBox(blocks) {
     ${list(g.back)}${list(g.daily)}</div></details>`;
 }
 
-function exRow(it) {
+function exRow(item, ctx) {
+  const key = item._key || item.ex;
+  const swapped = !!(ctx && item.orInstead && ctx.d.swap && ctx.d.swap[key]);
+  const it = swapped ? { ...item, ...item.orInstead } : item;
   return `<div class="ex"><div class="grow"><div class="name">${esc(exName(it.ex))}</div>
-    <div class="sub">${esc(it.target || '')}${it.note ? ' · ' + esc(it.note) : ''}${it.alternateDays ? ' · Other days: ' + esc(it.alternateDays) : ''}</div></div>
+    <div class="sub">${esc(it.target || '')}${it.note ? ' · ' + esc(it.note) : ''}${it.alternateDays ? ' · Other days: ' + esc(it.alternateDays) : ''}</div>
+    ${ctx ? ladderLine(it.ex) : ''}
+    ${ctx && item.orInstead ? `<button class="swap" data-act="swap" data-slot="${esc(key)}">${swapped ? '↺ Back to ' + esc(exName(item.ex)) : 'Or instead: ' + esc(exName(item.orInstead.ex)) + ' ' + esc(item.orInstead.target)}</button>` : ''}</div>
     <button class="info" data-act="howto" data-ex="${esc(it.ex)}" aria-label="How to">i</button></div>`;
 }
 
 function liftCard(k, d, item) {
-  const swapped = item.orInstead && d.swap && d.swap[item.slot];
+  const slot = item._key || item.slot || item.ex;
+  const swapped = item.orInstead && d.swap && d.swap[slot];
   const it = swapped ? { ...item, ...item.orInstead } : item;
-  const slot = item.slot || item.ex;
   const sets = (d.sets && d.sets[slot]) || [];
   const loads = settings().loads || {};
-  const load = (d.loads && d.loads[slot]) ?? loads[it.ex] ?? (it.load ? String(it.load).replace(/\s*kg$/, '') : '');
+  const load = (d.loads && d.loads[slot]) ?? loads[it.ex] ?? loadValue(it.load);
   const unit = it.log === 'seconds' ? 's' : '';
   const ph = (String(it.target).match(/×\s*(\d+)/) || [])[1] || '';
   const n = it.sets || 3;
   const pain = d.pain && d.pain[slot];
   const boxes = Array.from({ length: n }, (_, i) => `<input class="field" type="number" inputmode="numeric" data-in="set" data-slot="${esc(slot)}" data-i="${i}" value="${esc(sets[i] ?? '')}" placeholder="${esc(ph + unit)}" aria-label="Set ${i + 1}">`).join('');
-  const usesLoad = !!(it.load || loads[it.ex] || (d.loads && d.loads[slot] != null) || /weighted|press|deadlift|rdl|row|squat|thrust|curl|carry/i.test(it.ex));
+  const usesLoad = !!('load' in it || loads[it.ex] || (d.loads && d.loads[slot] != null) || /weighted|press|deadlift|rdl|row|squat|thrust|curl|carry/i.test(it.ex));
   return `<div class="lift"><div class="head">${item.slot ? `<span class="slot">${esc(item.slot)}</span>` : ''}
-      <div style="flex:1;min-width:0"><div class="name">${esc(exName(it.ex))}</div><div class="sub">${esc(it.target)}</div>${it.note ? `<div class="note">${esc(it.note)}</div>` : ''}</div>
+      <div style="flex:1;min-width:0"><div class="name">${esc(exName(it.ex))}</div><div class="sub">${esc(it.target)}</div>${it.note ? `<div class="note">${esc(it.note)}</div>` : ''}${ladderLine(it.ex)}</div>
       <button class="info" data-act="howto" data-ex="${esc(it.ex)}" aria-label="How to">i</button></div>
     ${usesLoad ? `<div class="load">Load <input class="field" inputmode="decimal" data-in="load" data-slot="${esc(slot)}" data-ex="${esc(it.ex)}" value="${esc(load)}" placeholder="kg"> kg
       ${it.warmUpSets ? `<span>· Warm up ${esc(it.warmUpSets)}</span>` : ''}</div>` : ''}
     ${it.loadNote && !loads[it.ex] ? `<div class="note">${esc(it.loadNote)}</div>` : ''}
     <div class="sets">${boxes}<button class="pain ${pain || ''}" data-act="pain" data-slot="${esc(slot)}">${pain === 'amber' ? 'Pain 3–5' : pain === 'red' ? 'Pain 6+' : '+ Pain'}</button></div>
     ${pain ? `<div class="note ${pain === 'red' ? 'red' : 'amber'}">${esc(P.sessionEnd.painButton[pain])}</div>` : ''}
-    ${item.orInstead ? `<button class="swap" data-act="swap" data-slot="${esc(item.slot)}">${swapped ? '↺ Back to ' + esc(exName(item.ex)) : 'Or instead: ' + esc(exName(item.orInstead.ex)) + ' ' + esc(item.orInstead.target)}</button>` : ''}
+    ${item.orInstead ? `<button class="swap" data-act="swap" data-slot="${esc(slot)}">${swapped ? '↺ Back to ' + esc(exName(item.ex)) : 'Or instead: ' + esc(exName(item.orInstead.ex)) + ' ' + esc(item.orInstead.target)}</button>` : ''}
   </div>`;
 }
 
@@ -331,8 +363,10 @@ function viewHowTo(id) {
   let html = `<div class="ov-top"><button class="back" data-act="back" aria-label="Back">‹</button><h1>${esc(exName(id))}</h1></div>`;
   if (h.photos) html += `<div class="photos"><img src="photos/${encodeURIComponent(h.photos)}__0.jpg" alt="Start position" loading="lazy"><img src="photos/${encodeURIComponent(h.photos)}__1.jpg" alt="End position" loading="lazy"></div>${h.photoNote ? `<p class="note" style="margin:0 0 10px">${esc(h.photoNote)}</p>` : ''}`;
   if (e.cue || e.limit) html += `<div class="card">${e.cue ? `<div>${esc(e.cue)}</div>` : ''}${e.limit ? Object.values(e.limit).map(l => `<div class="limit">${esc(l)}</div>`).join('') : ''}</div>`;
+  if (e.ladder) html += ladderCard(id);
   if (h.steps.length) html += `<div class="card"><ol class="steps">${h.steps.map(([t, x]) => `<li><b>${esc(t)}</b>${esc(x)}</li>`).join('')}</ol></div>`;
   if (h.watchFor && h.watchFor.length) html += `<div class="lbl">Watch for</div><div class="card"><ul class="plain" style="margin:0">${h.watchFor.map(w => `<li>${esc(w)}</li>`).join('')}</ul></div>`;
+  if (h.demo) html += `<div class="lbl">Demo</div><a class="btn ghost" href="${esc(h.demo.url)}" target="_blank" rel="noopener">Open the reel on Instagram ↗</a><p class="note">${esc(h.demo.label)}</p>`;
   if (h.video) {
     const top = S.stack[S.stack.length - 1];
     html += `<div class="lbl">Video</div>`;
@@ -343,6 +377,42 @@ function viewHowTo(id) {
   }
   if (e.goal) html += `<p class="note mt">Progress: ${esc(e.goal)}</p>`;
   return html;
+}
+
+function ladderCard(id) {
+  const L = P.exercises[id].ladder, r = rungOf(id), first = L[0].n, last = L[L.length - 1].n;
+  return `<div class="lbl">Your ladder</div><div class="card">
+    <div class="ladder-ctl"><button class="btn ghost sm" data-act="rung" data-ex="${esc(id)}" data-n="-1" ${r <= first ? 'disabled' : ''}>▼ Down</button>
+      <div style="flex:1;text-align:center"><div class="num" style="font-size:24px;font-weight:700">Rung ${r}</div><div class="sub">saved on this phone</div></div>
+      <button class="btn sm" data-act="rung" data-ex="${esc(id)}" data-n="1" ${r >= last ? 'disabled' : ''}>Up ▲</button></div>
+    ${L.map(x => `<div class="rung ${x.n === r ? 'on' : x.n < r ? 'done' : ''}"><span class="n">${x.n}</span><div style="flex:1;min-width:0"><div class="name">${esc(x.name)}</div><div class="sub">${esc(x.target)}</div></div>${x.n < r ? '<span class="okc">✓</span>' : ''}</div>`).join('')}
+  </div>`;
+}
+
+/* ----- Library (read-only: swaps are made by Claude in the program files) ----- */
+function libraryDose(it) {
+  const fmt = (t, l) => (t || '') + (l ? ' · ' + l : '');
+  if (it.target) return fmt(it.target, it.load);
+  for (const s of Object.values(P.sessions)) for (const b of s.blocks) for (const i of (b.items || [])) {
+    if (i.ex === it.ex) return fmt(i.target, i.load);
+    if (i.orInstead && i.orInstead.ex === it.ex) return fmt(i.orInstead.target, i.orInstead.load);
+  }
+  return '';
+}
+function viewLibrary() {
+  const items = (P.library && P.library.items) || [];
+  const row = it => `<button class="libitem" data-act="howto" data-ex="${esc(it.ex)}"><div style="flex:1;min-width:0">
+      <div class="name">${esc(exName(it.ex))}</div>
+      <div class="sub">${esc(libraryDose(it))}</div>
+      <div class="sub"><b>Where:</b> ${esc(it.where || '')}</div>
+      <div class="sub">${(it.swapsWith || []).length ? '<b>Swaps with:</b> ' + it.swapsWith.map(x => esc(exName(x))).join(' or ') : it.optionalAddOn ? 'Add-on, doesn\'t replace anything' : ''}</div>
+      ${it.needs ? `<div class="sub"><b>Needs:</b> ${esc(it.needs)}</div>` : ''}
+    </div><span class="info">i</span></button>`;
+  const bench = items.filter(i => i.status !== 'live'), live = items.filter(i => i.status === 'live');
+  return `<div class="ov-top"><button class="back" data-act="back" aria-label="Back">‹</button><div style="flex:1"><h1>Library</h1><div class="sub">Approved exercises and what they swap with</div></div></div>
+    <p class="note" style="margin:0 2px 6px">To swap one in, ask Claude at your check-in. Tap any of them for the how-to.</p>
+    ${bench.length ? `<div class="lbl">Ready to swap in</div>${bench.map(row).join('')}` : ''}
+    ${live.length ? `<div class="lbl">Already in a session</div>${live.map(row).join('')}` : ''}`;
 }
 
 /* ----- Food ----- */
@@ -460,7 +530,7 @@ function viewSheet() {
   if (sh.type === 'block') {
     const b = P.blocks[sh.b];
     return `<h2>${esc(b.name)}</h2><div class="sub">${esc(b.minutes)} min</div>${b.note ? `<p class="note">${esc(b.note)}</p>` : ''}
-      <div class="mt">${b.items.map(exRow).join('')}</div>`;
+      <div class="mt">${b.items.map(it => exRow(it)).join('')}</div>`;
   }
   if (sh.type === 'change') {
     const k = S.date, cur = sessionIdFor(k), sched = planFor(k).session;
@@ -491,7 +561,7 @@ function threeHardWarning(k) {
 function exportText() {
   const end = today(), start = addDays(end, -6);
   const lines = [`Training log ${short(start)} – ${short(end)} (block ${P.block.number}, week ${weekOf(end)})`,
-    `Settings: plyos ${plyoFreq()}, run stage ${runStage()}, ${protein()} week`, ''];
+    `Settings: plyos ${plyoFreq()}, run stage ${runStage()}, ${protein()} week${Object.entries(P.exercises).filter(([, e]) => e.ladder).map(([id, e]) => `, ${e.name.toLowerCase()} rung ${rungOf(id)}`).join('')}`, ''];
   for (let i = 0; i < 7; i++) {
     const k = addDays(start, i), d = day(k), plan = planFor(k), sid = sessionIdFor(k), s = P.sessions[sid], loc = locFor(sid, k);
     const has = Object.keys(d).length > 0;
@@ -505,8 +575,8 @@ function exportText() {
     const blocks = sessionBlocks(sid, k);
     const lifts = [];
     blocks.forEach(b => b.items.filter(it => it.log).forEach(item => {
-      const slot = item.slot || item.ex;
-      const swapped = item.orInstead && d.swap && d.swap[item.slot];
+      const slot = item._key || item.slot || item.ex;
+      const swapped = item.orInstead && d.swap && d.swap[slot];
       const it = swapped ? { ...item, ...item.orInstead } : item;
       const sets = ((d.sets || {})[slot] || []).filter(v => v !== '' && v != null);
       const load = (d.loads || {})[slot];
@@ -515,6 +585,9 @@ function exportText() {
       lines.push(`  ${item.slot ? item.slot + ' ' : ''}${exName(it.ex)}${load ? ' @ ' + load + ' kg' : ''}: ${sets.length ? sets.join(', ') + (it.log === 'seconds' ? ' s' : '') : 'no sets'} (target ${it.target})${pain ? ' · pain ' + (pain === 'red' ? '6+' : '3–5') : ''}`);
       lifts.push(1);
     }));
+    const alts = [];
+    blocks.forEach(b => b.items.forEach(item => { if (item.orInstead && (d.swap || {})[item._key]) alts.push(`${exName(item.orInstead.ex)} (for ${exName(item.ex)})`); }));
+    if (alts.length) lines.push('  Alternates: ' + alts.join(', '));
     if (d.end) {
       const e = d.end;
       lines.push(`  Session ${e.finished ? 'finished' : 'not finished'}${e.soreness ? ' · soreness ' + e.soreness + '/4' : ''}${e.performance ? ' · performance ' + e.performance + '/4' : ''}${e.sauna != null ? ' · sauna ' + (e.sauna ? 'yes' : 'no') : ''}`);
@@ -528,6 +601,7 @@ function exportText() {
     if (dn.back) bits.push('back routine');
     if (dn.plyo) bits.push('plyos');
     if (dn.run) bits.push('run');
+    if (dn.walk) bits.push('walk');
     lines.push('  ' + bits.join(' · '));
     if (d.foodExtra) lines.push('  Other food: ' + d.foodExtra.replace(/\s+/g, ' '));
     if (d.notes) lines.push('  Notes: ' + d.notes.replace(/\s+/g, ' '));
@@ -606,6 +680,13 @@ const ACT = {
     toast('Saved'); render();
   },
   openSession() { pushOverlay({ type: 'session' }); },
+  library() { pushOverlay({ type: 'library' }); },
+  rung(t) {
+    const id = t.dataset.ex, L = P.exercises[id].ladder;
+    const r = Math.min(L[L.length - 1].n, Math.max(L[0].n, rungOf(id) + +t.dataset.n));
+    const all = settings().rungs || {}; all[id] = r; setSetting('rungs', all);
+    toast(`Rung ${r} saved`); render();
+  },
   howto(t) { pushOverlay({ type: 'howto', ex: t.dataset.ex, fromSheet: !!S.sheet }); },
   meal(t) { const key = S.date + ':' + t.dataset.m; S.mealOpen[key] = !S.mealOpen[key]; render(); },
   video() { S.stack[S.stack.length - 1].video = true; const ov = $('#overlay'); S.stack[S.stack.length - 1].scroll = ov.scrollTop; render(); },

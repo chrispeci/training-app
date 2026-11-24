@@ -187,3 +187,22 @@ pre.export { white-space: pre-wrap; background: var(--field); border: 1px solid 
 #toast.on { opacity: 1; }
 .muted { color: var(--muted); } .amber { color: var(--warn); } .red { color: var(--stop); } .okc { color: var(--ok); }
 .right { text-align: right; } .mt { margin-top: 12px; }
+
+/* v14: ladder, library, demo link */
+a.btn { text-decoration: none; }
+.btn[disabled] { opacity: .35; }
+.rungline { display: block; text-align: left; margin-top: 6px; font-size: 13px; font-weight: 600; color: var(--acc); }
+.ladder-ctl { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line2); margin-bottom: 4px; }
+.rung { display: flex; align-items: center; gap: 10px; padding: 8px 6px; border-radius: 10px; }
+.rung .n { width: 26px; height: 26px; flex: none; border-radius: 50%; display: grid; place-items: center; font: 700 12px var(--fh); background: var(--field); color: var(--muted); }
+.rung .name { font-weight: 600; font-size: 14px; }
+.rung.done .name, .rung.done .sub { color: var(--faint); }
+.rung.on { background: var(--acc-bg); }
+.rung.on .n { background: var(--acc); color: var(--on-acc); }
+.slimrow { display: flex; align-items: center; gap: 6px; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 9px 14px; margin-bottom: 10px; font-weight: 600; font-size: 14px; }
+.slimrow .sub { font-weight: 400; }
+.slimrow .chev { margin-left: auto; color: var(--faint); font-size: 18px; line-height: 1; }
+.libitem { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 8px; }
+.libitem .name { font-weight: 700; margin-bottom: 2px; }
+.libitem .sub { margin-top: 2px; }
+.libitem .sub b { color: var(--text3); font-weight: 600; }
