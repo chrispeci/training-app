@@ -7,7 +7,7 @@ const DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const DAYNAME = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const REST_SECONDS = 120;
-const VERSION = 15; // shown at the bottom of Body, so you can tell which version the phone is running
+const VERSION = 16; // shown at the bottom of Body, so you can tell which version the phone is running
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -517,17 +517,24 @@ function upcomingAppts() {
 function trends() {
   const n = P.trends.days, keys = Array.from({ length: n }, (_, i) => addDays(today(), i - n + 1));
   const checks = keys.map(k => day(k).check);
-  // weight, 7-day rolling average
-  const w = checks.map(c => c && c.weightKg ? +c.weightKg : null);
+  // weight: daily weigh-ins (grey rings) + 7-day rolling average (blue line)
+  const w = checks.map(c => { const v = c ? parseFloat(String(c.weightKg ?? '').replace(',', '.')) : NaN; return Number.isFinite(v) && v > 0 ? v : null; });
   const avg = w.map((_, i) => { const win = w.slice(Math.max(0, i - 6), i + 1).filter(v => v != null); return win.length ? win.reduce((a, b) => a + b, 0) / win.length : null; });
   const pts = avg.map((v, i) => v == null ? null : [i, v]).filter(Boolean);
   let spark = '<p class="note">Log your weight in the morning check to see this.</p>';
   if (pts.length) {
-    const vs = pts.map(p => p[1]), lo = Math.min(...vs) - 0.3, hi = Math.max(...vs) + 0.3;
-    const X = i => 4 + i * (292 / (n - 1)), Y = v => 64 - (v - lo) / (hi - lo) * 56;
-    const raw = w.map((v, i) => v == null ? '' : `<circle cx="${X(i)}" cy="${Y(v)}" r="2.2" fill="var(--faint)"/>`).join('');
-    spark = `<svg class="spark" viewBox="0 0 300 70" preserveAspectRatio="none">${raw}<polyline fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-linejoin="round" points="${pts.map(p => `${X(p[0])},${Y(p[1])}`).join(' ')}"/></svg>
-      <div class="sub">7-day average now <b class="num" style="color:var(--text)">${pts[pts.length - 1][1].toFixed(1)} kg</b></div>`;
+    // scale from weigh-ins AND the average (so no ring falls off the chart), at least 2 kg tall so 0.1 kg doesn't look like a cliff
+    const all = [...w.filter(v => v != null), ...pts.map(p => p[1])];
+    let lo = Math.min(...all), hi = Math.max(...all);
+    const pad = Math.max(0, 2 - (hi - lo)) / 2 + 0.2; lo -= pad; hi += pad;
+    const X = i => 6 + i * (288 / (n - 1)), Y = v => 74 - (v - lo) / (hi - lo) * 68;
+    const xy = p => `${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`;
+    const line = pts.length > 1 ? `<polyline fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="${pts.map(xy).join(' ')}"/>` : '';
+    const rings = w.map((v, i) => v == null ? '' : `<circle cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="3" fill="var(--card)" stroke="var(--faint)" stroke-width="1.5"/>`).join('');
+    const solo = pts.length === 1 ? `<circle cx="${X(pts[0][0]).toFixed(1)}" cy="${Y(pts[0][1]).toFixed(1)}" r="2.25" fill="var(--acc)"/>` : '';  // one weigh-in: average = weigh-in, fill the ring blue
+    const last = w.filter(v => v != null).pop();
+    spark = `<svg class="spark" viewBox="0 0 300 80">${line}${rings}${solo}</svg>
+      <div class="wlegend"><span><i class="wl-ring"></i>Weigh-in <b class="num">${last.toFixed(1)}</b></span><span><i class="wl-line"></i>7-day avg <b class="num">${pts[pts.length - 1][1].toFixed(1)} kg</b></span></div>`;
   }
   const bars = checks.map(c => c ? `<i class="${painClass(c.backPain) || ''}" style="height:${Math.max(5, (c.backPain || 0) * 10)}%"></i>` : '<i class="none"></i>').join('');
   const logged = checks.filter(Boolean), clear = logged.filter(c => !kneeFlags(c).length).length;

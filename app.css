@@ -175,7 +175,12 @@ pre.export { white-space: pre-wrap; background: var(--field); border: 1px solid 
 .meal .it span:last-child { color: var(--muted); white-space: nowrap; }
 
 /* trends */
-.spark { width: 100%; height: 70px; display: block; }
+.spark { width: 100%; height: auto; aspect-ratio: 300 / 80; display: block; }
+.wlegend { display: flex; gap: 16px; margin-top: 6px; color: var(--muted); font-size: 13px; }
+.wlegend span { display: inline-flex; align-items: center; gap: 6px; }
+.wlegend b { color: var(--text); font-weight: 600; }
+.wl-ring { width: 6px; height: 6px; border: 1.5px solid var(--faint); border-radius: 50%; }
+.wl-line { width: 14px; height: 2.5px; border-radius: 2px; background: var(--acc); }
 .bars { display: flex; align-items: flex-end; gap: 3px; height: 60px; }
 .bars i { flex: 1; border-radius: 3px 3px 0 0; background: var(--ok); min-height: 3px; }
 .bars i.amber { background: var(--warn); } .bars i.red { background: var(--stop); } .bars i.none { background: var(--line); }
