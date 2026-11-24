@@ -211,3 +211,4 @@ a.btn { text-decoration: none; }
 .libitem .name { font-weight: 700; margin-bottom: 2px; }
 .libitem .sub { margin-top: 2px; }
 .libitem .sub b { color: var(--text3); font-weight: 600; }
+.lim { font-size: 12.5px; color: var(--warn); margin-top: 2px; line-height: 1.35; }

@@ -7,7 +7,7 @@ const DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const DAYNAME = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const REST_SECONDS = 120;
-const VERSION = 16; // shown at the bottom of Body, so you can tell which version the phone is running
+const VERSION = 17; // shown at the bottom of Body, so you can tell which version the phone is running
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -182,7 +182,7 @@ function viewToday() {
     <div class="chips">${plan.fastDay ? '<span class="chip acc">Fast day</span>' : ''}
       ${!isToday ? '<button class="chip" data-act="toToday">Back to today</button>' : ''}
       ${wk === 6 ? '<span class="chip">Deload week</span>' : ''}</div>`;
-  if (!d.check || d.editCheck) return head + viewCheck(k, d);
+  if ((!d.check && k <= today()) || d.editCheck) return head + viewCheck(k, d);  // a future day skips the check so you can see its plan
   return head + viewDay(k, d);
 }
 
@@ -220,14 +220,15 @@ function viewCheck(k, d) {
 }
 
 function viewDay(k, d) {
-  const c = d.check, plan = planFor(k), flags = kneeFlags(c), stop = flags.length > 0;
+  const c = d.check || {}, future = !d.check, plan = planFor(k), flags = kneeFlags(c), stop = flags.length > 0;
   const sid = sessionIdFor(k), s = P.sessions[sid], loc = locFor(sid, k);
   const done = d.done || {};
   const parts = [];
   if (c.weightKg) parts.push(`${c.weightKg} kg`);
   parts.push(`<span class="${painClass(c.backPain)}">Back ${c.backPain ?? 0}</span>`);
   parts.push(stop ? `<span class="red">Knee: ${esc(flags.join(', '))}</span>` : 'Knee clear');
-  let html = `<div class="sub" style="margin:-6px 0 12px">${parts.join(' · ')} · <button class="link" data-act="editCheck">Edit</button></div>`;
+  let html = future ? `<div class="sub" style="margin:-6px 0 12px">Plan for the day · morning check opens on the day</div>`
+    : `<div class="sub" style="margin:-6px 0 12px">${parts.join(' · ')} · <button class="link" data-act="editCheck">Edit</button></div>`;
   if (stop) html += `<div class="alert"><b>Knee stop signal.</b> No lower-body work, plyos or running today. Get it seen.</div>`;
   if (c.afterPlyos) html += `<div class="alert warn">${esc(P.run.nextMorningRule)}</div>`;
   if (c.backPain >= 6) html += `<div class="alert warn">Back pain ${c.backPain}/10. Go by the back rules in the session's Guidelines.</div>`;
@@ -247,7 +248,7 @@ function viewDay(k, d) {
           ${t.sub ? `<div class="note" style="margin-top:2px">${esc(t.sub)}</div>` : ''}
           ${stop && s.rewriteAfterSurgery ? '<div class="note red">Knee stop signal: skip this one today.</div>' : ''}
           <div class="acts"><button class="btn ghost sm" data-act="sheet" data-s="change">Change session</button>
-          <button class="btn sm" data-act="openSession">${fin ? 'Open' : 'Start'}</button></div></div></div></div>`;
+          <button class="btn sm" data-act="openSession">${fin ? 'Open' : future ? 'View' : 'Start'}</button></div></div></div></div>`;
       }
       case 'meal': {
         const m = (plan.fastDay ? P.food.meals.fast : P.food.meals.normal)[t.meal];
@@ -272,6 +273,10 @@ function viewDay(k, d) {
     }
   }).join('');
   html += `<div class="card">${rows}</div>`;
+  if (k === today()) {
+    const t = addDays(k, 1), ts = P.sessions[sessionIdFor(t)], tl = locFor(sessionIdFor(t), t), tst = (planFor(t).timeline.find(x => x.kind === 'session') || {}).time;
+    html += `<button class="slimrow" data-act="day" data-n="1">Tomorrow <span class="sub">· ${esc(ts.name)}${tst ? ' · ' + esc(tst) : ''} · ${esc(tl ? (tl === 'home' ? 'Home' : 'Gym') : (ts.where || ''))}${planFor(t).fastDay ? ' · fast day' : ''}</span><span class="chev">›</span></button>`;
+  }
   html += `<div class="lbl">Notes</div><textarea class="field" data-in="note" placeholder="Anything for the weekly check-in">${esc(d.notes || '')}</textarea>${saveBtn('today')}`;
   return html;
 }
@@ -285,7 +290,7 @@ function viewSession() {
     ${loc ? `<div class="seg"><button data-act="loc" data-val="home" class="${loc === 'home' ? 'on' : ''}">Home</button><button data-act="loc" data-val="gym" class="${loc === 'gym' ? 'on' : ''}">Gym</button></div>` : ''}</div>`;
   html += `<div id="restbox"></div>`;
   if (stop && s.rewriteAfterSurgery) html += `<div class="alert"><b>Knee stop signal.</b> No lower-body work today.</div>`;
-  html += guidelinesBox(blocks);
+  html += guidelinesBox();
   if (P.library && P.library.items && P.library.items.length) html += `<button class="slimrow" data-act="library">Library <span class="sub">· approved swaps</span><span class="chev">›</span></button>`;
   const wk = weekOf(k);
   if (P.block.weekNotes[wk]) html += `<div class="note" style="margin:-2px 2px 10px">${esc(P.block.weekNotes[wk])}</div>`;
@@ -322,17 +327,14 @@ function viewSession() {
   return html;
 }
 
-function guidelinesBox(blocks) {
+function guidelinesBox() {
+  // each exercise's own limits sit on its row; stop signs and daily rules live on Body
   const g = P.guidelines;
-  const ids = new Set(); blocks.forEach(b => b.items.forEach(i => { ids.add(i.ex); if (i.orInstead) ids.add(i.orInstead.ex); }));
-  const limits = [];
-  ids.forEach(id => { const e = P.exercises[id]; if (e && e.limit) Object.values(e.limit).forEach(l => limits.push(`<li><b>${esc(e.name)}:</b> ${esc(l)}</li>`)); });
-  const list = sec => `<h3>${esc(sec.title)}</h3><ul class="plain">${sec.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>${sec.note ? `<p class="note">${esc(sec.note)}</p>` : ''}`;
-  return `<details class="slim"><summary>Guidelines</summary><div class="dd">
-    ${list(g.kneeStop)}${list(g.kneeRules)}
-    ${limits.length ? `<h3>Today's exercises</h3><ul class="plain">${limits.join('')}</ul>` : ''}
-    ${list(g.back)}${list(g.daily)}</div></details>`;
+  const list = sec => `<h3>${esc(sec.title)}</h3><ul class="plain">${sec.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`;
+  return `<details class="slim"><summary>Guidelines</summary><div class="dd">${list(g.back)}${list(g.kneeRules)}</div></details>`;
 }
+
+const limitLine = id => { const l = (P.exercises[id] || {}).limit; return l ? `<div class="lim">${Object.values(l).map(esc).join(' ')}</div>` : ''; };
 
 function exRow(item, ctx) {
   const key = item._key || item.ex;
@@ -340,7 +342,7 @@ function exRow(item, ctx) {
   const it = swapped ? altOf(item) : item;
   return `<div class="ex"><div class="grow"><div class="name">${esc(exName(it.ex))}</div>
     <div class="sub">${esc(it.target || '')}${it.note ? ' · ' + esc(it.note) : ''}${it.alternateDays ? ' · Other days: ' + esc(it.alternateDays) : ''}</div>
-    ${ctx ? ladderLine(it.ex) : ''}
+    ${limitLine(it.ex)}${ctx ? ladderLine(it.ex) : ''}
     ${ctx && item.orInstead ? `<button class="swap" data-act="swap" data-slot="${esc(key)}">${swapped ? '↺ Back to ' + esc(exName(item.ex)) : 'Or instead: ' + esc(exName(item.orInstead.ex)) + ' ' + esc(item.orInstead.target)}</button>` : ''}</div>
     <button class="info" data-act="howto" data-ex="${esc(it.ex)}" aria-label="How to">i</button></div>`;
 }
@@ -359,7 +361,7 @@ function liftCard(k, d, item) {
   const boxes = Array.from({ length: n }, (_, i) => `<input class="field" type="number" inputmode="numeric" data-in="set" data-slot="${esc(slot)}" data-i="${i}" value="${esc(sets[i] ?? '')}" placeholder="${esc(ph + unit)}" aria-label="Set ${i + 1}">`).join('');
   const usesLoad = !!('load' in it || loads[it.ex] || (d.loads && d.loads[slot] != null));
   return `<div class="lift"><div class="head">${item.slot ? `<span class="slot">${esc(item.slot)}</span>` : ''}
-      <div style="flex:1;min-width:0"><div class="name">${esc(exName(it.ex))}</div><div class="sub">${esc(it.target)}</div>${it.note ? `<div class="note">${esc(it.note)}</div>` : ''}${ladderLine(it.ex)}</div>
+      <div style="flex:1;min-width:0"><div class="name">${esc(exName(it.ex))}</div><div class="sub">${esc(it.target)}</div>${it.note ? `<div class="note">${esc(it.note)}</div>` : ''}${limitLine(it.ex)}${ladderLine(it.ex)}</div>
       <button class="info" data-act="howto" data-ex="${esc(it.ex)}" aria-label="How to">i</button></div>
     ${usesLoad ? `<div class="load">Load <input class="field" inputmode="decimal" data-in="load" data-slot="${esc(slot)}" data-ex="${esc(it.ex)}" value="${esc(load)}" placeholder="kg"> kg
       ${it.warmUpSets ? `<span>· Warm up ${esc(it.warmUpSets)}</span>` : ''}</div>` : ''}
@@ -497,6 +499,7 @@ function viewBody() {
     <p class="note">${esc(P.run.nextMorningRule)}</p></div></details>`;
   const bp = c.backPain;
   html += `<details><summary>Lower back ${bp != null ? `<span class="sub ${painClass(bp)}">· ${bp}/10 today</span>` : ''}</summary><div class="dd">${list(g.back.items)}<p class="note">${esc(P.blocks.backRoutine.note)}</p></div></details>`;
+  html += `<details><summary>Daily rules</summary><div class="dd">${list(g.daily.items)}</div></details>`;
   html += `<div class="lbl">Trends · last ${P.trends.days} days</div>${trends()}`;
   const th = settings().theme || P.appearance.default;
   html += `<div class="lbl">Appearance</div><div class="card"><div class="seg" style="display:flex">${P.appearance.options.map(o => `<button style="flex:1" data-act="theme" data-val="${o}" class="${th === o ? 'on' : ''}">${o[0].toUpperCase() + o.slice(1)}</button>`).join('')}</div></div>`;
