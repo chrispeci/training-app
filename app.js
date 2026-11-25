@@ -7,7 +7,7 @@ const DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const DAYNAME = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const REST_SECONDS = 120;
-const VERSION = 17; // shown at the bottom of Body, so you can tell which version the phone is running
+const VERSION = 18; // shown at the bottom of Body, so you can tell which version the phone is running
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -315,6 +315,7 @@ function viewSession() {
       ${b.note ? `<p class="note" style="margin-top:0">${esc(b.note)}</p>` : ''}${list}</div></details>`;
   });
 
+  if (k > today()) return html + `<p class="note" style="margin:6px 2px 0">Preview. Logging opens on the day.</p>`;  // looking ahead: nothing to finish yet
   const end = d.end || {};
   const sauna = blocks.some(b => /sauna/i.test(b.name));
   const scale = (f) => `<div class="row"><div class="grow">${esc(f.label)} <span class="sub">${f.min}–${f.max}</span></div><div class="seg" data-save="end.${f.id}">
