@@ -3,14 +3,14 @@
   "file": "claude/app-data.json",
   "purpose": "Everything the training app shows, as plain data. The app reads this file; nothing in here is code. To change the program, Claude edits this file and republishes.",
   "basedOn": [
-   "claude/program.md v1.6.3",
+   "claude/program.md v1.7",
    "claude/meal-plan.md v2",
    "claude/health-admin.md (23 Nov 2026)",
    "baseline.md (23 Nov 2026)"
   ],
-  "dataVersion": 8,
-  "updated": "2026-11-24",
-  "status": "Matches program.md v1.6.3: Lower B's gym B2 is the gym's seated leg curl (ham curl) machine, curled to 90° only (Chris confirmed the machine 24 Nov). v1.6.2: the morning loosening flow is live as a 6:00 row on Today every day (timeline kind \"ex\": tap opens its how-to; kneeOffNote shows when the knee check is off), and the back routine's walk or march is now only the fallback if the flow is skipped. Earlier (v1.6/v1.6.1): rear delt raise added to the Upper A accessory block; standing hip flexor raise alternates weekly with side-plank hip abduction on Lower B. New top-level library section: approved exercises that are not in a session slot (status bench) plus what each one swaps with. Eight new exercise ids: rearDeltRaise, hipFlexorRaise, halfKneelingHipLoad, pigeonRaise, frogStand, proneStickExtension, eveningStretch, morningFlow. Their how-tos carry an Instagram demo link. Live app build v14 (24 Nov) shows the library, demo links and the handstand ladder. Appointments include the four bookings added on 23 Nov (dentist ×3, City Cave)."
+  "dataVersion": 9,
+  "updated": "2026-11-25",
+  "status": "Matches program.md v1.7: recovery kit. Thoracic extension is on the foam roller (towel when away). New exercise ids ballRelease (Sun mobility, first) and cupping (optional block on Sun). Ankle-strap inversion added to the knee rules' on-hold list and to the 3 Dec physio questions. Earlier, v1.6.3: Lower B's gym B2 is the gym's seated leg curl (ham curl) machine, curled to 90° only (Chris confirmed the machine 24 Nov). v1.6.2: the morning loosening flow is live as a 6:00 row on Today every day (timeline kind \"ex\": tap opens its how-to; kneeOffNote shows when the knee check is off), and the back routine's walk or march is now only the fallback if the flow is skipped. Earlier (v1.6/v1.6.1): rear delt raise added to the Upper A accessory block; standing hip flexor raise alternates weekly with side-plank hip abduction on Lower B. New top-level library section: approved exercises that are not in a session slot (status bench) plus what each one swaps with. Eight new exercise ids: rearDeltRaise, hipFlexorRaise, halfKneelingHipLoad, pigeonRaise, frogStand, proneStickExtension, eveningStretch, morningFlow. Their how-tos carry an Instagram demo link. Live app build v14 (24 Nov) shows the library, demo links and the handstand ladder. Appointments include the four bookings added on 23 Nov (dentist ×3, City Cave)."
  },
  "block": {
   "number": 1,
@@ -1308,6 +1308,14 @@
      "minutes": 15,
      "items": [
       {
+       "ex": "ballRelease",
+       "target": "Glutes 60–90 s/side, outside of the hip 60 s/side"
+      },
+      {
+       "ex": "thoracicExtension",
+       "target": "60 s"
+      },
+      {
        "ex": "couchStretch",
        "target": "60 s/side"
       },
@@ -1318,10 +1326,6 @@
       {
        "ex": "pigeon",
        "target": "60 s/side"
-      },
-      {
-       "ex": "thoracicExtension",
-       "target": "60 s"
       }
      ]
     },
@@ -1330,6 +1334,17 @@
      "minutes": 20,
      "note": "15–20 min, then 500 ml water + electrolytes.",
      "items": []
+    },
+    {
+     "name": "Cupping (optional)",
+     "minutes": 10,
+     "note": "Sunday evening, if you feel like it. Not within a few hours of the sauna.",
+     "items": [
+      {
+       "ex": "cupping",
+       "target": "5–10 min"
+      }
+     ]
     }
    ],
    "location": null
@@ -1553,7 +1568,10 @@
   },
   "thoracicExtension": {
    "name": "Thoracic extension",
-   "cue": "Over a rolled towel."
+   "cue": "On the foam roller (a rolled towel when you're away).",
+   "limit": {
+    "back": "Roller across the upper back only. Never roll the lower back."
+   }
   },
   "latStretch": {
    "name": "Lat stretch"
@@ -1968,6 +1986,24 @@
     "back": "Sphinx on the forearms, not a full cobra. No pushing into the end of the arch.",
     "knee": "Pigeon with the front shin angled and a cushion under the hip."
    }
+  },
+  "ballRelease": {
+   "name": "Ball release, glutes and hip",
+   "cue": "Smooth ball for deeper pressure, spiky for a lighter pass. Slow; stop on a tender spot and breathe.",
+   "limit": {
+    "back": "Not on the spine, and don't dig into the belly for the psoas.",
+    "knee": "Keep it off the back and inside of either knee."
+   },
+   "goal": "Pressure 6/10 at most. Tingling or numbness down the leg: move off the spot."
+  },
+  "cupping": {
+   "name": "Cupping",
+   "cue": "Light to moderate suction on the glutes and the muscles either side of the spine. Leave the cups still, or slide them gently with oil.",
+   "limit": {
+    "back": "Never on the spine itself.",
+    "knee": "Not on or around the knees."
+   },
+   "goal": "Optional, for feel. Round marks for a few days are normal."
   },
   "morningFlow": {
    "name": "Morning loosening flow",
@@ -2511,7 +2547,7 @@
     "No twisting on a bent knee: step to turn",
     "Don't force it straight",
     "No cracking it on purpose, no manipulation",
-    "On hold: pickleball, sparring, rugged hikes, MCR ballast shifts"
+    "On hold: pickleball, sparring, rugged hikes, MCR ballast shifts, ankle-strap inversion (ask Bryce)"
    ]
   },
   "back": {
@@ -2573,7 +2609,7 @@
    "date": "2026-12-03",
    "time": "4:00 pm",
    "what": "Physio, Bryce",
-   "note": "Ask: run frequency, lifting the 90° cap, nerve screen for the tingling, the 23 Nov catch.",
+   "note": "Ask: run frequency, lifting the 90° cap, nerve screen for the tingling, the 23 Nov catch, ankle-strap inversion before surgery.",
    "area": "knee"
   },
   {

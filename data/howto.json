@@ -2,9 +2,9 @@
  "meta": {
   "file": "claude/app-howto.json",
   "purpose": "The How-to screen for every exercise in claude/app-data.json: steps, what to watch for, demo photos and a demo video. Keyed by the same exercise ids.",
-  "updated": "2026-11-24 (seated leg curl)",
+  "updated": "2026-11-25 (v1.7 recovery kit: thoracic extension on the foam roller, new ballRelease and cupping)",
   "photos": "From free-exercise-db (public domain, The Unlicense). Each set is two photos, <photoBase><photos>/0.jpg and /1.jpg, showing the two ends of the movement; the How-to screen shows them side by side above the steps. All 37 sets were checked by eye on 23 Nov; on 24 Nov Seated_Leg_Curl replaced the lying version for legCurlMachine (the gym's machine is seated), also checked by eye. The build copies the photos into the app.",
-  "videos": "YouTube, played inside the How-to screen (needs internet). <videoBase><video.id>. Reviewed and accepted by Chris on 23 Nov (CrossFit muscle-up negative swapped out; Yellow Dude used where he has a proper tutorial). Closed: only change a video if Chris flags it.",
+  "videos": "YouTube, played inside the How-to screen (needs internet). <videoBase><video.id>. Reviewed and accepted by Chris on 23 Nov (CrossFit muscle-up negative swapped out; Yellow Dude used where he has a proper tutorial). Closed: only change a video if Chris flags it. 25 Nov: Chris flagged the thoracic extension video (gone members-only), replaced with PhysiHub's towel version; all 38 other ids checked playable the same day. Later on 25 Nov (v1.7), thoracic extension moved onto the foam roller, so its video is The Barbell Physio's foam roller version; ballRelease uses Dr Brian Abelson's glute release. Both checked playable and embeddable. cupping has steps only, no video.",
   "demos": "Exercises that came from Instagram reels have a demo {label, url} pointing at the reel instead of a YouTube video: the five v1.5 exercises (handstandFingerPrep, handstandWallBalance, lungeRotation, kbRotationalSwing, backExtensionTwist) and the eight v1.6 ones (rearDeltRaise, hipFlexorRaise, halfKneelingHipLoad, pigeonRaise, frogStand, proneStickExtension, eveningStretch, morningFlow). The How-to screen shows it as a link (Instagram won't embed). No photos for these yet.",
   "steps": "Written for this program: its cues, the 90° knee cap and the back rules. Not copied from the photo set."
  },
@@ -620,25 +620,26 @@
    "steps": [
     [
      "Set up",
-     "Lie on your back with a rolled towel across your upper back, just below your shoulder blades. Knees bent, hands behind your head."
+     "Lie on your back with the foam roller across your upper back, just below your shoulder blades. Knees bent, feet flat, hands behind your head to support your neck. Away from home, a rolled towel does the same job."
     ],
     [
      "Extend",
-     "Let your upper back drape back over the towel and breathe out slowly. Keep your ribs down and your bum on the floor."
+     "Let your upper back drape back over the roller and breathe out slowly. Keep your ribs down and your bum on the floor."
     ],
     [
      "Move it",
-     "After 20–30 seconds, shift the towel a few centimetres higher and repeat."
+     "After 20–30 seconds, roll the roller a few centimetres higher and repeat. Stay between the bottom of the shoulder blades and the top of the shoulders."
     ]
    ],
    "watchFor": [
     "Arching from your lower back instead of your upper back",
+    "Rolling down onto your lower back. Upper back only.",
     "Chin poking forward"
    ],
    "video": {
-    "id": "Jx6z6OWbD9Y",
-    "title": "Thoracic Extension (towel)",
-    "channel": "PhysiHub Library"
+    "id": "81kPLsMt6wY",
+    "title": "Foam Roller Thoracic Spine Extensions",
+    "channel": "The Barbell Physio"
    }
   },
   "latStretch": {
@@ -2118,6 +2119,56 @@
     "Looking at the ceiling. Keep your chin tucked."
    ],
    "photos": "Barbell_Hip_Thrust"
+  },
+  "ballRelease": {
+   "steps": [
+    [
+     "Glutes",
+     "Sit on the floor with the ball under one buttock, hands behind you for support. Cross that ankle over the other knee to open up the deep glute (piriformis). Roll slowly; when you find a tender spot, stop and breathe for 20–30 s. 60–90 s per side."
+    ],
+    [
+     "Outside of the hip",
+     "Lie face-down, propped on your forearms. Put the ball just below and outside the bony point at the front of your hip. Ease your weight onto it and make small movements. 60 s per side."
+    ],
+    [
+     "Which ball",
+     "Smooth hard ball for deeper, still pressure. Spiky ball for a lighter, quicker pass, or on a sore day."
+    ]
+   ],
+   "watchFor": [
+    "Pressure above 6/10. Ease off: harder isn't better.",
+    "Tingling or numbness down the leg. Move off that spot.",
+    "Putting the ball on your spine, or digging into your belly for the psoas",
+    "The back or inside of either knee. Keep it off."
+   ],
+   "video": {
+    "id": "tH1qhsuO4AE",
+    "title": "Gluteal Muscle Release - Lacrosse Ball",
+    "channel": "Dr. Brian Abelson",
+    "note": "Shows the glutes. The outside-of-hip spot is in the steps above."
+   }
+  },
+  "cupping": {
+   "steps": [
+    [
+     "Set up",
+     "Clean, dry skin. A little massage oil if you want to slide the cups."
+    ],
+    [
+     "Place",
+     "Put 2–4 cups on the glutes or the thick muscles either side of the spine, never on the spine itself. Light to moderate suction: snug, not painful."
+    ],
+    [
+     "Leave or slide",
+     "Leave them still for 5–10 minutes, or glide them slowly along the muscle with oil. Release by pressing the skin at the edge of the cup."
+    ]
+   ],
+   "watchFor": [
+    "Pain, or suction strong enough to blister. Less suction.",
+    "Broken, bruised or sunburnt skin. Skip that area.",
+    "Straight after the sauna. Wait a few hours.",
+    "Round marks for a few days are normal."
+   ]
   },
   "legCurlMachine": {
    "steps": [

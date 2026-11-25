@@ -7,7 +7,7 @@ const DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const DAYNAME = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const REST_SECONDS = 120;
-const VERSION = 18; // shown at the bottom of Body, so you can tell which version the phone is running
+const VERSION = 19; // shown at the bottom of Body, so you can tell which version the phone is running
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
